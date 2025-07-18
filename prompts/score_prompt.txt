@@ -1,0 +1,3 @@
+Analyze the following article for confidence, jargon, self-reference, originality, and humor. Return a JSON object with numeric scores from 1-10 and a brief commentary on tone.
+
+[INSERT ARTICLE TEXT HERE]
