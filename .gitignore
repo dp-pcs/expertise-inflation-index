@@ -4,6 +4,11 @@
 .env.production
 .env.staging
 
+# Virtual environment
+venv/
+env/
+.venv/
+
 # Node modules
 node_modules/
 npm-debug.log*
@@ -65,4 +70,7 @@ pids
 .serverless
 
 # Supabase
-.supabase 
+.supabase
+
+# Test results
+test_results.json 
