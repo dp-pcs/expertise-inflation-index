@@ -1,8 +1,10 @@
 # 🧠 Expertise Inflation Index (EII)
 
-A semi-scientific, semi-satirical open-source project to analyze AI-related articles for "expertise inflation" - the tendency to exhibit overconfidence, excessive jargon, and inflated claims of expertise.
+A semi-satirical, semi-scientific open-source project to analyze AI-related articles for "expertise inflation" - the tendency to exhibit overconfidence, excessive jargon, and inflated claims of expertise.
 
-Built using **Firecrawl** (web scraping), **LLMs** (content analysis), **n8n** (workflow automation), and **Supabase** (data storage).
+Built using **Firecrawl** (web scraping), **LLMs** (content analysis), **n8n** (workflow automation), and **DynamoDB** (data storage).
+
+🔗 **Repository**: [github.com/dp-pcs/expertise-inflation-index](https://github.com/dp-pcs/expertise-inflation-index)
 
 ## 🎯 What It Does
 
@@ -19,19 +21,19 @@ The EII analyzes articles and scores them on five dimensions:
 ### 1. Setup Environment
 
 ```bash
-# Clone and enter directory
-git clone <your-repo>
+# Clone repository
+git clone https://github.com/dp-pcs/expertise-inflation-index.git
 cd expertise-inflation-index
 
 # Install Python dependencies
 pip install -r requirements.txt
 
-# Configure API keys
+# Configure API keys (copy and edit)
 cp .env.example .env
 # Edit .env with your actual API keys
 ```
 
-### 2. Test the Prompt
+### 2. Test the AI Prompt
 
 ```bash
 # Run the prompt test suite
@@ -40,15 +42,21 @@ python test_prompt.py
 
 This will test the EII prompt against three example articles and show you how the scoring works.
 
-### 3. Required API Keys
+### 3. Deploy Infrastructure
 
-For testing, you'll need at least one of:
-- **OpenAI API Key**: For GPT-4 analysis
-- **Anthropic API Key**: For Claude analysis
+**Option A: DynamoDB (Recommended - Cost Effective)**
+```bash
+# Setup AWS DynamoDB
+python aws/create_table.py
 
-For the full workflow, you'll also need:
-- **Firecrawl API Key**: For web scraping
-- **Supabase Keys**: For data storage
+# Deploy n8n workflow
+# Import n8n/eii_workflow_dynamodb.json to n8n
+```
+
+**Option B: Supabase (Legacy)**
+```bash
+# Use supabase/schema.sql and n8n/eii_workflow.json
+```
 
 ## 📁 Project Structure
 
@@ -59,11 +67,15 @@ expertise-inflation-index/
 │   ├── high_inflation_example.md
 │   ├── balanced_example.md
 │   └── satirical_example.md
-├── supabase/schema.sql         # Database schema
-├── docs/testing_guide.md       # Detailed testing instructions
-├── test_prompt.py              # Prompt testing script
-├── n8n/                        # (Future: workflow exports)
-└── .env.example                # API key template
+├── aws/                         # DynamoDB setup (recommended)
+│   ├── dynamodb_schema.json
+│   └── create_table.py
+├── n8n/                         # Workflow automation
+│   ├── eii_workflow_dynamodb.json  # DynamoDB version
+│   └── eii_workflow.json           # Supabase version
+├── docs/                        # Documentation
+├── test_prompt.py               # Prompt testing script
+└── test_workflow.py             # End-to-end testing
 ```
 
 ## 🔬 Example Results
@@ -80,13 +92,32 @@ expertise-inflation-index/
 - Overall EII Score: **4.8/10**
 - Confidence: 4/10, Jargon: 6/10, Self-Reference: 5/10, Originality: 5/10, Humor: 9/10
 
-## 🛠️ Next Steps (MVP Roadmap)
+## 💰 Cost Comparison
 
-- [ ] **Create n8n workflow**: Firecrawl → LLM → Supabase pipeline
-- [ ] **Deploy Supabase database**: Set up production schema
-- [ ] **Add more example articles**: Expand test coverage
-- [ ] **Build simple frontend**: URL input form for testing
-- [ ] **Create public instance**: Hosted version for community use
+**DynamoDB vs Supabase:**
+- **DynamoDB**: $0.02/month for 1K articles (~99% cheaper!)
+- **Supabase**: $25+/month minimum
+- **Scaling**: DynamoDB stays cheap, Supabase gets expensive
+
+## 🛠️ Architecture
+
+```mermaid
+graph LR
+    A[Article URL] --> B[n8n Webhook]
+    B --> C[Firecrawl Scraper]
+    C --> D[LLM Analysis]
+    D --> E[DynamoDB Storage]
+    E --> F[JSON Response]
+    
+    D --> G[OpenAI GPT-4]
+    D --> H[Anthropic Claude]
+```
+
+## 📚 Documentation
+
+- **[DynamoDB Setup Guide](docs/dynamodb_setup_guide.md)** - Cost-effective database setup
+- **[n8n Setup Guide](docs/n8n_setup_guide.md)** - Workflow automation
+- **[Testing Guide](docs/testing_guide.md)** - Prompt and system testing
 
 ## 🎭 Philosophy
 
@@ -110,6 +141,10 @@ This is an open-source project! Contributions welcome:
 - **Leaderboards**: Top overconfident posts (anonymized)
 - **Browser extension**: Real-time scoring while reading
 - **Community features**: User submissions and voting
+
+## 📄 License
+
+MIT License - feel free to use, modify, and distribute!
 
 ---
 
