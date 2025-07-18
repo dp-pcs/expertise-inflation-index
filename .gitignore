@@ -73,4 +73,5 @@ pids
 .supabase
 
 # Test results
-test_results.json 
+test_results.json
+workflow_test_results.json 
