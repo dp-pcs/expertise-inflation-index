@@ -1,0 +1,46 @@
+{
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#ffffff",
+      "titleBar.activeForeground": "#1f1f1f",
+  
+      "activityBar.background": "#ffffff",
+      "activityBar.foreground": "#1f1f1f",
+      "activityBar.activeBorder": "#4a90e2",
+  
+      "sideBar.background": "#ffffff",
+      "sideBar.foreground": "#1f1f1f",
+      "sideBarTitle.foreground": "#1f1f1f",
+      "sideBarSectionHeader.foreground": "#1f1f1f",
+  
+      "panel.background": "#ffffff",                    // Bottom panel (e.g., terminal, problems)
+      "panelTitle.activeForeground": "#1f1f1f",
+  
+      "statusBar.background": "#ffffff",
+      "statusBar.foreground": "#1f1f1f",
+  
+      "editor.background": "#ffffff",
+      "editor.foreground": "#1f1f1f",
+      "editor.lineHighlightBackground": "#f5f5f5",
+      "editor.selectionBackground": "#cce6ff",
+      "editorCursor.foreground": "#005cc5",
+      "editorIndentGuide.background": "#e0e0e0",
+      "editorIndentGuide.activeBackground": "#a0a0a0",
+      "editorLineNumber.foreground": "#888888",
+  
+      "tab.activeBackground": "#ffffff",
+      "tab.inactiveBackground": "#ffffff",
+      "tab.activeForeground": "#1f1f1f",
+      "tab.inactiveForeground": "#999999",
+  
+      "breadcrumb.foreground": "#1f1f1f",               // Top navigation
+      "breadcrumb.focusForeground": "#1f1f1f"
+    },
+    "workbench.preferredLightColorTheme": "Default Light+",
+    "editor.tokenColorCustomizations": {
+      "comments": "#6a737d",
+      "keywords": "#005cc5",
+      "strings": "#032f62",
+      "functions": "#e36209",
+      "variables": "#1f1f1f"
+    }
+  }
