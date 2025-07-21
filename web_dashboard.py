@@ -571,22 +571,22 @@ def demo_analyze():
     # Load all articles from the comprehensive dataset
     all_articles = []
     try:
-        # Try discovered_articles.json first (more complete dataset)
-        with open('discovered_articles.json', 'r') as f:
+        # Try trilogy_fixed_titles.json first (comprehensive Firecrawl dataset with 46+ articles)
+        with open('trilogy_fixed_titles.json', 'r') as f:
             import json
             discovery_data = json.load(f)
-            # Filter for Trilogy AI articles only
-            all_articles = [
-                article for article in discovery_data.get('articles', [])
-                if article.get('source') == 'Trilogy AI CoE'
-            ]
+            all_articles = discovery_data.get('articles', [])
     except (FileNotFoundError, json.JSONDecodeError):
-        # Fallback to trilogy_fixed_titles.json
+        # Fallback to discovered_articles.json (smaller dataset with 20 articles)
         try:
-            with open('trilogy_fixed_titles.json', 'r') as f:
+            with open('discovered_articles.json', 'r') as f:
                 import json
                 discovery_data = json.load(f)
-                all_articles = discovery_data.get('articles', [])
+                # Filter for Trilogy AI articles only
+                all_articles = [
+                    article for article in discovery_data.get('articles', [])
+                    if article.get('source') == 'Trilogy AI CoE'
+                ]
         except (FileNotFoundError, json.JSONDecodeError):
             # Final fallback to mock data if files not available
             return jsonify({
@@ -693,7 +693,10 @@ def demo_analyze():
                 "max_score": round(max(article_scores), 1),
                 "score_range": round(max(article_scores) - min(article_scores), 1),
                 "anomalies": anomalies,
-                "consistency": "High" if std_dev < 0.8 else "Medium" if std_dev < 1.5 else "Low"
+                "consistency": "High" if std_dev < 0.8 else "Medium" if std_dev < 1.5 else "Low",
+                "avg_confidence": round(statistics.mean([a['scores']['confidence'] for a in author_articles]), 1),
+                "avg_jargon": round(statistics.mean([a['scores']['jargon_density'] for a in author_articles]), 1),
+                "avg_humor": round(statistics.mean([a['scores']['humor_rating'] for a in author_articles]), 1)
             }
     
     # Rank authors by average EII score
