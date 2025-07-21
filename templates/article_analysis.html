@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}EII Article Analysis{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>📊 Article EII Analysis</h1>
+        <p>Detailed breakdown of expertise inflation indicators</p>
+        <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
+            Analyzed: {{ data.analyzed_at.split('T')[0] }}
+        </div>
+    </div>
+    
+    <div class="article-card">
+        <div class="article-title">
+            <a href="{{ data.url }}" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                {{ data.title }}
+            </a>
+        </div>
+        
+        <div class="article-meta">
+            ✍️ <strong>{{ data.author }}</strong> • 🔗 <a href="{{ data.url }}" target="_blank">View Original</a>
+        </div>
+        
+        <div style="margin: 20px 0; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; color: white; text-align: center;">
+            <div style="font-size: 3em; font-weight: bold; margin-bottom: 10px;">{{ "%.1f"|format(data.eii_score) }}/10</div>
+            <div style="font-size: 1.2em; opacity: 0.9;">Overall EII Score</div>
+            <div style="font-size: 0.9em; opacity: 0.8; margin-top: 5px;">
+                {% if data.eii_score >= 8 %}🔥 Extremely Inflated
+                {% elif data.eii_score >= 6 %}⚠️ Moderately Inflated
+                {% elif data.eii_score >= 4 %}📊 Balanced
+                {% else %}😇 Humble{% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="ranking-section">
+        <h3>📊 Detailed Score Breakdown</h3>
+        <div class="scores-grid">
+            <div class="score-item">
+                <div class="score-value" style="color: {{ '#e74c3c' if data.scores.confidence >= 8 else '#f39c12' if data.scores.confidence >= 6 else '#27ae60' }}">
+                    {{ data.scores.confidence }}
+                </div>
+                <div class="score-label">💪 Confidence</div>
+                <div style="font-size: 0.75em; color: #666; margin-top: 3px;">
+                    {{ 'Overconfident' if data.scores.confidence >= 8 else 'Assertive' if data.scores.confidence >= 6 else 'Balanced' if data.scores.confidence >= 4 else 'Humble' }}
+                </div>
+            </div>
+            
+            <div class="score-item">
+                <div class="score-value" style="color: {{ '#e74c3c' if data.scores.jargon_density >= 8 else '#f39c12' if data.scores.jargon_density >= 6 else '#27ae60' }}">
+                    {{ data.scores.jargon_density }}
+                </div>
+                <div class="score-label">🤖 Jargon Density</div>
+                <div style="font-size: 0.75em; color: #666; margin-top: 3px;">
+                    {{ 'Jargon Heavy' if data.scores.jargon_density >= 8 else 'Technical' if data.scores.jargon_density >= 6 else 'Moderate' if data.scores.jargon_density >= 4 else 'Plain Language' }}
+                </div>
+            </div>
+            
+            <div class="score-item">
+                <div class="score-value" style="color: {{ '#e74c3c' if data.scores.self_reference >= 8 else '#f39c12' if data.scores.self_reference >= 6 else '#27ae60' }}">
+                    {{ data.scores.self_reference }}
+                </div>
+                <div class="score-label">👑 Self-Reference</div>
+                <div style="font-size: 0.75em; color: #666; margin-top: 3px;">
+                    {{ 'Self-Promotional' if data.scores.self_reference >= 8 else 'Authority Claims' if data.scores.self_reference >= 6 else 'Moderate' if data.scores.self_reference >= 4 else 'Collaborative' }}
+                </div>
+            </div>
+            
+            <div class="score-item">
+                <div class="score-value" style="color: {{ '#e74c3c' if data.scores.originality >= 8 else '#f39c12' if data.scores.originality >= 6 else '#27ae60' }}">
+                    {{ data.scores.originality }}
+                </div>
+                <div class="score-label">🚀 Originality Claims</div>
+                <div style="font-size: 0.75em; color: #666; margin-top: 3px;">
+                    {{ 'Breakthrough Claims' if data.scores.originality >= 8 else 'Novel Ideas' if data.scores.originality >= 6 else 'Some Innovation' if data.scores.originality >= 4 else 'Incremental' }}
+                </div>
+            </div>
+            
+            <div class="score-item">
+                <div class="score-value" style="color: {{ '#27ae60' if data.scores.humor_rating >= 6 else '#f39c12' if data.scores.humor_rating >= 4 else '#e74c3c' }}">
+                    {{ data.scores.humor_rating }}
+                </div>
+                <div class="score-label">😂 Humor/Self-Awareness</div>
+                <div style="font-size: 0.75em; color: #666; margin-top: 3px;">
+                    {{ 'Self-Aware' if data.scores.humor_rating >= 6 else 'Some Humor' if data.scores.humor_rating >= 4 else 'Serious' if data.scores.humor_rating >= 2 else 'Overly Serious' }}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="ranking-section">
+        <h3>🎭 Inflation Type & Analysis</h3>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 25px; align-items: start;">
+            <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 15px; color: white;">
+                <div style="font-size: 3em; margin-bottom: 10px;">
+                    {% if data.analysis.inflation_type == "Technical Guru" %}🤖
+                    {% elif data.analysis.inflation_type == "Thought Leader" %}💭
+                    {% elif data.analysis.inflation_type == "Breakthrough Claimer" %}🚀
+                    {% elif data.analysis.inflation_type == "Jargon Bomber" %}💣
+                    {% else %}⚖️{% endif %}
+                </div>
+                <div style="font-size: 1.3em; font-weight: bold;">{{ data.analysis.inflation_type }}</div>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 15px; border-left: 5px solid var(--primary-color);">
+                <h4 style="color: var(--primary-color); margin-bottom: 15px;">📝 Tone Summary</h4>
+                <p style="line-height: 1.6; margin-bottom: 0;">{{ data.analysis.tone_summary }}</p>
+            </div>
+        </div>
+    </div>
+    
+    {% if data.analysis.key_phrases %}
+    <div class="ranking-section">
+        <h3>🔍 Key Phrases Detected</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            {% for phrase in data.analysis.key_phrases %}
+            <span style="background: #e3f2fd; color: #1976d2; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; border: 1px solid #bbdefb;">
+                "{{ phrase }}"
+            </span>
+            {% endfor %}
+        </div>
+        <p style="margin-top: 15px; color: #666; font-size: 0.9em;">
+            These phrases contributed to the inflation scoring across various dimensions.
+        </p>
+    </div>
+    {% endif %}
+    
+    <div class="ranking-section">
+        <h3>📈 EII Score Interpretation</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="padding: 20px; background: #d4edda; border-radius: 12px; border-left: 4px solid #28a745;">
+                <h4 style="color: #155724; margin-bottom: 10px;">😇 0-3: Humble</h4>
+                <p style="font-size: 0.9em; color: #155724; margin: 0;">Acknowledges limitations, uses hedging language, collaborative tone.</p>
+            </div>
+            
+            <div style="padding: 20px; background: #fff3cd; border-radius: 12px; border-left: 4px solid #ffc107;">
+                <h4 style="color: #856404; margin-bottom: 10px;">📊 4-6: Balanced</h4>
+                <p style="font-size: 0.9em; color: #856404; margin: 0;">Moderate confidence, reasonable claims, some technical depth.</p>
+            </div>
+            
+            <div style="padding: 20px; background: #f8d7da; border-radius: 12px; border-left: 4px solid #dc3545;">
+                <h4 style="color: #721c24; margin-bottom: 10px;">🔥 7-10: Inflated</h4>
+                <p style="font-size: 0.9em; color: #721c24; margin: 0;">Overconfident claims, heavy jargon, breakthrough assertions.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card" style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <h3>🎯 Want to Analyze Another Article?</h3>
+        <p>Use the EII webhook to analyze any article URL:</p>
+        <div style="margin: 20px 0;">
+            <input type="url" placeholder="Enter article URL..." style="padding: 10px; border-radius: 8px; border: none; width: 70%; max-width: 400px; margin-right: 10px;">
+            <button onclick="analyzeNewArticle()" style="padding: 10px 20px; background: var(--secondary-color); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                🧠 Analyze
+            </button>
+        </div>
+        <p style="font-size: 0.9em; opacity: 0.8;">Or use: curl -X POST your-webhook-url -d '{"url":"article-url"}'</p>
+    </div>
+    
+    <div class="navigation">
+        <a href="/" class="nav-button">🏠 Home</a>
+        <a href="/team-championship" class="nav-button">🏆 Team Championship</a>
+        <a href="/discovery-report" class="nav-button">🔍 Discovery Report</a>
+    </div>
+</div>
+
+<script>
+function analyzeNewArticle() {
+    const input = document.querySelector('input[type="url"]');
+    const url = input.value.trim();
+    
+    if (!url) {
+        alert('Please enter a valid article URL');
+        return;
+    }
+    
+    // This would integrate with your EII webhook
+    alert(`Would analyze: ${url}\n\nTo implement:\n1. Configure your n8n webhook URL\n2. Add JavaScript to call the webhook\n3. Display results on this page`);
+}
+</script>
+{% endblock %} 

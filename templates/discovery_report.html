@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% block title %}Discovery Report - EII Dashboard{% endblock %}
+
+{% block extra_head %}
+<style>
+    .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .gradient-bg {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+    
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .article-card {
+        transition: all 0.3s ease;
+    }
+    
+    .article-card:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .nav-button {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .nav-button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: scale(1.05);
+    }
+    
+    .nav-button.active {
+        background: rgba(79, 70, 229, 0.3);
+        border-color: rgba(79, 70, 229, 0.5);
+    }
+    
+    .stat-badge {
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(6, 182, 212, 0.2));
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen gradient-bg relative overflow-hidden">
+    <!-- Floating orbs for visual interest -->
+    <div class="absolute top-20 left-20 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+    <div class="absolute top-40 right-20 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
+    <div class="absolute bottom-20 left-40 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-2000"></div>
+
+    <div class="relative z-10 container mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-white mb-4">
+                🔍 <span class="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">Content Discovery</span>
+            </h1>
+            <p class="text-xl text-gray-200 opacity-90">AI articles discovered across the web</p>
+        </div>
+
+        <!-- Source Navigation -->
+        <div class="glass-card rounded-2xl p-6 mb-8">
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="/discovery-report" class="nav-button {% if current_filter == 'all' %}active{% endif %} px-6 py-3 rounded-xl text-white font-medium transition-all hover:scale-105">
+                    🌐 All Sources
+                </a>
+                <a href="/discovery-report?source=rss" class="nav-button {% if current_filter == 'rss' %}active{% endif %} px-6 py-3 rounded-xl text-white font-medium transition-all hover:scale-105">
+                    📡 RSS Feeds
+                </a>
+                <a href="/discovery-report?source=reddit" class="nav-button {% if current_filter == 'reddit' %}active{% endif %} px-6 py-3 rounded-xl text-white font-medium transition-all hover:scale-105">
+                    🔥 Reddit
+                </a>
+                <a href="/discovery-report?source=hacker" class="nav-button {% if current_filter == 'hacker' %}active{% endif %} px-6 py-3 rounded-xl text-white font-medium transition-all hover:scale-105">
+                    📰 Hacker News
+                </a>
+                <a href="/discovery-report?source=trilogy" class="nav-button {% if current_filter == 'trilogy' %}active{% endif %} px-6 py-3 rounded-xl text-white font-medium transition-all hover:scale-105">
+                    🎯 Trilogy AI CoE
+                </a>
+                <a href="/discovery-report?source=semantic_scholar" class="nav-button {% if current_filter == 'semantic_scholar' %}active{% endif %} px-6 py-3 rounded-xl text-white font-medium transition-all hover:scale-105">
+                    🎓 Semantic Scholar
+                </a>
+                <a href="/discovery-report?source=ai_magazines" class="nav-button {% if current_filter == 'ai_magazines' %}active{% endif %} px-6 py-3 rounded-xl text-white font-medium transition-all hover:scale-105">
+                    📰 AI Magazines
+                </a>
+                <a href="/discovery-report?source=tech_news" class="nav-button {% if current_filter == 'tech_news' %}active{% endif %} px-6 py-3 rounded-xl text-white font-medium transition-all hover:scale-105">
+                    🔥 TechCrunch & Tech
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats Summary -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="glass-card rounded-2xl p-6 text-center">
+                <div class="text-3xl font-bold text-white mb-2">{{ data.total_articles }}</div>
+                <div class="text-gray-200">Total Articles</div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center">
+                <div class="text-3xl font-bold text-white mb-2">
+                    {% if data.articles %}
+                        {{ "%.1f"|format(data.articles|map(attribute='relevance_score')|average) }}
+                    {% else %}
+                        0.0
+                    {% endif %}
+                </div>
+                <div class="text-gray-200">Avg Relevance</div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center">
+                <div class="text-3xl font-bold text-white mb-2">{{ current_filter|title }}</div>
+                <div class="text-gray-200">Source Filter</div>
+            </div>
+        </div>
+
+        <!-- Articles Grid -->
+        {% if data.articles %}
+            <div class="space-y-6">
+                {% for article in data.articles %}
+                <div class="article-card glass-card rounded-2xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-white mb-2 hover:text-blue-300 transition-colors">
+                                <a href="{{ article.url }}" target="_blank" class="hover:underline">
+                                    {{ article.title }}
+                                </a>
+                            </h3>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
+                                    📡 {{ article.source }}
+                                </span>
+                                {% if article.author %}
+                                <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
+                                    ✍️ {{ article.author }}
+                                </span>
+                                {% endif %}
+                                {% if article.relevance_score %}
+                                <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
+                                    🎯 {{ "%.2f"|format(article.relevance_score) }}
+                                </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <button onclick="analyzeArticle('{{ article.url }}', '{{ article.title }}')" 
+                                class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 shadow-lg">
+                            🧠 Analyze
+                        </button>
+                    </div>
+                    {% if article.excerpt %}
+                    <p class="text-gray-200 leading-relaxed">{{ article.excerpt }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="glass-card rounded-2xl p-12 text-center">
+                <div class="text-6xl mb-4">🔍</div>
+                <h3 class="text-2xl font-semibold text-white mb-4">No articles discovered yet</h3>
+                <p class="text-gray-200 mb-6">
+                    {% if current_filter == 'rss' %}
+                        Run the RSS discovery system to find AI articles from major publications.
+                    {% elif current_filter == 'reddit' %}
+                        Run the Reddit discovery system to find trending AI discussions.
+                    {% elif current_filter == 'hacker' %}
+                        Run the Hacker News discovery system to find AI stories.
+                    {% else %}
+                        Run the content discovery system to find AI articles across the web.
+                    {% endif %}
+                </p>
+                <code class="bg-black bg-opacity-50 text-green-300 px-4 py-2 rounded-lg inline-block">
+                    python content_discovery.py --source {{ current_filter }} --limit 10
+                </code>
+            </div>
+        {% endif %}
+
+        <!-- Back to Home -->
+        <div class="text-center mt-12">
+            <a href="/" class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg">
+                🏠 Back to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Analysis Modal (same as before) -->
+<div id="analysis-modal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden z-50">
+    <div class="flex items-center justify-center h-full p-4">
+        <div class="glass-card rounded-2xl p-8 max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-white">🧠 EII Analysis</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div id="analysis-content">
+                <div class="text-center py-8">
+                    <div class="animate-spin w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+                    <p class="text-white">Analyzing article...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function analyzeArticle(url, title) {
+    const modal = document.getElementById('analysis-modal');
+    const content = document.getElementById('analysis-content');
+    
+    // Show modal with loading state
+    modal.classList.remove('hidden');
+    content.innerHTML = `
+        <div class="text-center py-8">
+            <div class="animate-spin w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+            <p class="text-white">Analyzing "${title}"...</p>
+        </div>
+    `;
+    
+    // Send analysis request
+    fetch('/api/analyze-article', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            url: url,
+            title: title
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            content.innerHTML = `
+                <div class="space-y-6">
+                    <div class="text-center">
+                        <h4 class="text-xl font-semibold text-white mb-2">${title}</h4>
+                        <div class="text-3xl font-bold text-yellow-400 mb-2">EII Score: ${data.eii_score}</div>
+                        <div class="text-gray-300">${data.analysis.tone_summary}</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-sm text-gray-300">Confidence</div>
+                            <div class="text-2xl font-bold text-white">${data.scores.confidence}/10</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-sm text-gray-300">Jargon Density</div>
+                            <div class="text-2xl font-bold text-white">${data.scores.jargon_density}/10</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-sm text-gray-300">Self-Reference</div>
+                            <div class="text-2xl font-bold text-white">${data.scores.self_reference}/10</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-sm text-gray-300">Originality</div>
+                            <div class="text-2xl font-bold text-white">${data.scores.originality}/10</div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-4 rounded-xl">
+                        <div class="text-sm text-gray-300 mb-2">Inflation Type</div>
+                        <div class="text-lg font-semibold text-blue-300">${data.analysis.inflation_type}</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="text-sm text-gray-400">Article analyzed and stored in DynamoDB</p>
+                    </div>
+                </div>
+            `;
+        } else {
+            content.innerHTML = `
+                <div class="text-center py-8 text-red-400">
+                    <div class="text-2xl mb-2">❌</div>
+                    <p>Analysis failed: ${data.error}</p>
+                </div>
+            `;
+        }
+    })
+    .catch(error => {
+        content.innerHTML = `
+            <div class="text-center py-8 text-red-400">
+                <div class="text-2xl mb-2">❌</div>
+                <p>Error: ${error.message}</p>
+            </div>
+        `;
+    });
+}
+
+function closeModal() {
+    document.getElementById('analysis-modal').classList.add('hidden');
+}
+
+// Close modal when clicking outside
+document.getElementById('analysis-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+</script>
+{% endblock %} 

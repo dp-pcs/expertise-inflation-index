@@ -1,0 +1,732 @@
+{% extends "base.html" %}
+
+{% block title %}EII Demo - The More I Think I Know About AI, The Less I Actually Do{% endblock %}
+
+{% block content %}
+<div class="demo-container">
+    <!-- Slide 1: Title -->
+    <div class="slide active" id="slide-1">
+        <div class="slide-content">
+            <h1 class="demo-title">📚 The More I Think I Know About AI,<br>The Less I Actually Do</h1>
+            <p class="demo-subtitle">An Interactive Exploration of Expertise Inflation in AI</p>
+            <div class="demo-author">
+                <p>By David Proctor</p>
+                <p style="font-size: 0.9em; color: #ffffff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Trilogy AI Center of Excellence</p>
+            </div>
+            <button class="demo-next-btn" onclick="nextSlide()">Let's Explore 🚀</button>
+        </div>
+    </div>
+
+    <!-- Slide 2: Introduction -->
+    <div class="slide" id="slide-2">
+        <div class="slide-content">
+            <h2>🤔 A Moment of Humility</h2>
+            <div class="demo-text">
+                <p>I write about AI every week, but this week I decided to write about what's on my mind:</p>
+                <p class="highlight"><strong>The more I think I know about AI, the less I actually do.</strong></p>
+                <p>I've written an entire article about this which can be found at:</p>
+                <div class="article-link">
+                    <a href="https://trilogyai.substack.com" target="_blank">🔗 trilogyai.substack.com</a>
+                </div>
+                <p>But as a result of my exploration of humility, I wanted to put together something fun that I used to identify what I'm now calling:</p>
+                <div class="concept-highlight">
+                    <h3>🎯 The Expertise Inflation Index (EII)</h3>
+                </div>
+            </div>
+            <button class="demo-next-btn" onclick="nextSlide()">What's an EII? 🤷‍♂️</button>
+        </div>
+    </div>
+
+    <!-- Slide 3: Definitions -->
+    <div class="slide" id="slide-3">
+        <div class="slide-content">
+            <h2>📖 Let's Define Some Things</h2>
+            <div class="definitions-grid">
+                <div class="definition-card" id="def-expertise">
+                    <h3>🧠 EXPERTISE</h3>
+                    <p><em>"The skill or knowledge in a particular area that makes someone an expert"</em></p>
+                    <p class="def-note">Or at least what we think we have...</p>
+                </div>
+                <div class="definition-card" id="def-inflation">
+                    <h3>📈 INFLATION</h3>
+                    <p><em>"A general increase in prices and fall in purchasing value"</em></p>
+                    <p class="def-note">But applied to confidence and jargon!</p>
+                </div>
+                <div class="definition-card" id="def-index">
+                    <h3>📊 INDEX</h3>
+                    <p><em>"A system used to measure changes in a specified group"</em></p>
+                    <p class="def-note">Like the S&P 500, but for AI hot air!</p>
+                </div>
+            </div>
+            <div class="concatenation" id="concatenation" style="display: none;">
+                <h3>🔗 Put them together and you get...</h3>
+                <div class="final-definition">
+                    <h2>🎯 EXPERTISE INFLATION INDEX</h2>
+                    <p><em>"A system to measure the inflation of confidence, jargon, and authority claims in AI-related content"</em></p>
+                </div>
+            </div>
+            <button id="combine-btn" class="demo-next-btn" onclick="showConcatenation()">Combine Them! ⚡</button>
+        </div>
+    </div>
+
+    <!-- Slide 4: Scoring System -->
+    <div class="slide" id="slide-4">
+        <div class="slide-content">
+            <h2>🎯 The EII Scoring System</h2>
+            <div class="scoring-grid">
+                <div class="score-category">
+                    <h3>💪 Confidence Inflation</h3>
+                    <p>How certain are you about uncertain things?</p>
+                    <div class="score-range">1 = Humble → 10 = "I am the AI Oracle"</div>
+                </div>
+                <div class="score-category">
+                    <h3>🤖 Jargon Density</h3>
+                    <p>How many buzzwords per paragraph?</p>
+                    <div class="score-range">1 = Plain English → 10 = "Synergistic paradigm shifts"</div>
+                </div>
+                <div class="score-category">
+                    <h3>🏆 Self-Reference/Authority</h3>
+                    <p>How often do you mention your credentials?</p>
+                    <div class="score-range">1 = Objective → 10 = "As a thought leader..."</div>
+                </div>
+                <div class="score-category">
+                    <h3>✨ Originality Claims</h3>
+                    <p>How revolutionary is your "breakthrough"?</p>
+                    <div class="score-range">1 = Incremental → 10 = "Never been done before!"</div>
+                </div>
+                <div class="score-category">
+                    <h3>😂 Humor/Self-Awareness</h3>
+                    <p>Do you know you're being ridiculous?</p>
+                    <div class="score-range">1 = Deadly serious → 10 = "This is all nonsense"</div>
+                </div>
+            </div>
+            <button class="demo-next-btn" onclick="nextSlide()">Now The AI Part! 🤖</button>
+        </div>
+    </div>
+
+    <!-- Slide 5: AI Process -->
+    <div class="slide" id="slide-5">
+        <div class="slide-content">
+            <h2>🤖 How I Used AI to Build This</h2>
+            <p class="ai-intro">Because what's more meta than using AI to measure AI expertise inflation?</p>
+            <div class="ai-steps" id="ai-steps">
+                <div class="ai-step" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-text">Leverage LLM to help me scaffold this entire idea</span>
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="ai-step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-text">Leverage LLM to create markdown so I can use another LLM in my IDE to actually code 87.423343% of this</span>
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="ai-step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-text">Setup a database in AWS to process this information</span>
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="ai-step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-text">Setup firecrawl.dev so that I can crawl with reason</span>
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="ai-step" data-step="5">
+                    <span class="step-number">5</span>
+                    <span class="step-text">Leverage LLM to help me setup an automation workflow in n8n</span>
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="ai-step" data-step="6">
+                    <span class="step-number">6</span>
+                    <span class="step-text">Test my system against our AI Trilogy Substack articles</span>
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="ai-step" data-step="7">
+                    <span class="step-number">7</span>
+                    <span class="step-text">Add a little front end so we can visualize it</span>
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="ai-step" data-step="8">
+                    <span class="step-number">8</span>
+                    <span class="step-text">Add some more sources so it looks dynamic and cool</span>
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="ai-step" data-step="9">
+                    <span class="step-number">9</span>
+                    <span class="step-text">Ask LLM to create a quick demo that shows all of these steps</span>
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+            <button class="demo-next-btn" onclick="animateAISteps()">Show Me The Magic! ✨</button>
+        </div>
+        
+        <!-- Step Detail Overlays -->
+        <div class="step-overlay" id="step-overlay-1">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>💬 ChatGPT Prompt - Initial Scaffolding</h3>
+                    <button class="close-overlay" onclick="closeOverlay(1)">&times;</button>
+                </div>
+                <div class="chat-interface">
+                    <div class="user-message">
+                        <strong>User:</strong> I want to create a semi-satirical, semi-scientific tool called the "Expertise Inflation Index (EII)" that analyzes AI-related articles and measures how much the authors inflate their expertise. It should score articles on confidence inflation, jargon density, self-reference, originality claims, and humor/self-awareness. Can you help me design the architecture and create a project structure?
+                    </div>
+                    <div class="ai-message">
+                        <strong>ChatGPT:</strong> This is a fascinating and timely project! I'll help you create the EII system. Here's a comprehensive architecture that combines web scraping, LLM analysis, and data visualization...
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-overlay" id="step-overlay-2">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>🖥️ Cursor - Reviewing TODO Markdown</h3>
+                    <button class="close-overlay" onclick="closeOverlay(2)">&times;</button>
+                </div>
+                <div class="cursor-interface">
+                    <div class="user-message">
+                        <strong>User:</strong> @Claude can you review this TODO.md file that GPT created and help me prioritize what to build first? I want to get an MVP working quickly.
+                    </div>
+                    <div class="code-block">
+                        <pre># EII Project TODOs
+## Phase 1: Core Infrastructure
+- [ ] Set up DynamoDB for article storage
+- [ ] Configure Firecrawl for web scraping
+- [ ] Create LLM scoring prompt
+- [ ] Build n8n automation workflow</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-overlay" id="step-overlay-3">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>🗄️ AWS DynamoDB Setup</h3>
+                    <button class="close-overlay" onclick="closeOverlay(3)">&times;</button>
+                </div>
+                <div class="aws-screenshot">
+                    <div class="mock-aws-console">
+                        <div class="aws-header">AWS DynamoDB Console</div>
+                        <div class="table-config">
+                            <h4>Table: eii-articles</h4>
+                            <p><strong>Primary Key:</strong> article_id (String)</p>
+                            <p><strong>Billing Mode:</strong> Pay-per-request</p>
+                            <p><strong>Global Secondary Index:</strong> source-scored_at-index</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-overlay" id="step-overlay-4">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>🕷️ Firecrawl Configuration</h3>
+                    <button class="close-overlay" onclick="closeOverlay(4)">&times;</button>
+                </div>
+                <div class="code-block">
+                    <pre><code>from firecrawl import FirecrawlApp
+
+app = FirecrawlApp(api_key=os.getenv('FIRECRAWL_API_KEY'))
+
+def scrape_article(url):
+    response = app.scrape_url(url, params={
+        'formats': ['markdown'],
+        'only_main_content': True,
+        'exclude_tags': ['nav', 'footer', 'ads']
+    })
+    return response['data']['markdown']</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-overlay" id="step-overlay-5">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>⚙️ n8n Workflow Creation Prompt</h3>
+                    <button class="close-overlay" onclick="closeOverlay(5)">&times;</button>
+                </div>
+                <div class="chat-interface">
+                    <div class="user-message">
+                        <strong>User:</strong> Create an n8n workflow JSON that: 1) Receives article URL via webhook, 2) Uses Firecrawl to scrape content, 3) Sends to OpenAI and Anthropic for EII scoring, 4) Stores results in DynamoDB
+                    </div>
+                    <div class="ai-message">
+                        <strong>Claude:</strong> I'll create a comprehensive n8n workflow that handles the entire EII analysis pipeline...
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-overlay" id="step-overlay-6">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>🧪 Testing Against Trilogy AI Substack</h3>
+                    <button class="close-overlay" onclick="closeOverlay(6)">&times;</button>
+                </div>
+                <div class="terminal-output">
+                    <pre>$ python content_discovery.py --source trilogy --limit 20
+🔍 Discovering articles from Trilogy AI CoE...
+📡 Found 20 articles
+✅ Sending to EII analysis pipeline...
+
+Results:
+- "AI Trends That Actually Matter" → EII Score: 6.2
+- "The Rise of Multimodal AI" → EII Score: 7.1
+- "Enterprise AI Implementation" → EII Score: 4.8</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-overlay" id="step-overlay-7">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>🎨 Frontend Creation Prompt</h3>
+                    <button class="close-overlay" onclick="closeOverlay(7)">&times;</button>
+                </div>
+                <div class="chat-interface">
+                    <div class="user-message">
+                        <strong>User:</strong> Create a Flask web dashboard for the EII system. It should have pages for: article analysis, discovery reports, team championships, and an interactive demo. Make it modern with Tailwind CSS and animated progress bars.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-overlay" id="step-overlay-8">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>🔍 Adding More Sources Prompt</h3>
+                    <button class="close-overlay" onclick="closeOverlay(8)">&times;</button>
+                </div>
+                <div class="chat-interface">
+                    <div class="user-message">
+                        <strong>User:</strong> The system works great with Substack! Can you help me add more content sources like RSS feeds, Reddit r/MachineLearning, Hacker News, and LinkedIn posts to make it more comprehensive?
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-overlay" id="step-overlay-9">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <h3>🎭 Interactive Demo Creation</h3>
+                    <button class="close-overlay" onclick="closeOverlay(9)">&times;</button>
+                </div>
+                <div class="chat-interface">
+                    <div class="user-message">
+                        <strong>User:</strong> Create a step-by-step interactive demo with the title "The More I Think I Know about AI, the less I actually do." Show each development step with progress bars, overlays, and dramatic timing. Make it perfect for screenshots and presentations!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Without Further Ado -->
+    <div class="slide" id="slide-6">
+        <div class="slide-content">
+            <h2>🎭 Without Further Ado...</h2>
+            <div class="dramatic-pause">
+                <p class="big-text">Let's see this system in action!</p>
+                <p>We're going to analyze our own team's articles from the Trilogy AI Center of Excellence.</p>
+                <div class="tech-stack-preview">
+                    <h3>🛠️ Technology Stack:</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">Firecrawl</span>
+                        <span class="tech-badge">n8n</span>
+                        <span class="tech-badge">Claude AI</span>
+                        <span class="tech-badge">GPT-4</span>
+                        <span class="tech-badge">AWS DynamoDB</span>
+                    </div>
+                </div>
+                <p class="warning">⚠️ No egos were harmed in the making of this demo</p>
+            </div>
+            <button class="demo-next-btn" onclick="nextSlide()">Let's Do This! 🚀</button>
+        </div>
+    </div>
+
+    <!-- Slide 7: Live Discovery -->
+    <div class="slide" id="slide-7">
+        <div class="slide-content">
+            <h2>🔍 Step 1: Discover Trilogy AI Articles</h2>
+            <div class="live-demo-section">
+                <button class="big-action-btn" id="scan-btn" onclick="startDiscovery()">
+                    🎯 Scan Trilogy AI Center of Excellence
+                </button>
+                <div class="progress-container" id="discovery-progress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="discovery-progress-fill"></div>
+                    </div>
+                    <div class="progress-steps" id="discovery-steps"></div>
+                    <div class="tech-highlight" id="discovery-tech"></div>
+                </div>
+                <div class="discovery-results" id="discovery-results" style="display: none;">
+                    <h3>📚 Articles Found:</h3>
+                    <div class="articles-list" id="articles-list"></div>
+                    <button class="demo-next-btn" onclick="nextSlide()">Now Let's Analyze! 🧠</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Live Analysis -->
+    <div class="slide" id="slide-8">
+        <div class="slide-content">
+            <h2>🧠 Step 2: AI-Powered EII Analysis</h2>
+            <div class="live-demo-section">
+                <p>Now we're going to send these articles through our AI analysis pipeline...</p>
+                <button class="big-action-btn" id="analyze-btn" onclick="startAnalysis()">
+                    ⚡ Analyze All Articles
+                </button>
+                <div class="progress-container" id="analysis-progress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="analysis-progress-fill"></div>
+                    </div>
+                    <div class="progress-steps" id="analysis-steps"></div>
+                    <div class="tech-highlight" id="analysis-tech"></div>
+                </div>
+                <div class="analysis-results" id="analysis-results" style="display: none;">
+                    <h3>🏆 EII Analysis Complete!</h3>
+                    <div class="tech-summary">
+                        <p>We've leveraged <strong>Firecrawl</strong>, <strong>Anthropic Claude</strong>, <strong>OpenAI GPT-4</strong>, <strong>n8n</strong>, and <strong>AWS DynamoDB</strong> to analyze our team's articles.</p>
+                    </div>
+                    <div class="winners-section" id="winners-section"></div>
+                    <button class="demo-next-btn" onclick="nextSlide()">Wrap It Up! 🎬</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Conclusion -->
+    <div class="slide" id="slide-9">
+        <div class="slide-content">
+            <h2>🎯 What We've Accomplished</h2>
+            <div class="conclusion-grid">
+                <div class="conclusion-card">
+                    <h3>😂 It's Funny</h3>
+                    <p>We created a humorous way to measure AI expertise inflation and called ourselves out in the process!</p>
+                </div>
+                <div class="conclusion-card">
+                    <h3>🔧 It's Replicable</h3>
+                    <p>Anyone can follow our detailed instructions and build their own EII system (GitHub repo included!)</p>
+                </div>
+                <div class="conclusion-card">
+                    <h3>🚀 It's High-Tech</h3>
+                    <p>We used cutting-edge AI and automation tools to build this entire system</p>
+                </div>
+            </div>
+            
+            <div class="tech-stack-final">
+                <h3>🛠️ Complete Technology Stack:</h3>
+                <div class="tech-list">
+                    <div class="tech-category">
+                        <h4>AI & LLMs:</h4>
+                        <span>Claude-3-Haiku, GPT-4, Anthropic API, OpenAI API</span>
+                    </div>
+                    <div class="tech-category">
+                        <h4>Data & Storage:</h4>
+                        <span>AWS DynamoDB, Firecrawl.dev, RSS feeds, JSON APIs</span>
+                    </div>
+                    <div class="tech-category">
+                        <h4>Automation:</h4>
+                        <span>n8n workflows, Python scripts, automated discovery</span>
+                    </div>
+                    <div class="tech-category">
+                        <h4>Frontend:</h4>
+                        <span>Flask, JavaScript, HTML/CSS, responsive design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="final-cta">
+                <h3>🎯 The Real Lesson:</h3>
+                <p class="big-text">The more we know about AI, the more we realize how much we don't know.</p>
+                <p>But at least we can measure our ignorance with style! 📊</p>
+            </div>
+
+            <div class="demo-actions">
+                <a href="/discovery-report?source=trilogy" class="nav-button">🔍 Explore Real Data</a>
+                <a href="/team-championship" class="nav-button">🏆 See Team Results</a>
+                <a href="/" class="nav-button">🏠 Main Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="demo-navigation">
+        <button class="nav-btn" id="prev-btn" onclick="prevSlide()" disabled>← Previous</button>
+        <span class="slide-counter"><span id="current-slide">1</span> / <span id="total-slides">9</span></span>
+        <button class="nav-btn" id="next-btn" onclick="nextSlide()">Next →</button>
+    </div>
+</div>
+
+<script>
+let currentSlide = 1;
+const totalSlides = 9;
+
+function nextSlide() {
+    if (currentSlide < totalSlides) {
+        document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+        currentSlide++;
+        document.getElementById(`slide-${currentSlide}`).classList.add('active');
+        updateNavigation();
+    }
+}
+
+function prevSlide() {
+    if (currentSlide > 1) {
+        document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+        currentSlide--;
+        document.getElementById(`slide-${currentSlide}`).classList.add('active');
+        updateNavigation();
+    }
+}
+
+function updateNavigation() {
+    document.getElementById('current-slide').textContent = currentSlide;
+    document.getElementById('prev-btn').disabled = currentSlide === 1;
+    document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+    
+    // Hide next button on certain slides
+    const nextBtn = document.getElementById('next-btn');
+    if (currentSlide === 5 && !document.querySelector('.ai-step.animated')) {
+        nextBtn.style.display = 'none';
+    } else {
+        nextBtn.style.display = 'inline-block';
+    }
+}
+
+function showConcatenation() {
+    const concatenation = document.getElementById('concatenation');
+    const button = document.getElementById('combine-btn');
+    
+    // Hide button immediately to prevent collision
+    button.style.display = 'none';
+    
+    // Show the concatenation
+    concatenation.style.display = 'block';
+    concatenation.style.animation = 'slideInUp 0.5s ease-out';
+    
+    // After animation, show button with new text
+    setTimeout(() => {
+        button.style.display = 'inline-block';
+        button.textContent = 'How Do We Score This? 🎯';
+        button.onclick = nextSlide;
+    }, 800);
+}
+
+function animateAISteps() {
+    const steps = document.querySelectorAll('.ai-step');
+    const button = event.target;
+    let currentStepIndex = 0;
+    
+    button.style.display = 'none';
+    
+    function processNextStep() {
+        if (currentStepIndex >= steps.length) {
+            // All steps completed - show final button
+            setTimeout(() => {
+                button.textContent = 'Ready For The Demo! 🎭';
+                button.onclick = nextSlide;
+                button.style.display = 'inline-block';
+                button.style.animation = 'pulse 1s infinite';
+            }, 1000);
+            return;
+        }
+        
+        const currentStep = steps[currentStepIndex];
+        const progressBar = currentStep.querySelector('.progress-bar');
+        
+        // Highlight current step
+        currentStep.classList.add('active');
+        // Remove any conflicting animations
+        currentStep.style.animation = 'none';
+        
+        // Animate progress bar over 7 seconds (increased from 5 seconds)
+        setTimeout(() => {
+            progressBar.style.width = '100%';
+        }, 100);
+        
+        // Show step detail overlay after 1 second
+        setTimeout(() => {
+            const overlay = document.getElementById(`step-overlay-${currentStepIndex + 1}`);
+            if (overlay) {
+                overlay.style.display = 'flex';
+            }
+        }, 1000);
+        
+        // Mark as completed after 7 seconds and move to next (increased from 5 seconds)
+        setTimeout(() => {
+            // Hide current overlay
+            const overlay = document.getElementById(`step-overlay-${currentStepIndex + 1}`);
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+            
+            currentStep.classList.remove('active');
+            currentStep.classList.add('completed');
+            currentStepIndex++;
+            processNextStep();
+        }, 7000);
+    }
+    
+    // Start the progression
+    processNextStep();
+}
+
+function closeOverlay(stepNumber = null) {
+    if (stepNumber) {
+        // Close specific overlay
+        const overlay = document.getElementById(`step-overlay-${stepNumber}`);
+        if (overlay) {
+            overlay.style.display = 'none';
+        }
+    } else {
+        // Hide all overlays
+        const overlays = document.querySelectorAll('.step-overlay');
+        overlays.forEach(overlay => {
+            overlay.style.display = 'none';
+        });
+    }
+}
+
+// Add click-outside-to-close and close button functionality
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('step-overlay')) {
+        closeOverlay();
+    }
+    
+    // Handle close button clicks
+    if (event.target.classList.contains('close-overlay') || event.target.closest('.close-overlay')) {
+        closeOverlay();
+    }
+});
+
+function startDiscovery() {
+    const button = document.getElementById('scan-btn');
+    const progress = document.getElementById('discovery-progress');
+    const results = document.getElementById('discovery-results');
+    
+    button.style.display = 'none';
+    progress.style.display = 'block';
+    
+    fetch('/api/demo-discover', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+        simulateProgress('discovery', data.steps, () => {
+            displayDiscoveryResults(data.articles);
+            progress.style.display = 'none';
+            results.style.display = 'block';
+        });
+    });
+}
+
+function startAnalysis() {
+    const button = document.getElementById('analyze-btn');
+    const progress = document.getElementById('analysis-progress');
+    const results = document.getElementById('analysis-results');
+    
+    button.style.display = 'none';
+    progress.style.display = 'block';
+    
+    fetch('/api/demo-analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+        simulateProgress('analysis', data.steps, () => {
+            displayAnalysisResults(data.results, data.technologies_used);
+            progress.style.display = 'none';
+            results.style.display = 'block';
+        });
+    });
+}
+
+function simulateProgress(type, steps, callback) {
+    const progressFill = document.getElementById(`${type}-progress-fill`);
+    const stepsContainer = document.getElementById(`${type}-steps`);
+    const techContainer = document.getElementById(`${type}-tech`);
+    
+    let currentStep = 0;
+    
+    function showNextStep() {
+        if (currentStep < steps.length) {
+            const step = steps[currentStep];
+            const progress = ((currentStep + 1) / steps.length) * 100;
+            
+            progressFill.style.width = `${progress}%`;
+            stepsContainer.innerHTML = `<div class="current-step">${step.message}</div>`;
+            techContainer.innerHTML = `<div class="tech-used">Using: <strong>${step.tech}</strong></div>`;
+            
+            currentStep++;
+            setTimeout(showNextStep, 1500);
+        } else {
+            callback();
+        }
+    }
+    
+    showNextStep();
+}
+
+function displayDiscoveryResults(articles) {
+    const container = document.getElementById('articles-list');
+    // Show only the first 4 articles to match what gets analyzed
+    const displayArticles = articles.slice(0, 4);
+    container.innerHTML = displayArticles.map(article => `
+        <div class="discovered-article">
+            <h4>${article.title}</h4>
+            <p>By ${article.author} • ${article.source}</p>
+        </div>
+    `).join('');
+    
+    if (articles.length > 4) {
+        container.innerHTML += `
+            <div class="discovered-article" style="opacity: 0.7; font-style: italic;">
+                <h4>... and ${articles.length - 4} more articles</h4>
+                <p>Additional team articles found</p>
+            </div>
+        `;
+    }
+}
+
+function displayAnalysisResults(results, technologies) {
+    const container = document.getElementById('winners-section');
+    container.innerHTML = `
+        <div class="results-summary">
+            <p><strong>${results.total_analyzed}</strong> articles analyzed with an average EII score of <strong>${results.avg_eii_score}</strong></p>
+        </div>
+        <div class="winners-grid">
+            <div class="winner-card champion">
+                <h4>🏆 EII Champion</h4>
+                <h3>${results.champion.name}</h3>
+                <p>Score: ${results.champion.score}/10</p>
+                <p>"${results.champion.article}"</p>
+                <span class="type-badge">${results.champion.inflation_type}</span>
+            </div>
+            <div class="winner-card runner-up">
+                <h4>🥈 Runner Up</h4>
+                <h3>${results.runner_up.name}</h3>
+                <p>Score: ${results.runner_up.score}/10</p>
+                <p>"${results.runner_up.article}"</p>
+                <span class="type-badge">${results.runner_up.inflation_type}</span>
+            </div>
+            <div class="winner-card humble">
+                <h4>🙏 Most Humble</h4>
+                <h3>${results.most_humble.name}</h3>
+                <p>Score: ${results.most_humble.score}/10</p>
+                <p>"${results.most_humble.article}"</p>
+                <span class="type-badge">${results.most_humble.inflation_type}</span>
+            </div>
+        </div>
+    `;
+}
+
+// Initialize
+updateNavigation();
+</script>
+{% endblock %} 

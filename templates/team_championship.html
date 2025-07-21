@@ -1,0 +1,167 @@
+
+{% extends "base.html" %}
+
+{% block title %}EII Team Championship{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>🏆 Trilogy AI EII Championship</h1>
+        <p>Competitive analysis of expertise inflation across team authors</p>
+        <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
+            Last updated: {{ data.timestamp.split('T')[0] }}
+        </div>
+    </div>
+    
+    <div class="dashboard-grid">
+        <div class="card">
+            <h3>📊 Team Summary</h3>
+            <div class="stat-number">{{ data.team_summary.total_articles }}</div>
+            <div>Total Articles Analyzed</div>
+        </div>
+        
+        <div class="card">
+            <h3>🎯 Team Average EII</h3>
+            <div class="stat-number">{{ "%.1f"|format(data.team_summary.team_avg_eii) }}/10</div>
+            <div>Collective Inflation Score</div>
+        </div>
+        
+        <div class="card">
+            <h3>👑 Inflation Champion</h3>
+            <div class="stat-number">{{ data.team_summary.inflation_champion }}</div>
+            <div>Highest Average EII</div>
+        </div>
+        
+        <div class="card">
+            <h3>😇 Humility Champion</h3>
+            <div class="stat-number">{{ data.team_summary.humility_champion }}</div>
+            <div>Lowest Average EII</div>
+        </div>
+    </div>
+    
+    <div class="rankings">
+        <div class="ranking-section">
+            <h3>🔥 Highest Average EII (Most Inflated)</h3>
+            <ul class="ranking-list">
+                {% for author in data.rankings.highest_avg_eii %}
+                <li class="ranking-item">
+                    <div>
+                        <span class="rank-medal">
+                            {% if loop.index == 1 %}🥇
+                            {% elif loop.index == 2 %}🥈
+                            {% elif loop.index == 3 %}🥉
+                            {% else %}{{ loop.index }}.
+                            {% endif %}
+                        </span>
+                        <span class="author-name">{{ author }}</span>
+                    </div>
+                    <span class="score high">{{ "%.1f"|format(data.author_stats[author].avg_eii_score) }}/10</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="ranking-section">
+            <h3>😇 Most Humble (Lowest EII)</h3>
+            <ul class="ranking-list">
+                {% for author in data.rankings.most_humble %}
+                <li class="ranking-item">
+                    <div>
+                        <span class="rank-medal">
+                            {% if loop.index == 1 %}👼
+                            {% elif loop.index == 2 %}🕊️
+                            {% elif loop.index == 3 %}🌸
+                            {% else %}{{ loop.index }}.
+                            {% endif %}
+                        </span>
+                        <span class="author-name">{{ author }}</span>
+                    </div>
+                    <span class="score low">{{ "%.1f"|format(data.author_stats[author].avg_eii_score) }}/10</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="ranking-section">
+            <h3>💪 Most Confident</h3>
+            <ul class="ranking-list">
+                {% for author in data.rankings.most_confident %}
+                <li class="ranking-item">
+                    <div>
+                        <span class="rank-medal">
+                            {% if loop.index == 1 %}💪
+                            {% elif loop.index == 2 %}🦁
+                            {% elif loop.index == 3 %}⚡
+                            {% else %}{{ loop.index }}.
+                            {% endif %}
+                        </span>
+                        <span class="author-name">{{ author }}</span>
+                    </div>
+                    <span class="score medium">{{ "%.1f"|format(data.author_stats[author].avg_confidence) }}/10</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="ranking-section">
+            <h3>💣 Biggest Jargon Bomber</h3>
+            <ul class="ranking-list">
+                {% for author in data.rankings.biggest_jargon_bomber %}
+                <li class="ranking-item">
+                    <div>
+                        <span class="rank-medal">
+                            {% if loop.index == 1 %}💣
+                            {% elif loop.index == 2 %}🤖
+                            {% elif loop.index == 3 %}📚
+                            {% else %}{{ loop.index }}.
+                            {% endif %}
+                        </span>
+                        <span class="author-name">{{ author }}</span>
+                    </div>
+                    <span class="score high">{{ "%.1f"|format(data.author_stats[author].avg_jargon) }}/10</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+    <div class="author-details">
+        <h3>📋 Individual Author Details</h3>
+        <div class="author-grid">
+            {% for author, stats in data.author_stats.items() %}
+            <div class="author-card">
+                <h4>{{ author }}</h4>
+                <div class="stat-row">
+                    <span>📈 Articles:</span>
+                    <strong>{{ stats.article_count }}</strong>
+                </div>
+                <div class="stat-row">
+                    <span>🎯 Avg EII:</span>
+                    <strong>{{ "%.1f"|format(stats.avg_eii_score) }}/10</strong>
+                </div>
+                <div class="stat-row">
+                    <span>📊 Range:</span>
+                    <strong>{{ "%.1f"|format(stats.min_eii_score) }} - {{ "%.1f"|format(stats.max_eii_score) }}</strong>
+                </div>
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                    <div style="font-size: 0.85em; margin-bottom: 5px;">
+                        <strong>🔥 Most Inflated:</strong><br>
+                        "{{ stats.most_inflated_article }}"
+                    </div>
+                    <div style="font-size: 0.85em;">
+                        <strong>😇 Most Humble:</strong><br>
+                        "{{ stats.humblest_article }}"
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <a href="/" class="nav-button">🏠 Home</a>
+        <a href="/discovery-report" class="nav-button">🔍 Discovery Report</a>
+        <a href="/article-analysis" class="nav-button">📊 Article Analysis</a>
+    </div>
+</div>
+{% endblock %}

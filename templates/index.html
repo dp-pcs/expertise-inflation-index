@@ -1,0 +1,114 @@
+
+{% extends "base.html" %}
+
+{% block title %}EII Dashboard - Home{% endblock %}
+
+{% block extra_head %}
+<style>
+    .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .gradient-bg {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+    
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .floating {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen gradient-bg">
+    <div class="container mx-auto px-4 py-16">
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <div class="floating">
+                <h1 class="text-6xl font-bold text-white mb-6 drop-shadow-lg">
+                    🎯 Expertise Inflation Index
+                </h1>
+                <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                    Measuring the gap between AI confidence and actual expertise with scientific rigor and satirical flair
+                </p>
+            </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Article Analysis Card -->
+            <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300 group">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-primary/20 rounded-full flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                        <i class="text-3xl">🔍</i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Article Analysis</h3>
+                    <p class="text-white/80 mb-6">Analyze individual articles for expertise inflation using our advanced AI scoring system</p>
+                    <a href="/article-analysis" 
+                       class="inline-block bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/25">
+                        Analyze Articles
+                    </a>
+                </div>
+            </div>
+
+            <!-- Discovery Report Card -->
+            <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300 group">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-secondary/20 rounded-full flex items-center justify-center group-hover:bg-secondary/30 transition-colors">
+                        <i class="text-3xl">📊</i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Discovery Report</h3>
+                    <p class="text-white/80 mb-6">Explore automated content discovery across multiple AI sources and platforms</p>
+                    <a href="/discovery-report" 
+                       class="inline-block bg-secondary hover:bg-secondary/80 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-secondary/25">
+                        View Reports
+                    </a>
+                </div>
+            </div>
+
+            <!-- Team Championship Card -->
+            <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300 group">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-accent/20 rounded-full flex items-center justify-center group-hover:bg-accent/30 transition-colors">
+                        <i class="text-3xl">🏆</i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Team Championship</h3>
+                    <p class="text-white/80 mb-6">Compare EII scores across our team members and see who's the most inflated!</p>
+                    <a href="/team-championship" 
+                       class="inline-block bg-accent hover:bg-accent/80 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-accent/25">
+                        View Leaderboard
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Section -->
+        <div class="text-center mt-16">
+            <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-4">🎭 Interactive Demo</h2>
+                <p class="text-white/80 mb-6">Experience the full EII analysis pipeline with our step-by-step interactive demonstration</p>
+                <a href="/demo" 
+                   class="inline-block bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary/30">
+                    🚀 Launch Demo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
