@@ -767,10 +767,17 @@ def demo_analyze():
         avg_jargon = statistics.mean([a['scores']['jargon_density'] for a in author_articles]) if author_articles else 0
         avg_humor = statistics.mean([a['scores']['humor_rating'] for a in author_articles]) if author_articles else 0
         
-        # Find most and least inflated articles
-        sorted_articles = sorted(author_articles, key=lambda x: x['eii_score'], reverse=True)
-        most_inflated = sorted_articles[0]['title'] if sorted_articles else "N/A"
-        humblest = sorted_articles[-1]['title'] if sorted_articles else "N/A"
+        # Find most and least inflated articles (filter out "Comments" entries)
+        real_articles = [a for a in author_articles if a['title'] != "Comments"]
+        if real_articles:
+            sorted_articles = sorted(real_articles, key=lambda x: x['eii_score'], reverse=True)
+            most_inflated = sorted_articles[0]['title'] if sorted_articles else "N/A"
+            humblest = sorted_articles[-1]['title'] if sorted_articles else "N/A"
+        else:
+            # Fallback if only "Comments" entries exist
+            sorted_articles = sorted(author_articles, key=lambda x: x['eii_score'], reverse=True)
+            most_inflated = sorted_articles[0]['title'] if sorted_articles else "N/A"
+            humblest = sorted_articles[-1]['title'] if sorted_articles else "N/A"
         
         team_dashboard_data["author_stats"][author] = {
             "article_count": data['article_count'],
