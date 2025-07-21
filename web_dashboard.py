@@ -315,14 +315,19 @@ def demo_discover():
     article_count = 0
     
     try:
-        # First try to load from trilogy-specific file with comprehensive Firecrawl data and fixed titles
-        with open('trilogy_fixed_titles.json', 'r') as f:
+        # First try to load from discovered_articles.json (more complete dataset)
+        with open('discovered_articles.json', 'r') as f:
             import json
             discovery_data = json.load(f)
-            trilogy_articles = discovery_data.get('articles', [])
+            all_articles = discovery_data.get('articles', [])
+            
+            # Filter for Trilogy AI articles only
+            trilogy_articles = [
+                article for article in all_articles
+                if article.get('source') == 'Trilogy AI CoE'
+            ]
             
             if trilogy_articles:
-                # Use comprehensive Firecrawl results with proper titles (46 articles)
                 # Group by author and get diverse selection
                 from collections import defaultdict
                 articles_by_author = defaultdict(list)
@@ -336,7 +341,7 @@ def demo_discover():
                 # Get 2-3 recent articles from each author for diversity
                 diverse_articles = []
                 for author, author_articles in articles_by_author.items():
-                    # Sort by date if available, otherwise use order from Firecrawl
+                    # Sort by date if available, otherwise use order from discovery
                     author_articles.sort(key=lambda x: x.get('published_date', ''), reverse=True)
                     # Take up to 3 articles per author
                     diverse_articles.extend(author_articles[:3])
@@ -353,24 +358,51 @@ def demo_discover():
                 
                 article_count = len(trilogy_articles)
             else:
-                raise FileNotFoundError  # Fall back to other file
+                raise FileNotFoundError  # Fall back to other sources
     except (FileNotFoundError, json.JSONDecodeError):
-        # Fallback to trilogy_complete_fixed.json  
+        # Fallback to trilogy_fixed_titles.json
         try:
-            with open('trilogy_complete_fixed.json', 'r') as f:
+            with open('trilogy_fixed_titles.json', 'r') as f:
                 import json
                 discovery_data = json.load(f)
                 trilogy_articles = discovery_data.get('articles', [])
                 
                 if trilogy_articles:
-                    articles = trilogy_articles[:6]
+                    # Group by author and get diverse selection
+                    from collections import defaultdict
+                    articles_by_author = defaultdict(list)
+                    
+                    # Group articles by author
+                    for article in trilogy_articles:
+                        author = article.get('author', 'Unknown')
+                        if author != 'Unknown':
+                            articles_by_author[author].append(article)
+                    
+                    # Get 2-3 recent articles from each author for diversity
+                    diverse_articles = []
+                    for author, author_articles in articles_by_author.items():
+                        # Sort by date if available, otherwise use order from Firecrawl
+                        author_articles.sort(key=lambda x: x.get('published_date', ''), reverse=True)
+                        # Take up to 3 articles per author
+                        diverse_articles.extend(author_articles[:3])
+                    
+                    # If we still don't have enough diverse articles, fall back to most recent overall
+                    if len(diverse_articles) < 10:
+                        # Sort all articles by date and take most recent 10
+                        sorted_articles = sorted(trilogy_articles, 
+                                               key=lambda x: x.get('published_date', ''), 
+                                               reverse=True)
+                        articles = sorted_articles[:10]
+                    else:
+                        articles = diverse_articles[:10]  # Show up to 10 for demo
+                    
                     article_count = len(trilogy_articles)
                 else:
                     raise FileNotFoundError  # Fall back to other backups
         except (FileNotFoundError, json.JSONDecodeError):
-            # Fallback to trilogy_articles.json  
+            # Fallback to trilogy_complete_fixed.json  
             try:
-                with open('trilogy_articles.json', 'r') as f:
+                with open('trilogy_complete_fixed.json', 'r') as f:
                     import json
                     discovery_data = json.load(f)
                     trilogy_articles = discovery_data.get('articles', [])
@@ -379,23 +411,87 @@ def demo_discover():
                         articles = trilogy_articles[:6]
                         article_count = len(trilogy_articles)
                     else:
-                        raise FileNotFoundError  # Fall back to general discovered articles
+                        raise FileNotFoundError  # Fall back to other backups
             except (FileNotFoundError, json.JSONDecodeError):
-                # Fallback to general discovered articles
+                # Fallback to trilogy_articles.json  
                 try:
-                    with open('discovered_articles.json', 'r') as f:
+                    with open('trilogy_articles.json', 'r') as f:
                         import json
                         discovery_data = json.load(f)
-                        trilogy_articles = [a for a in discovery_data.get('articles', []) 
-                                          if 'trilogy' in a.get('source', '').lower()]
+                        trilogy_articles = discovery_data.get('articles', [])
                         
                         if trilogy_articles:
                             articles = trilogy_articles[:6]
                             article_count = len(trilogy_articles)
                         else:
-                            raise FileNotFoundError  # Fall back to mock data
+                            raise FileNotFoundError  # Fall back to general discovered articles
                 except (FileNotFoundError, json.JSONDecodeError):
-                    pass  # Fall through to mock data
+                    # Final fallback to general discovered articles (filter for Trilogy)
+                    try:
+                        with open('discovered_articles.json', 'r') as f:
+                            import json
+                            discovery_data = json.load(f)
+                            all_articles = discovery_data.get('articles', [])
+                            
+                            # Filter for Trilogy AI articles
+                            trilogy_articles = [
+                                article for article in all_articles
+                                if 'trilogyai.substack.com' in article.get('url', '')
+                            ]
+                            
+                            if trilogy_articles:
+                                articles = trilogy_articles[:6]
+                                article_count = len(trilogy_articles)
+                            else:
+                                # Ultimate fallback to mock data
+                                articles = [
+                                    {
+                                        "title": "AI Discovery Systems",
+                                        "url": "https://trilogyai.substack.com/p/ai-discovery-systems",
+                                        "author": "Leonardo Gonzalez",
+                                        "published_date": "2025-07-21",
+                                        "excerpt": "Building next-generation discovery systems...",
+                                        "relevance_score": 0.95
+                                    },
+                                    {
+                                        "title": "Agent-to-Agent Communication",
+                                        "url": "https://trilogyai.substack.com/p/agent-communication",
+                                        "author": "Stanislav Huseletov", 
+                                        "published_date": "2025-07-20",
+                                        "excerpt": "Exploring the future of AI communication...",
+                                        "relevance_score": 0.92
+                                    },
+                                    {
+                                        "title": "Standardizing AI Integration",
+                                        "url": "https://trilogyai.substack.com/p/ai-integration",
+                                        "author": "David Proctor",
+                                        "published_date": "2025-07-19", 
+                                        "excerpt": "Creating standards for AI-to-system integration...",
+                                        "relevance_score": 0.90
+                                    },
+                                    {
+                                        "title": "Retrieval Benchmarking",
+                                        "url": "https://trilogyai.substack.com/p/retrieval-benchmarking",
+                                        "author": "Praveen Koka",
+                                        "published_date": "2025-07-18",
+                                        "excerpt": "Comprehensive analysis of retrieval systems...",
+                                        "relevance_score": 0.88
+                                    }
+                                ]
+                                article_count = len(articles)
+                    except Exception as e:
+                        # Final fallback to mock data
+                        articles = [
+                            {
+                                "title": "AI Discovery Systems",
+                                "url": "https://trilogyai.substack.com/p/ai-discovery-systems",
+                                "author": "Leonardo Gonzalez",
+                                "published_date": "2025-07-21",
+                                "excerpt": "Building next-generation discovery systems...",
+                                "relevance_score": 0.95
+                            }
+                        ]
+                        article_count = 1
     
     # Use mock data if real data not available or empty
     if not articles:
@@ -463,7 +559,7 @@ def demo_analyze():
     from collections import defaultdict
     
     steps = [
-        {"step": 1, "message": "🌐 Loading all Trilogy AI articles...", "tech": "Firecrawl dataset (46 articles)"},
+        {"step": 1, "message": "🌐 Loading all Trilogy AI articles...", "tech": "Multi-source discovery dataset"},
         {"step": 2, "message": "👥 Grouping articles by author...", "tech": "Python data processing"},
         {"step": 3, "message": "🤖 Analyzing each article with Claude...", "tech": "Anthropic Claude-3-Haiku"},
         {"step": 4, "message": "📊 Calculating EII scores per article...", "tech": "Custom scoring algorithm"},
@@ -475,16 +571,28 @@ def demo_analyze():
     # Load all articles from the comprehensive dataset
     all_articles = []
     try:
-        with open('trilogy_fixed_titles.json', 'r') as f:
+        # Try discovered_articles.json first (more complete dataset)
+        with open('discovered_articles.json', 'r') as f:
             import json
             discovery_data = json.load(f)
-            all_articles = discovery_data.get('articles', [])
+            # Filter for Trilogy AI articles only
+            all_articles = [
+                article for article in discovery_data.get('articles', [])
+                if article.get('source') == 'Trilogy AI CoE'
+            ]
     except (FileNotFoundError, json.JSONDecodeError):
-        # Fallback to mock data if file not available
-        return jsonify({
-            "success": False,
-            "error": "Could not load article dataset for analysis"
-        })
+        # Fallback to trilogy_fixed_titles.json
+        try:
+            with open('trilogy_fixed_titles.json', 'r') as f:
+                import json
+                discovery_data = json.load(f)
+                all_articles = discovery_data.get('articles', [])
+        except (FileNotFoundError, json.JSONDecodeError):
+            # Final fallback to mock data if files not available
+            return jsonify({
+                "success": False,
+                "error": "Could not load article dataset for analysis"
+            })
     
     # Group articles by author
     articles_by_author = defaultdict(list)
