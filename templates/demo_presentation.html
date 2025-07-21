@@ -255,6 +255,17 @@ def scrape_article(url):
                         <strong>Claude:</strong> I'll create a comprehensive n8n workflow that handles the entire EII analysis pipeline...
                     </div>
                 </div>
+                
+                <!-- n8n Workflow Screenshot -->
+                <div class="workflow-screenshot">
+                    <h4>🚀 Resulting n8n Workflow</h4>
+                    <div class="screenshot-container">
+                        <img src="/static/n8n.png" alt="n8n EII Analysis Workflow" class="workflow-image">
+                        <p class="screenshot-caption">
+                            <strong>Complete EII Analysis Pipeline:</strong> Webhook → Firecrawl → LLM Analysis → DynamoDB Storage
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -633,17 +644,73 @@ function startAnalysis() {
     button.style.display = 'none';
     progress.style.display = 'block';
     
+    console.log('🔍 Starting analysis...');
+    
     fetch('/api/demo-analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('📡 Analysis response received:', response.status);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
-        simulateProgress('analysis', data.steps, () => {
-            displayAnalysisResults(data.results, data.technologies_used);
-            progress.style.display = 'none';
-            results.style.display = 'block';
-        });
+        console.log('📊 Analysis data received:', data);
+        
+        if (data.success) {
+            const steps = data.steps || [];
+            const technologies = data.technologies_used || [];
+            
+            // Show progress simulation first
+            simulateProgress('analysis', steps, () => {
+                console.log('✅ Analysis simulation complete');
+                
+                // Check if we should redirect to team dashboard
+                if (data.redirect_url) {
+                    console.log(`🔄 Redirecting to: ${data.redirect_url}`);
+                    
+                    // Show completion message briefly before redirect
+                    progress.innerHTML = `
+                        <div class="analysis-complete">
+                            <h3>🎉 Comprehensive Analysis Complete!</h3>
+                            <p>✅ All ${data.results.analysis_summary.total_articles_analyzed} articles analyzed</p>
+                            <p>📊 ${data.results.analysis_summary.total_anomalies_found} anomalies detected</p>
+                            <p>🏆 Redirecting to team championship...</p>
+                            <div class="redirect-countdown">
+                                <div class="spinner"></div>
+                                <span>Loading team dashboard...</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Redirect after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = data.redirect_url;
+                    }, 2000);
+                } else {
+                    // Fallback: display results inline (legacy behavior)
+                    console.log('📈 Displaying results inline');
+                    displayAnalysisResults(data.results, technologies);
+                    progress.style.display = 'none';
+                    results.style.display = 'block';
+                }
+            });
+        } else {
+            throw new Error(data.error || 'Analysis failed');
+        }
+    })
+    .catch(error => {
+        console.error('❌ Analysis error:', error);
+        progress.innerHTML = `
+            <div class="error-step">
+                <h3>⚠️ Analysis Error</h3>
+                <p>Error: ${error.message}</p>
+                <button onclick="location.reload()" class="retry-btn">Try Again</button>
+            </div>
+        `;
     });
 }
 
@@ -652,12 +719,16 @@ function simulateProgress(type, steps, callback) {
     const stepsContainer = document.getElementById(`${type}-steps`);
     const techContainer = document.getElementById(`${type}-tech`);
     
+    console.log(`🎬 Starting ${type} progress simulation with ${steps.length} steps`);
+    
     let currentStep = 0;
     
     function showNextStep() {
         if (currentStep < steps.length) {
             const step = steps[currentStep];
             const progress = ((currentStep + 1) / steps.length) * 100;
+            
+            console.log(`📈 ${type} step ${currentStep + 1}/${steps.length}: ${step.message}`);
             
             progressFill.style.width = `${progress}%`;
             stepsContainer.innerHTML = `<div class="current-step">${step.message}</div>`;
@@ -666,6 +737,7 @@ function simulateProgress(type, steps, callback) {
             currentStep++;
             setTimeout(showNextStep, 1500);
         } else {
+            console.log(`🏁 ${type} progress simulation complete, calling callback`);
             callback();
         }
     }
@@ -675,8 +747,8 @@ function simulateProgress(type, steps, callback) {
 
 function displayDiscoveryResults(articles) {
     const container = document.getElementById('articles-list');
-    // Show only the first 4 articles to match what gets analyzed
-    const displayArticles = articles.slice(0, 4);
+    // Show all 6 articles from the demo
+    const displayArticles = articles.slice(0, 6);
     container.innerHTML = displayArticles.map(article => `
         <div class="discovered-article">
             <h4>${article.title}</h4>
@@ -684,10 +756,10 @@ function displayDiscoveryResults(articles) {
         </div>
     `).join('');
     
-    if (articles.length > 4) {
+    if (articles.length > 6) {
         container.innerHTML += `
             <div class="discovered-article" style="opacity: 0.7; font-style: italic;">
-                <h4>... and ${articles.length - 4} more articles</h4>
+                <h4>... and ${articles.length - 6} more articles</h4>
                 <p>Additional team articles found</p>
             </div>
         `;
@@ -696,31 +768,131 @@ function displayDiscoveryResults(articles) {
 
 function displayAnalysisResults(results, technologies) {
     const container = document.getElementById('winners-section');
+    const summary = results.analysis_summary;
+    const rankings = results.author_rankings;
+    const detailed = results.detailed_analysis;
+    
     container.innerHTML = `
-        <div class="results-summary">
-            <p><strong>${results.total_analyzed}</strong> articles analyzed with an average EII score of <strong>${results.avg_eii_score}</strong></p>
-        </div>
-        <div class="winners-grid">
-            <div class="winner-card champion">
-                <h4>🏆 EII Champion</h4>
-                <h3>${results.champion.name}</h3>
-                <p>Score: ${results.champion.score}/10</p>
-                <p>"${results.champion.article}"</p>
-                <span class="type-badge">${results.champion.inflation_type}</span>
+        <div class="comprehensive-results">
+            <!-- Analysis Summary -->
+            <div class="results-header">
+                <h3>🔬 Comprehensive EII Analysis Complete</h3>
+                <div class="summary-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">${summary.total_articles_analyzed}</span>
+                        <span class="stat-label">Articles Analyzed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">${summary.total_authors}</span>
+                        <span class="stat-label">Authors</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">${summary.overall_avg_eii}</span>
+                        <span class="stat-label">Avg EII Score</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">${summary.total_anomalies_found}</span>
+                        <span class="stat-label">Anomalies Found</span>
+                    </div>
+                </div>
             </div>
-            <div class="winner-card runner-up">
-                <h4>🥈 Runner Up</h4>
-                <h3>${results.runner_up.name}</h3>
-                <p>Score: ${results.runner_up.score}/10</p>
-                <p>"${results.runner_up.article}"</p>
-                <span class="type-badge">${results.runner_up.inflation_type}</span>
+
+            <!-- Author Rankings -->
+            <div class="author-rankings">
+                <h4>📊 Author Rankings & Analysis</h4>
+                <div class="rankings-grid">
+                    ${rankings.map(author => `
+                        <div class="author-card rank-${author.rank}">
+                            <div class="rank-badge">#${author.rank}</div>
+                            <h5>${author.author}</h5>
+                            <div class="author-stats">
+                                <div class="main-score">${author.avg_score}/10</div>
+                                <div class="sub-stats">
+                                    <span>${author.article_count} articles</span>
+                                    <span>${author.consistency} consistency</span>
+                                    ${author.anomaly_count > 0 ? `<span class="anomaly-indicator">${author.anomaly_count} anomalies</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
-            <div class="winner-card humble">
-                <h4>🙏 Most Humble</h4>
-                <h3>${results.most_humble.name}</h3>
-                <p>Score: ${results.most_humble.score}/10</p>
-                <p>"${results.most_humble.article}"</p>
-                <span class="type-badge">${results.most_humble.inflation_type}</span>
+
+            <!-- Detailed Analysis Section -->
+            <div class="detailed-section">
+                <h4>🔍 Detailed Author Analysis</h4>
+                ${Object.entries(detailed).map(([author, data]) => `
+                    <div class="author-detail-card">
+                        <div class="author-header">
+                            <h5>${author}</h5>
+                            <div class="score-range">${data.min_score} - ${data.max_score} (range: ${data.score_range})</div>
+                        </div>
+                        <div class="author-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Average:</span>
+                                <span class="metric-value">${data.avg_eii_score}/10</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Median:</span>
+                                <span class="metric-value">${data.median_eii_score}/10</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Std Dev:</span>
+                                <span class="metric-value">${data.std_deviation}</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Consistency:</span>
+                                <span class="metric-value consistency-${data.consistency.toLowerCase()}">${data.consistency}</span>
+                            </div>
+                        </div>
+                        ${data.anomalies.length > 0 ? `
+                            <div class="anomalies-section">
+                                <h6>⚠️ Anomalous Articles (${data.anomalies.length})</h6>
+                                <div class="anomalies-list">
+                                    ${data.anomalies.map(anomaly => `
+                                        <div class="anomaly-item ${anomaly.type.toLowerCase().replace(' ', '-')}">
+                                            <span class="anomaly-title">"${anomaly.title.length > 50 ? anomaly.title.substring(0, 50) + '...' : anomaly.title}"</span>
+                                            <span class="anomaly-score">${anomaly.score}/10</span>
+                                            <span class="anomaly-type">${anomaly.type}</span>
+                                            <span class="anomaly-deviation">±${anomaly.deviation}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : '<div class="no-anomalies">✅ No significant anomalies detected</div>'}
+                    </div>
+                `).join('')}
+            </div>
+
+            <!-- Champion Highlights -->
+            <div class="champions-section">
+                <h4>🏆 Champions & Notable Findings</h4>
+                <div class="champions-grid">
+                    <div class="champion-card eii-champion">
+                        <h5>🥇 EII Champion</h5>
+                        <h6>${results.champion.name}</h6>
+                        <p>Average Score: ${results.champion.score}/10</p>
+                        <p>Articles: ${results.champion.article_count}</p>
+                        <span class="type-badge">${results.champion.inflation_type}</span>
+                    </div>
+                    <div class="champion-card consistent-champion">
+                        <h5>📏 Most Consistent</h5>
+                        <h6>${results.most_consistent}</h6>
+                        <p>Lowest variance in scoring</p>
+                        <p>Reliable writing style</p>
+                    </div>
+                    <div class="champion-card prolific-champion">
+                        <h5>✍️ Most Prolific</h5>
+                        <h6>${results.most_prolific}</h6>
+                        <p>Highest article count</p>
+                        <p>Active contributor</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technologies Used -->
+            <div class="tech-used">
+                <p><strong>Technologies leveraged:</strong> ${technologies.join(', ')}</p>
             </div>
         </div>
     `;

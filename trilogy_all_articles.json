@@ -1,0 +1,187 @@
+{
+  "timestamp": "2025-07-21T12:34:51.802852",
+  "total_articles": 20,
+  "discovery_method": "Multi-source Discovery System",
+  "articles": [
+    {
+      "title": "AI Ping-Pong: Manual Multi-Model Workflow for 98% Content Quality",
+      "url": "https://trilogyai.substack.com/p/ai-ping-pong",
+      "source": "Trilogy AI CoE",
+      "author": "Stanislav Huseletov",
+      "published_date": "Wed, 18 Jun 2025 15:42:07 GMT",
+      "excerpt": "The era of single-model content creation is over. 20 minutes vs 120 minutes determines market leadership&#8212;84% efficiency gain",
+      "relevance_score": 0.9400000000000001
+    },
+    {
+      "title": "Agentic Automation for Social Content",
+      "url": "https://trilogyai.substack.com/p/agentic-automation-for-social-content",
+      "source": "Trilogy AI CoE",
+      "author": "Praveen Koka",
+      "published_date": "Tue, 15 Jul 2025 11:37:08 GMT",
+      "excerpt": "Enterprise Content Orchestration for Content Creation, Approval and Scheduling with n8n & Airtable",
+      "relevance_score": 0.9400000000000001
+    },
+    {
+      "title": "Iterative AI System for Universal Discovery",
+      "url": "https://trilogyai.substack.com/p/ai-discovery",
+      "source": "Trilogy AI CoE",
+      "author": "Stanislav Huseletov",
+      "published_date": "Mon, 14 Jul 2025 11:58:21 GMT",
+      "excerpt": "10-engine system learning from each run; LLM &#8216;orchestrator&#8217;; open source APIs for 2,000+ vetted resources; AI-driven build-while-learning approach&#8212;enhanced with Google&#8217;s GenAI Processors architecture",
+      "relevance_score": 0.9400000000000001
+    },
+    {
+      "title": "Standardizing AI-to-System Integration",
+      "url": "https://trilogyai.substack.com/p/standardizing-ai-to-system-integration",
+      "source": "Trilogy AI CoE",
+      "author": "David Proctor",
+      "published_date": "Fri, 13 Jun 2025 21:58:16 GMT",
+      "excerpt": "Model Context Protocol",
+      "relevance_score": 0.9400000000000001
+    },
+    {
+      "title": "Claude Code: Triumphs, Trials & Trade-Offs",
+      "url": "https://trilogyai.substack.com/p/claude-code-triumphs-trials-and-trade",
+      "source": "Trilogy AI CoE",
+      "author": "Praveen Koka",
+      "published_date": "Wed, 25 Jun 2025 04:02:48 GMT",
+      "excerpt": "A deep dive into its architecture, standout features, and where it still falls short",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "Behavioral Anti-Pattern Detection: A Comprehensive Technical Synthesis",
+      "url": "https://trilogyai.substack.com/p/anti-pattern-detection",
+      "source": "Trilogy AI CoE",
+      "author": "Stanislav Huseletov",
+      "published_date": "Tue, 24 Jun 2025 08:48:20 GMT",
+      "excerpt": "Discover how AI-driven video analytics uncover, measure, and transform hidden workplace anti-patterns &#8212; translating rigorous research into actionable ideas for enterprise productivity and success",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "The Multi-Agent Moment",
+      "url": "https://trilogyai.substack.com/p/the-multi-agent-moment",
+      "source": "Trilogy AI CoE",
+      "author": "Leonardo Gonzalez",
+      "published_date": "Tue, 24 Jun 2025 06:48:30 GMT",
+      "excerpt": "How a Fierce Debate Forged the Blueprint for the Next Generation of AI",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "Analyzing Large Datasets with LLMs",
+      "url": "https://trilogyai.substack.com/p/analyzing-large-datasets-with-llms",
+      "source": "Trilogy AI CoE",
+      "author": "Praveen Koka",
+      "published_date": "Tue, 08 Jul 2025 14:29:15 GMT",
+      "excerpt": "How to Tame Context Limits, Retrieve Structured Data, and Build Reasoning Agents for Enterprise-Scale Insights",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "AI Music Videos",
+      "url": "https://trilogyai.substack.com/p/ai-music-videos",
+      "source": "Trilogy AI CoE",
+      "author": "Leonardo Gonzalez",
+      "published_date": "Tue, 08 Jul 2025 08:41:17 GMT",
+      "excerpt": "A modern workflow",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "The Hidden Cost of Scattered AI Tooling",
+      "url": "https://trilogyai.substack.com/p/the-hidden-cost-of-scattered-ai-tooling",
+      "source": "Trilogy AI CoE",
+      "author": "Praveen Koka",
+      "published_date": "Tue, 01 Jul 2025 05:31:22 GMT",
+      "excerpt": "And a Four-Layer Framework for Scalable Enterprise Adoption",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "Agent-to-Agent Communication: AI's Missing Link",
+      "url": "https://trilogyai.substack.com/p/agent-to-agent-communication-ais",
+      "source": "Trilogy AI CoE",
+      "author": "David Proctor",
+      "published_date": "Thu, 19 Jun 2025 20:40:47 GMT",
+      "excerpt": "Why AI Agents Can't Talk to Each Other (And How A2A Aims to Fix It)",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "The Autonomous Developer",
+      "url": "https://trilogyai.substack.com/p/the-autonomous-developer",
+      "source": "Trilogy AI CoE",
+      "author": "Leonardo Gonzalez",
+      "published_date": "Thu, 12 Jun 2025 08:48:28 GMT",
+      "excerpt": "A Guide to Tools, Trust, and Transparency in AI Coding",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "AI Vision and the Future of UI Testing",
+      "url": "https://trilogyai.substack.com/p/ai-vision-and-the-future-of-ui-testing",
+      "source": "Trilogy AI CoE",
+      "author": "David Proctor",
+      "published_date": "Thu, 10 Jul 2025 23:13:04 GMT",
+      "excerpt": "A Hybrid Approach to Software Quality",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "Beyond Adoption: Defining Real AI Impact at Trilogy",
+      "url": "https://trilogyai.substack.com/p/real-ai-learning",
+      "source": "Trilogy AI CoE",
+      "author": "Stanislav Huseletov",
+      "published_date": "Mon, 30 Jun 2025 11:02:05 GMT",
+      "excerpt": "Trilogy&#8217;s 73% AI usage is industry-leading &#8212; but business value trails. Here&#8217;s how we&#8217;ll turn high adoption into measurable impact, with standards, proven wins, and a culture of continuous learning",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "The Memory Framework Mirage: Data-Driven Reasons to Go Context-First",
+      "url": "https://trilogyai.substack.com/p/memory-framework-mirage",
+      "source": "Trilogy AI CoE",
+      "author": "Stanislav Huseletov",
+      "published_date": "Fri, 04 Jul 2025 15:31:34 GMT",
+      "excerpt": "Opinion: From LangChain to Mem0, new benchmarks reveal million-token context windows plus a simple stack present a more compelling case than memory frameworks",
+      "relevance_score": 0.92
+    },
+    {
+      "title": "DeepAgent Value Check",
+      "url": "https://trilogyai.substack.com/p/deepagent-reality-check",
+      "source": "Trilogy AI CoE",
+      "author": "Stanislav Huseletov",
+      "published_date": "Thu, 17 Jul 2025 16:01:35 GMT",
+      "excerpt": "How enterprises can extract valuable technical patterns from DeepAgent's sophisticated design while demanding empirical validation",
+      "relevance_score": 0.9
+    },
+    {
+      "title": "Clash of the Titans",
+      "url": "https://trilogyai.substack.com/p/grok-4-vs-kimi-k2",
+      "source": "Trilogy AI CoE",
+      "author": "Leonardo Gonzalez",
+      "published_date": "Thu, 17 Jul 2025 05:13:51 GMT",
+      "excerpt": "Grok 4 vs. Kimi K2",
+      "relevance_score": 0.9
+    },
+    {
+      "title": "Retrieval Benchmarking: Agentic vs. Vanilla, and What Actually Works in 2025",
+      "url": "https://trilogyai.substack.com/p/retrieval-benchmarking-agentic-vs",
+      "source": "Trilogy AI CoE",
+      "author": "Praveen Koka",
+      "published_date": "Thu, 12 Jun 2025 13:03:26 GMT",
+      "excerpt": "Does agentic retrieval trump vanilla retrieval? What's the top performing combination of datastores and embeddings from a retrieval accuracy perspective",
+      "relevance_score": 0.9
+    },
+    {
+      "title": "Payloads, Promises, and Protocols: The MCP/A2A Tightrope",
+      "url": "https://trilogyai.substack.com/p/payloads-promises-and-protocols-the",
+      "source": "Trilogy AI CoE",
+      "author": "David Proctor",
+      "published_date": "Fri, 27 Jun 2025 21:54:23 GMT",
+      "excerpt": "A hands-on breakdown of where MCP ends, where A2A begins, and why orchestration, not communication, is the real architectural battleground.",
+      "relevance_score": 0.9
+    },
+    {
+      "title": "Agentic Retrieval Deepdive",
+      "url": "https://trilogyai.substack.com/p/agentic-retrieval-deepdive",
+      "source": "Trilogy AI CoE",
+      "author": "Praveen Koka",
+      "published_date": "Fri, 20 Jun 2025 04:20:43 GMT",
+      "excerpt": "From Off-the-Shelf to Custom: A Benchmarking Study of Agentic Retrieval Pipelines",
+      "relevance_score": 0.9
+    }
+  ]
+}

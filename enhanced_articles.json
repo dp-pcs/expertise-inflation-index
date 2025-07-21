@@ -1,0 +1,619 @@
+{
+  "timestamp": "2025-07-18T14:36:41.332098",
+  "total_articles": 68,
+  "discovery_method": "Enhanced RSS + Multi-source",
+  "articles": [
+    {
+      "title": "Scaling Up Reinforcement Learning for Traffic Smoothing: A 100-AV Highway Deployment",
+      "url": "http://bair.berkeley.edu/blog/2025/03/25/rl-av-smoothing/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Tue, 25 Mar 2025 02:00:00 -0700",
+      "excerpt": "<!-- twitter -->\n\n\n\n\n\n\n\n\n\n\n\n\nTraining Diffusion Models with Reinforcement Learning\n\n<video loop=\"\" style=\"width: 100%; margin: 0; padding: 0; border: none; background: transparent; display: block; border-radius: 5px;\">\n    <source src=\"https://bair.berkeley.edu/static/blog/rl_av_smoothing/megavander...",
+      "relevance_score": 1.0
+    },
+    {
+      "title": "Are We Ready for Multi-Image Reasoning? Launching VHs: The Visual Haystacks Benchmark!",
+      "url": "http://bair.berkeley.edu/blog/2024/07/20/visual-haystacks/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Sat, 20 Jul 2024 02:00:00 -0700",
+      "excerpt": "<!--\nThese are comments in HTML. The above header text is needed to format the\ntitle, authors, etc. The \"example_post\" is an example representative image (not\nGIF) that we use for each post for tweeting (see below as well) and for the\nemails to subscribers. Please provide this image (and any other i...",
+      "relevance_score": 1.0
+    },
+    {
+      "title": "2024 BAIR Graduate Directory",
+      "url": "http://bair.berkeley.edu/blog/2024/03/11/grads-2024/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Mon, 11 Mar 2024 02:00:00 -0700",
+      "excerpt": "<!--\nThese are comments in HTML. The above header text is needed to format the\ntitle, authors, etc. The \"example_post\" is an example representative image (not\nGIF) that we use for each post for tweeting (see below as well) and for the\nemails to subscribers. Please provide this image (and any other i...",
+      "relevance_score": 1.0
+    },
+    {
+      "title": "Carnegie Mellon University at ICML 2025",
+      "url": "https://blog.ml.cmu.edu/2025/07/08/carnegie-mellon-university-at-icml-2025/",
+      "source": "CMU AI",
+      "author": "Keegan Harris",
+      "published_date": "Tue, 08 Jul 2025 18:57:50 +0000",
+      "excerpt": "CMU researchers are presenting 127 papers at the Forty-Second International Conference on Machine Learning (ICML 2025), held from July 13th-19th at the Vancouver Convention Center. Here is a quick overview of the areas our researchers are working on: Here are our most frequent collaborator instituti...",
+      "relevance_score": 1.0
+    },
+    {
+      "title": "Discussing Decision Trees: What Makes a Good Split?",
+      "url": "https://machinelearningmastery.com/discussing-decision-trees-what-makes-a-good-split/",
+      "source": "Machine Learning Mastery",
+      "author": "Iv\u00e1n Palomares Carrascosa",
+      "published_date": "Tue, 15 Jul 2025 12:00:57 +0000",
+      "excerpt": "It\u2019s no secret that most advanced artificial intelligence solutions today are predominantly based on impressively powerful and complex models like transformers, diffusion models, and other deep learning architectures.",
+      "relevance_score": 1.0
+    },
+    {
+      "title": "I trained a model. What is next?",
+      "url": "https://medium.com/kaggle-blog/i-trained-a-model-what-is-next-d1ba1c560e26?source=rss----4b0982ce16a3---4",
+      "source": "Kaggle",
+      "author": "Kaggle Team",
+      "published_date": "Wed, 09 Sep 2020 19:26:01 GMT",
+      "excerpt": "<p>Here at Kaggle we\u2019re excited to showcase the work of our Grandmasters. This post was written by Vladimir Iglovikov, and is filled with advice that he wishes someone had shared when he was active on Kaggle. The original post can be found on <a href=\"https://ternaus.blog/tutorial/2020/08/28/Trained...",
+      "relevance_score": 1.0
+    },
+    {
+      "title": "When his hobbies went on hiatus, this Kaggler made fighting COVID-19 with data his mission | A\u2026",
+      "url": "https://medium.com/kaggle-blog/when-his-hobbies-went-on-hiatus-this-kaggler-made-fighting-covid-19-with-data-his-mission-a-e306419b99a5?source=rss----4b0982ce16a3---4",
+      "source": "Kaggle",
+      "author": "Kaggle Team",
+      "published_date": "Wed, 29 Jul 2020 19:36:32 GMT",
+      "excerpt": "<h3>With sports (and everything else) cancelled, this data scientist decided to take on COVID-19 | A Winner\u2019s Interview with David\u00a0Mezzetti</h3><h4>When his hobbies went on hiatus, Kaggler David Mezzetti made fighting COVID-19 his\u00a0mission.</h4><figure><img alt=\"\" src=\"https://cdn-images-1.medium.com...",
+      "relevance_score": 1.0
+    },
+    {
+      "title": "AI Pioneers Win Nobel Prizes for Physics and Chemistry",
+      "url": "https://blogs.nvidia.com/blog/ai-nobel-physics-chemistry/",
+      "source": "NVIDIA AI",
+      "author": "Brian Caulfield",
+      "published_date": "Tue, 10 Dec 2024 19:10:33 +0000",
+      "excerpt": "Artificial intelligence, once the realm of science fiction, claimed its place at the pinnacle of scientific achievement Monday in Sweden. In a historic ceremony at Stockholm\u2019s iconic Konserthuset, John Hopfield and Geoffrey Hinton received the Nobel Prize in Physics for their pioneering work on neur...",
+      "relevance_score": 0.9
+    },
+    {
+      "title": "A Gentle Introduction to Graph Neural Networks",
+      "url": "https://distill.pub/2021/gnn-intro",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Thu, 02 Sep 2021 20:0:0 Z",
+      "excerpt": "What components are needed for building learning algorithms that leverage the structure and properties of graphs?",
+      "relevance_score": 0.8999999999999999
+    },
+    {
+      "title": "From Reactive to Predictive: Forecasting Network Congestion with Machine Learning and\u00a0INT",
+      "url": "https://towardsdatascience.com/from-reactive-to-predictive-forecasting-network-congestion-with-machine-learning-and-int/",
+      "source": "Towards Data Science",
+      "author": "Shireesh Kumar Singh",
+      "published_date": "Fri, 18 Jul 2025 17:32:38 +0000",
+      "excerpt": "<p>Learn how machine learning can predict network congestion before it happens</p>\n<p>The post <a href=\"https://towardsdatascience.com/from-reactive-to-predictive-forecasting-network-congestion-with-machine-learning-and-int/\">From Reactive to Predictive: Forecasting Network Congestion with Machine L...",
+      "relevance_score": 0.8999999999999999
+    },
+    {
+      "title": "Multimodal Neurons in Artificial Neural Networks",
+      "url": "https://distill.pub/2021/multimodal-neurons",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Thu, 04 Mar 2021 20:0:0 Z",
+      "excerpt": "We report the existence of multimodal neurons in artificial neural networks, similar to those found in the human brain.",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "Naturally Occurring Equivariance in Neural Networks",
+      "url": "https://distill.pub/2020/circuits/equivariance",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Tue, 08 Dec 2020 20:0:0 Z",
+      "excerpt": "Neural networks naturally learn many transformed copies of the same feature, connected by symmetric weights.",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "Visualizing Neural Networks with the Grand Tour",
+      "url": "https://distill.pub/2020/grand-tour",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Mon, 16 Mar 2020 20:0:0 Z",
+      "excerpt": "By focusing on linear dimensionality reduction, we show how to visualize many dynamic phenomena in neural networks.",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "Do You Really Need a Foundation Model?",
+      "url": "https://towardsdatascience.com/do-you-really-need-a-foundation-model/",
+      "source": "Towards Data Science",
+      "author": "Vincent Vandenbussche",
+      "published_date": "Wed, 16 Jul 2025 05:01:22 +0000",
+      "excerpt": "<p>LLM or custom model: how should you choose the right solution?</p>\n<p>The post <a href=\"https://towardsdatascience.com/do-you-really-need-a-foundation-model/\">Do You Really Need a Foundation Model?</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "Automating Deep Learning: A Gentle Introduction to AutoKeras and Keras Tuner",
+      "url": "https://towardsdatascience.com/automating-deep-learning-a-gentle-introduction-to-autokeras-and-keras-tuner/",
+      "source": "Towards Data Science",
+      "author": "Himanshu Sharma",
+      "published_date": "Tue, 15 Jul 2025 17:17:07 +0000",
+      "excerpt": "<p>How to save time and boost your models with these two approachable AutoML libraries.</p>\n<p>The post <a href=\"https://towardsdatascience.com/automating-deep-learning-a-gentle-introduction-to-autokeras-and-keras-tuner/\">Automating Deep Learning: A Gentle Introduction to AutoKeras and Keras Tuner</...",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "FDA\u2019s draft guidance on AI/ML has startups on high alert",
+      "url": "https://www.artificialintelligence-news.com/news/fdas-draft-guidance-on-ai-ml-has-startups-on-high-alert/",
+      "source": "AI News",
+      "author": "Eric Elsen",
+      "published_date": "Mon, 14 Jul 2025 11:01:44 +0000",
+      "excerpt": "<p>Author, Eric Elsen, Forte Group. On January 7, 2025, the US Food and Drug Administration (FDA) released draft guidance titled &#8220;Artificial Intelligence and Machine Learning in Software as a Medical Device&#8221;. The document outlines expectations for pre-market applications and lifecycle ma...",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "Feature Engineering with LLM Embeddings: Enhancing Scikit-learn Models",
+      "url": "https://machinelearningmastery.com/feature-engineering-with-llm-embeddings-enhancing-scikit-learn-models/",
+      "source": "Machine Learning Mastery",
+      "author": "Iv\u00e1n Palomares Carrascosa",
+      "published_date": "Thu, 17 Jul 2025 12:00:17 +0000",
+      "excerpt": "Large language model embeddings, or LLM embeddings, are a powerful approach to capturing semantically rich information in text and utilizing it to leverage other machine learning models &mdash; like those trained using Scikit-learn &mdash; in tasks that require deep contextual understanding of text,...",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "FDA\u2019s draft guidance on AI/ML has startups on high alert",
+      "url": "https://www.artificialintelligence-news.com/news/fdas-draft-guidance-on-ai-ml-has-startups-on-high-alert/",
+      "source": "AI News Global",
+      "author": "Eric Elsen",
+      "published_date": "Mon, 14 Jul 2025 11:01:44 +0000",
+      "excerpt": "<p>Author, Eric Elsen, Forte Group. On January 7, 2025, the US Food and Drug Administration (FDA) released draft guidance titled &#8220;Artificial Intelligence and Machine Learning in Software as a Medical Device&#8221;. The document outlines expectations for pre-market applications and lifecycle ma...",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "Massive Foundation Model for Biomolecular Sciences Now Available via NVIDIA BioNeMo",
+      "url": "https://blogs.nvidia.com/blog/evo-2-biomolecular-ai/",
+      "source": "NVIDIA AI",
+      "author": "Anthony Costa",
+      "published_date": "Wed, 19 Feb 2025 16:00:46 +0000",
+      "excerpt": "Scientists everywhere can now access Evo 2, a powerful new foundation model that understands the genetic code for all domains of life. Unveiled today as the largest publicly available AI model for genomic data, it was built on the NVIDIA DGX Cloud platform in a collaboration led by nonprofit biomedi...",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "What Are Foundation Models?",
+      "url": "https://blogs.nvidia.com/blog/what-are-foundation-models/",
+      "source": "NVIDIA AI",
+      "author": "Rick Merritt",
+      "published_date": "Tue, 11 Feb 2025 23:51:46 +0000",
+      "excerpt": "Editor\u2019s note: This article, originally published on March 13, 2023, has been updated. The mics were live and tape was rolling in the studio where the Miles Davis Quintet was recording dozens of tunes in 1956 for Prestige Records. When an engineer asked for the next song\u2019s title, Davis shot back, \u201cI...",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Training and Finetuning Sparse Embedding Models with Sentence Transformers v5",
+      "url": "https://huggingface.co/blog/train-sparse-encoder",
+      "source": "Hugging Face",
+      "author": null,
+      "published_date": "Tue, 01 Jul 2025 00:00:00 GMT",
+      "excerpt": "",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Transformers backend integration in SGLang",
+      "url": "https://huggingface.co/blog/transformers-backend-sglang",
+      "source": "Hugging Face",
+      "author": null,
+      "published_date": "Mon, 23 Jun 2025 00:00:00 GMT",
+      "excerpt": "",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Shape, Symmetries, and Structure: The Changing Role of Mathematics in Machine Learning Research",
+      "url": "https://thegradient.pub/shape-symmetry-structure/",
+      "source": "The Gradient",
+      "author": "Henry Kvinge",
+      "published_date": "Sat, 16 Nov 2024 16:46:15 GMT",
+      "excerpt": "<h3 id=\"what-is-the-role-of-mathematics-in-modern-machine-learning\">What is the Role of Mathematics in Modern Machine Learning?</h3><p>The past decade has witnessed a shift in how progress is made in machine learning. Research involving carefully designed and mathematically principled architectures ...",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Deep learning for single-cell sequencing: a microscope to see the diversity of cells",
+      "url": "https://thegradient.pub/deep-learning-for-single-cell-sequencing-a-microscope-to-uncover-the-rich-diversity-of-individual-cells/",
+      "source": "The Gradient",
+      "author": "Fatima Zahra El Hajji",
+      "published_date": "Sat, 13 Jan 2024 18:12:44 GMT",
+      "excerpt": "On the the pivotal role that Deep Learning has played as a key enabler for advancing single-cell sequencing technologies.",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Ilya on deep learning in 2015",
+      "url": "https://www.interconnects.ai/p/ilya-on-deep-learning-in-2015",
+      "source": "Interconnects",
+      "author": "Nathan Lambert",
+      "published_date": "Sat, 28 Jun 2025 18:02:32 GMT",
+      "excerpt": "On vision and how to understand deep learning.",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "ChinAI #313: China's Big 5 Foundation Model Companies",
+      "url": "https://chinai.substack.com/p/chinai-313-chinas-big-5-foundation",
+      "source": "China AI Report",
+      "author": "Jeffrey Ding",
+      "published_date": "Mon, 19 May 2025 11:20:17 GMT",
+      "excerpt": "Greetings from a world where&#8230;",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Best Paper Award at the 1st International Workshop on Evaluating Progress in Artificial Intelligence \u2013 EPAI 2020",
+      "url": "https://www.fhi.ox.ac.uk/best-paper-award-at-the-1st-international-workshop-on-evaluating-progress-in-artificial-intelligence-epai-2020/",
+      "source": "Future of Humanity Institute",
+      "author": "FHI Admin",
+      "published_date": "Mon, 05 Oct 2020 19:31:17 +0000",
+      "excerpt": "<p>The post <a href=\"https://www.fhi.ox.ac.uk/best-paper-award-at-the-1st-international-workshop-on-evaluating-progress-in-artificial-intelligence-epai-2020/\" rel=\"nofollow\">Best Paper Award at the 1st International Workshop on Evaluating Progress in Artificial Intelligence &#8211; EPAI 2020</a> app...",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Modeling Extremely Large Images with xT",
+      "url": "http://bair.berkeley.edu/blog/2024/03/21/xt/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Thu, 21 Mar 2024 02:00:00 -0700",
+      "excerpt": "<!--\nThese are comments in HTML. The above header text is needed to format the\ntitle, authors, etc. The \"example_post\" is an example representative image (not\nGIF) that we use for each post for tweeting (see below as well) and for the\nemails to subscribers. Please provide this image (and any other i...",
+      "relevance_score": 0.6000000000000001
+    },
+    {
+      "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+      "url": "https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "source": "DeepMind Blog",
+      "author": null,
+      "published_date": "Wed, 14 May 2025 14:59:00 +0000",
+      "excerpt": "New AI agent evolves algorithms for math and practical applications in computing by combining the creativity of large language models with automated evaluators",
+      "relevance_score": 0.55
+    },
+    {
+      "title": "How to Evaluate Jailbreak Methods: A Case Study with the StrongREJECT Benchmark",
+      "url": "http://bair.berkeley.edu/blog/2024/08/28/strong-reject/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Wed, 28 Aug 2024 08:30:00 -0700",
+      "excerpt": "<!--\nThese are comments in HTML. The above header text is needed to format the\ntitle, authors, etc. The \"example_post\" is an example representative image (not\nGIF) that we use for each post for tweeting (see below as well) and for the\nemails to subscribers. Please provide this image (and any other i...",
+      "relevance_score": 0.55
+    },
+    {
+      "title": "Understanding Convolutions on Graphs",
+      "url": "https://distill.pub/2021/understanding-gnns",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Thu, 02 Sep 2021 20:0:0 Z",
+      "excerpt": "Understanding the building blocks and design choices of graph neural networks.",
+      "relevance_score": 0.5
+    },
+    {
+      "title": "Branch Specialization",
+      "url": "https://distill.pub/2020/circuits/branch-specialization",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Mon, 05 Apr 2021 20:0:0 Z",
+      "excerpt": "When a neural network layer is divided into multiple branches, neurons self-organize into coherent groupings.",
+      "relevance_score": 0.5
+    },
+    {
+      "title": "Visualizing Weights",
+      "url": "https://distill.pub/2020/circuits/visualizing-weights",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Thu, 04 Feb 2021 20:0:0 Z",
+      "excerpt": "We present techniques for visualizing, contextualizing, and understanding neural network weights.",
+      "relevance_score": 0.5
+    },
+    {
+      "title": "Car-GPT: Could LLMs finally make self-driving cars happen?",
+      "url": "https://thegradient.pub/car-gpt/",
+      "source": "The Gradient",
+      "author": "J\u00e9r\u00e9my Cohen",
+      "published_date": "Fri, 08 Mar 2024 16:55:18 GMT",
+      "excerpt": "Exploring the utility of large language models in autonomous driving: Can they be trusted for self-driving cars, and what are the key challenges?",
+      "relevance_score": 0.5
+    },
+    {
+      "title": "Repurposing Protein Folding Models for Generation with Latent Diffusion",
+      "url": "http://bair.berkeley.edu/blog/2025/04/08/plaid/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Tue, 08 Apr 2025 03:30:00 -0700",
+      "excerpt": "<!-- twitter -->\n\n\n\n\n\n\n\n\n\n\n\n\n<!--\nThe actual text for the post content appears below.  Text will appear on the\nhomepage, i.e., https://bair.berkeley.edu/blog/ but we only show part of theac\nposts on the homepage. The rest is accessed via clicking 'Continue'. This is\nenforced with the `more` excerpt ...",
+      "relevance_score": 0.5
+    },
+    {
+      "title": "Revisiting k-Means: 3 Approaches to Make It Work Better",
+      "url": "https://machinelearningmastery.com/revisiting-k-means-3-approaches-to-make-it-work-better/",
+      "source": "Machine Learning Mastery",
+      "author": "Matthew Mayo",
+      "published_date": "Wed, 16 Jul 2025 14:32:02 +0000",
+      "excerpt": "The k-means algorithm is a cornerstone of unsupervised machine learning, known for its simplicity and trusted for its efficiency in partitioning data into a predetermined number of clusters.",
+      "relevance_score": 0.5
+    },
+    {
+      "title": "Gaining a sense of control over the COVID-19 pandemic | A Winner\u2019s Interview with Daniel Wolffram",
+      "url": "https://medium.com/kaggle-blog/gaining-a-sense-of-control-over-the-covid-19-pandemic-a-winners-interview-with-daniel-wolffram-1320fb2717c4?source=rss----4b0982ce16a3---4",
+      "source": "Kaggle",
+      "author": "Kaggle Team",
+      "published_date": "Thu, 23 Jul 2020 15:11:33 GMT",
+      "excerpt": "<p>How one Kaggler took top marks across multiple Covid-related challenges.</p><figure><img alt=\"\" src=\"https://cdn-images-1.medium.com/max/1024/1*R0Q-WzdtzvK5Q64I-_yqdA.jpeg\" /><figcaption>Photo by <a href=\"https://unsplash.com/@markusspiske?utm_source=unsplash&amp;utm_medium=referral&amp;utm_conte...",
+      "relevance_score": 0.5
+    },
+    {
+      "title": "Quan Sun on finishing in second place in Predict Grant Applications",
+      "url": "https://medium.com/kaggle-blog/quan-sun-on-finishing-in-second-place-in-predict-grant-applications-3770a0bedaad?source=rss----4b0982ce16a3---4",
+      "source": "Kaggle",
+      "author": "Kaggle Team",
+      "published_date": "Mon, 20 Apr 2020 17:18:21 GMT",
+      "excerpt": "<figure><img alt=\"\" src=\"https://cdn-images-1.medium.com/max/200/0*7qfpYxj1Xs3WY30Z.jpg\" /></figure><p>I\u2019m a PhD student of the Machine Learning Group in the University of Waikato, Hamilton, New Zealand. I\u2019m also a part-time software developer for 11ants analytics. My PhD research focuses on meta-le...",
+      "relevance_score": 0.5
+    },
+    {
+      "title": "\u2018India Should Manufacture Its Own AI,\u2019 Declares NVIDIA CEO",
+      "url": "https://blogs.nvidia.com/blog/india-ai-summit-jensen-huang/",
+      "source": "NVIDIA AI",
+      "author": "Brian Caulfield",
+      "published_date": "Thu, 24 Oct 2024 18:50:49 +0000",
+      "excerpt": "Artificial intelligence will be the driving force behind India\u2019s digital transformation, fueling innovation, economic growth, and global leadership, NVIDIA founder and CEO Jensen Huang said Thursday at NVIDIA\u2019s AI Summit in Mumbai. Addressing a crowd of entrepreneurs, developers, academics and busin...",
+      "relevance_score": 0.45
+    },
+    {
+      "title": "The Download: how to run an LLM, and a history of \u201cthree-parent babies\u201d",
+      "url": "https://www.technologyreview.com/2025/07/18/1120453/the-download-how-to-run-an-llm-and-a-history-of-three-parent-babies/",
+      "source": "MIT Technology Review",
+      "author": "Rhiannon Williams",
+      "published_date": "Fri, 18 Jul 2025 12:10:00 +0000",
+      "excerpt": "This is today&#8217;s edition of\u00a0The Download,\u00a0our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. How to run an LLM on your laptop In the early days of large language models, there was a high barrier to entry: it used to be impossible to run anythi...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "AI in Australia\u2014OpenAI\u2019s Economic Blueprint",
+      "url": "https://openai.com/global-affairs/openais-australia-economic-blueprint",
+      "source": "OpenAI Blog",
+      "author": null,
+      "published_date": "Mon, 30 Jun 2025 07:00:00 GMT",
+      "excerpt": "Today, OpenAI, in partnership with Mandala Partners, is sharing the OpenAI AI Economic Blueprint for Australia. At a time when boosting productivity has emerged as a national priority for Australia, the Blueprint provides a clear, actionable plan for how Australia can unlock the full economic and so...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "DolphinGemma: How Google AI is helping decode dolphin communication",
+      "url": "https://deepmind.google/discover/blog/dolphingemma-how-google-ai-is-helping-decode-dolphin-communication/",
+      "source": "DeepMind Blog",
+      "author": null,
+      "published_date": "Mon, 14 Apr 2025 17:00:00 +0000",
+      "excerpt": "DolphinGemma, a large language model developed by Google, is helping scientists study how dolphins communicate \u2014 and hopefully find out what they're saying, too.",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "AI Maps Titan\u2019s Methane Clouds in Record Time",
+      "url": "https://blogs.nvidia.com/blog/ai-maps-titan-clouds/",
+      "source": "NVIDIA AI",
+      "author": "Brian Caulfield",
+      "published_date": "Fri, 24 Jan 2025 14:00:30 +0000",
+      "excerpt": "NVIDIA GPUs powered deep learning to decode years of Cassini data in seconds\u2014helping researchers pioneer a smarter way to explore alien worlds.",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Exploring Bayesian Optimization",
+      "url": "https://distill.pub/2020/bayesian-optimization",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Tue, 05 May 2020 20:0:0 Z",
+      "excerpt": "How to tune hyperparameters for your machine learning model using Bayesian optimization.",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Financial Market Applications of LLMs",
+      "url": "https://thegradient.pub/financial-market-applications-of-llms/",
+      "source": "The Gradient",
+      "author": "Richard Dewey",
+      "published_date": "Sat, 20 Apr 2024 17:57:39 GMT",
+      "excerpt": "<p>The AI revolution drove frenzied investment in both private and public companies and captured the public&#x2019;s imagination in 2023. Transformational consumer products like ChatGPT are powered by Large Language Models (LLMs) that excel at modeling sequences of tokens that represent words or par...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Mamba Explained",
+      "url": "https://thegradient.pub/mamba-explained/",
+      "source": "The Gradient",
+      "author": "Kola Ayonrinde",
+      "published_date": "Thu, 28 Mar 2024 01:24:43 GMT",
+      "excerpt": "Is Attention all you need? Mamba, a novel AI model based on State Space Models (SSMs), emerges as a formidable alternative to the widely used Transformer models, addressing their inefficiency in processing long sequences.",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Defending against Prompt Injection with Structured Queries (StruQ) and Preference Optimization (SecAlign)",
+      "url": "http://bair.berkeley.edu/blog/2025/04/11/prompt-injection-defense/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Fri, 11 Apr 2025 03:00:00 -0700",
+      "excerpt": "<!-- twitter -->\n\n\n\n\n\n\n\n\n\n\n\n\n<p>Recent advances in Large Language Models (LLMs) enable exciting LLM-integrated applications. However, as LLMs have improved, so have the attacks against them. <a href=\"https://www.ibm.com/topics/prompt-injection\">Prompt injection attack</a> is listed as the <a href=\"h...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Virtual Personas for Language Models via an Anthology of Backstories",
+      "url": "http://bair.berkeley.edu/blog/2024/11/12/virutal-persona-llm/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Tue, 12 Nov 2024 01:00:00 -0800",
+      "excerpt": "<!--\nThese are comments in HTML. The above header text is needed to format the\ntitle, authors, etc. The \"example_post\" is an example representative image (not\nGIF) that we use for each post for tweeting (see below as well) and for the\nemails to subscribers. Please provide this image (and any other i...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "TinyAgent: Function Calling at the Edge",
+      "url": "http://bair.berkeley.edu/blog/2024/05/29/tiny-agent/",
+      "source": "Berkeley AI Research",
+      "author": null,
+      "published_date": "Wed, 29 May 2024 16:00:00 -0700",
+      "excerpt": "<!--\nThese are comments in HTML. The above header text is needed to format the\ntitle, authors, etc. The \"example_post\" is an example representative image (not\nGIF) that we use for each post for tweeting (see below as well) and for the\nemails to subscribers. Please provide this image (and any other i...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "How to use AI to start an online business",
+      "url": "https://www.artificialintelligence-news.com/news/how-to-use-ai-to-start-an-online-business/",
+      "source": "AI News",
+      "author": "Musfiqur",
+      "published_date": "Tue, 15 Jul 2025 14:13:56 +0000",
+      "excerpt": "<p>Nearly every online business now touches artificial intelligence at some point. Research from 2025 shows 78% of companies worldwide use AI for at least one business area. Smaller businesses report higher usage, with 89% saying they use AI each day. Over 280 million businesses worldwide now run at...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "From Linear Regression to XGBoost: A Side-by-Side Performance Comparison",
+      "url": "https://machinelearningmastery.com/from-linear-regression-to-xgboost-a-side-by-side-performance-comparison/",
+      "source": "Machine Learning Mastery",
+      "author": "Iv\u00e1n Palomares Carrascosa",
+      "published_date": "Fri, 18 Jul 2025 12:00:24 +0000",
+      "excerpt": "Regression is undoubtedly one of the most mainstream tasks machine learning models can address.",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Decision Trees Aren\u2019t Just for Tabular Data",
+      "url": "https://machinelearningmastery.com/decision-trees-arent-just-for-tabular-data/",
+      "source": "Machine Learning Mastery",
+      "author": "Iv\u00e1n Palomares Carrascosa",
+      "published_date": "Thu, 10 Jul 2025 09:57:51 +0000",
+      "excerpt": "Versatile, interpretable, and effective for a variety of use cases, decision trees have been among the most well-established machine learning techniques for decades, widely used for classification and regression tasks.",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "10 NumPy One-Liners to Simplify Feature Engineering",
+      "url": "https://machinelearningmastery.com/10-numpy-one-liners-to-simplify-feature-engineering/",
+      "source": "Machine Learning Mastery",
+      "author": "Bala Priya C",
+      "published_date": "Tue, 08 Jul 2025 12:00:29 +0000",
+      "excerpt": "When building machine learning models, most developers focus on model architectures and hyperparameter tuning.",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Securing FastAPI Endpoints for MLOps: An Authentication Guide",
+      "url": "https://machinelearningmastery.com/securing-fastapi-endpoints-for-mlops-an-authentication-guide/",
+      "source": "Machine Learning Mastery",
+      "author": "Abid Ali Awan",
+      "published_date": "Fri, 04 Jul 2025 12:14:51 +0000",
+      "excerpt": "In today's AI world, data scientists are not just focused on training and optimizing machine learning models.",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Top Marks for Student Kaggler in Bengali.AI | A Winner\u2019s Interview with Linsho Kaku",
+      "url": "https://medium.com/kaggle-blog/top-marks-for-student-kaggler-in-bengali-ai-a-winners-interview-with-linsho-kaku-dd321b324c74?source=rss----4b0982ce16a3---4",
+      "source": "Kaggle",
+      "author": "Kaggle Team",
+      "published_date": "Tue, 21 Apr 2020 16:31:32 GMT",
+      "excerpt": "<p>Kaggler, deoxy takes first-place and sets the stage for his next competition.</p><p><em>Please join us in congratulating Linsho Kaku (aka </em><a href=\"https://www.kaggle.com/linshokaku?utm_medium=blog&amp;utm_source=medium&amp;utm_campaign=bengaliai-1stplace-blog\"><em>deoxy</em></a><em>) on his ...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Max Lin on finishing second in the R Challenge",
+      "url": "https://medium.com/kaggle-blog/max-lin-on-finishing-second-in-the-r-challenge-520a7d785beb?source=rss----4b0982ce16a3---4",
+      "source": "Kaggle",
+      "author": "Kaggle Team",
+      "published_date": "Mon, 20 Apr 2020 17:13:57 GMT",
+      "excerpt": "<figure><img alt=\"\" src=\"https://cdn-images-1.medium.com/max/1024/0*yZEBrdRYelPNBHxU.png\" /></figure><p>I participated in the <a href=\"https://web.archive.org/web/20180525025321/http://www.kaggle.com/R\">R package recommendation engine competition</a> on Kaggle for two reasons. First, I use R a lot. ...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "How to use AI to start an online business",
+      "url": "https://www.artificialintelligence-news.com/news/how-to-use-ai-to-start-an-online-business/",
+      "source": "AI News Global",
+      "author": "Musfiqur",
+      "published_date": "Tue, 15 Jul 2025 14:13:56 +0000",
+      "excerpt": "<p>Nearly every online business now touches artificial intelligence at some point. Research from 2025 shows 78% of companies worldwide use AI for at least one business area. Smaller businesses report higher usage, with 89% saying they use AI each day. Over 280 million businesses worldwide now run at...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "FHI experts call on UK government to prepare for extreme risks in new report, Future Proof",
+      "url": "https://www.fhi.ox.ac.uk/fhi-experts-call-on-uk-government-to-prepare-for-extreme-risks-in-new-report-future-proof/",
+      "source": "Future of Humanity Institute",
+      "author": "FHI Admin",
+      "published_date": "Thu, 03 Jun 2021 08:18:22 +0000",
+      "excerpt": "<p>The UK government must act now to ensure the UK is prepared for future extreme risks even greater than Covid-19, a new report finds. Disease warfare, leaks of dangerous pathogens from high-security labs, and misuse of artificial intelligence (AI) systems are identified as key threats to the UK an...",
+      "relevance_score": 0.4
+    },
+    {
+      "title": "Gain a Better Understanding of Computer Vision: Dynamic SOLO (SOLOv2) with TensorFlow",
+      "url": "https://towardsdatascience.com/dynamic-solo-solov2-with-tensorflow-for-better-understanding-computer-vision/",
+      "source": "Towards Data Science",
+      "author": "Pavel Timonin",
+      "published_date": "Fri, 18 Jul 2025 17:43:29 +0000",
+      "excerpt": "<p>A practical approach to instance segmentation using SOLOv2 and TensorFlow</p>\n<p>The post <a href=\"https://towardsdatascience.com/dynamic-solo-solov2-with-tensorflow-for-better-understanding-computer-vision/\">Gain a Better Understanding of Computer Vision: Dynamic SOLO (SOLOv2) with TensorFlow</a...",
+      "relevance_score": 0.30000000000000004
+    },
+    {
+      "title": "What Can the History of Data Tell Us About the Future of AI?",
+      "url": "https://towardsdatascience.com/a-brief-recent-history-of-data/",
+      "source": "Towards Data Science",
+      "author": "Steve Hedden",
+      "published_date": "Tue, 15 Jul 2025 05:10:24 +0000",
+      "excerpt": "<p>A 40-Year Look at Data, Business Models, and the Forces Shaping Intelligent Systems</p>\n<p>The post <a href=\"https://towardsdatascience.com/a-brief-recent-history-of-data/\">What Can the History of Data Tell Us About the Future of AI?</a> appeared first on <a href=\"https://towardsdatascience.com\">...",
+      "relevance_score": 0.25
+    },
+    {
+      "title": "Understanding RL Vision",
+      "url": "https://distill.pub/2020/understanding-rl-vision",
+      "source": "Distill",
+      "author": null,
+      "published_date": "Tue, 17 Nov 2020 20:0:0 Z",
+      "excerpt": "With diverse environments, we can analyze, diagnose and edit deep reinforcement learning models using attribution.",
+      "relevance_score": 0.2
+    },
+    {
+      "title": "Neural algorithmic reasoning",
+      "url": "https://thegradient.pub/neural-algorithmic-reasoning/",
+      "source": "The Gradient",
+      "author": "Petar Veli\u010dkovi\u0107",
+      "published_date": "Sat, 14 Oct 2023 15:30:15 GMT",
+      "excerpt": "<p>In this article, we will talk about <em>classical computation</em>: the kind of computation typically found in an undergraduate Computer Science course on Algorithms and Data Structures [1]. Think shortest path-finding, sorting, clever ways to break problems down into simpler problems, incredible...",
+      "relevance_score": 0.2
+    },
+    {
+      "title": "3 Steps to Context Engineering a Crystal-Clear\u00a0Project",
+      "url": "https://towardsdatascience.com/3-steps-to-ai-context-engineering-for-a-crystal-clear-project/",
+      "source": "Towards Data Science",
+      "author": "Kory Becker",
+      "published_date": "Wed, 16 Jul 2025 18:32:20 +0000",
+      "excerpt": "<p>Learn three easy steps for gaining an intelligent picture for any project by using the skill of context engineering.</p>\n<p>The post <a href=\"https://towardsdatascience.com/3-steps-to-ai-context-engineering-for-a-crystal-clear-project/\">3 Steps to Context Engineering a Crystal-Clear\u00a0Project</a> a...",
+      "relevance_score": 0.2
+    },
+    {
+      "title": "Word Embeddings for Tabular Data Feature Engineering",
+      "url": "https://machinelearningmastery.com/word-embeddings-for-tabular-data-feature-engineering/",
+      "source": "Machine Learning Mastery",
+      "author": "Matthew Mayo",
+      "published_date": "Fri, 11 Jul 2025 12:00:16 +0000",
+      "excerpt": "It would be difficult to argue that word embeddings &mdash; dense vector representations of words &mdash; have not dramatically revolutionized the field of natural language processing (NLP) by quantitatively capturing semantic relationships between words.",
+      "relevance_score": 0.2
+    },
+    {
+      "title": "What comes next with reinforcement learning",
+      "url": "https://www.interconnects.ai/p/what-comes-next-with-reinforcement",
+      "source": "Interconnects",
+      "author": "Nathan Lambert",
+      "published_date": "Mon, 09 Jun 2025 15:40:17 GMT",
+      "excerpt": "Scaling RL, sparse rewards, continual learning, and the progress wall when pretraining really stops.",
+      "relevance_score": 0.2
+    },
+    {
+      "title": "Reinforcement learning with random rewards actually works with Qwen 2.5",
+      "url": "https://www.interconnects.ai/p/reinforcement-learning-with-random",
+      "source": "Interconnects",
+      "author": "Nathan Lambert",
+      "published_date": "Tue, 27 May 2025 16:39:57 GMT",
+      "excerpt": "Making sense of research casting doubt on the potential of RLVR and where I'm optimistic for the next phase of scaling.",
+      "relevance_score": 0.2
+    },
+    {
+      "title": "Jeremy Howard on winning the Predict Grant Applications Competition",
+      "url": "https://medium.com/kaggle-blog/jeremy-howard-on-winning-the-predict-grant-applications-competition-e70a252946c9?source=rss----4b0982ce16a3---4",
+      "source": "Kaggle",
+      "author": "Kaggle Team",
+      "published_date": "Mon, 20 Apr 2020 17:16:21 GMT",
+      "excerpt": "<figure><img alt=\"\" src=\"https://cdn-images-1.medium.com/max/200/0*nOiAmxiT-SmRpnwV.jpg\" /></figure><p>Because I have recently started employment with Kaggle, I am not eligible to win any prizes. Which means the prize-winner for this comp is Quan Sun (team \u2018student1\u2019)! Congratulations!</p><p>My appr...",
+      "relevance_score": 0.2
+    },
+    {
+      "title": "Marcin Pionnier on finishing 5th in the RTA competition",
+      "url": "https://medium.com/kaggle-blog/marcin-pionnier-on-finishing-5th-in-the-rta-competition-3f98580b9de9?source=rss----4b0982ce16a3---4",
+      "source": "Kaggle",
+      "author": "Kaggle Team",
+      "published_date": "Mon, 20 Apr 2020 17:12:42 GMT",
+      "excerpt": "<figure><img alt=\"\" src=\"https://cdn-images-1.medium.com/max/426/0*bZ9qP-OMjM2VUwjJ.png\" /></figure><p>I graduated on Warsaw University of Technology with master thesis about text mining topic (intelligent web crawling methods). I work for Polish IT consulting company (Sollers Consulting), where I d...",
+      "relevance_score": 0.2
+    }
+  ]
+}

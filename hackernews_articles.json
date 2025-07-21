@@ -1,0 +1,52 @@
+{
+  "timestamp": "2025-07-18T15:44:05.548798",
+  "total_articles": 5,
+  "discovery_method": "Multi-source Discovery System",
+  "articles": [
+    {
+      "title": "AI CapEx Is Eating the Economy",
+      "url": "https://paulkedrosky.com/honey-ai-capex-ate-the-economy/",
+      "source": "Hacker News",
+      "author": "throw0101c",
+      "published_date": "2025-07-18T13:59:04",
+      "excerpt": "",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "How I keep up with AI progress",
+      "url": "https://blog.nilenso.com/blog/2025/06/23/how-i-keep-up-with-ai-progress/",
+      "source": "Hacker News",
+      "author": "itzlambda",
+      "published_date": "2025-07-18T12:36:39",
+      "excerpt": "",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Evolution Mail Users Easily Trackable Part 2",
+      "url": "https://www.grepular.com/Evolution%20Mail%20Users%20Easily%20Trackable%20Part%202",
+      "source": "Hacker News",
+      "author": "zdw",
+      "published_date": "2025-07-18T13:26:35",
+      "excerpt": "",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Exhausted man defeats AI model in world coding championship",
+      "url": "https://arstechnica.com/ai/2025/07/exhausted-man-defeats-ai-model-in-world-coding-championship/",
+      "source": "Hacker News",
+      "author": "hassanahmad",
+      "published_date": "2025-07-18T14:43:12",
+      "excerpt": "",
+      "relevance_score": 0.7
+    },
+    {
+      "title": "Third patient dies from acute liver failure caused by a Sarepta gene therapy",
+      "url": "https://www.biocentury.com/article/656520/third-death-from-a-sarepta-gene-therapy",
+      "source": "Hacker News",
+      "author": "randycupertino",
+      "published_date": "2025-07-18T12:26:22",
+      "excerpt": "",
+      "relevance_score": 0.7
+    }
+  ]
+}

@@ -1,0 +1,500 @@
+{
+  "timestamp": "2025-07-18T14:48:51.397683",
+  "total_articles": 20,
+  "author_stats": {
+    "David Proctor": {
+      "article_count": 4,
+      "avg_eii_score": 2.5625,
+      "max_eii_score": 2.75,
+      "min_eii_score": 2.5,
+      "avg_confidence": 3,
+      "avg_jargon": 2.25,
+      "most_inflated_article": "Payloads, Promises, and Protocols: The MCP/A2A Tightrope",
+      "humblest_article": "Standardizing AI-to-System Integration"
+    },
+    "Stanislav Huseletov": {
+      "article_count": 6,
+      "avg_eii_score": 2.5833333333333335,
+      "max_eii_score": 2.75,
+      "min_eii_score": 2.5,
+      "avg_confidence": 3,
+      "avg_jargon": 2,
+      "most_inflated_article": "Agent-to-Agent Communication: AI's Missing Link",
+      "humblest_article": "Standardizing AI-to-System Integration"
+    },
+    "Leonardo Gonzalez": {
+      "article_count": 4,
+      "avg_eii_score": 2.5,
+      "max_eii_score": 2.5,
+      "min_eii_score": 2.5,
+      "avg_confidence": 3,
+      "avg_jargon": 2,
+      "most_inflated_article": "Standardizing AI-to-System Integration",
+      "humblest_article": "Standardizing AI-to-System Integration"
+    },
+    "Praveen Koka": {
+      "article_count": 6,
+      "avg_eii_score": 2.5416666666666665,
+      "max_eii_score": 2.75,
+      "min_eii_score": 2.5,
+      "avg_confidence": 3,
+      "avg_jargon": 2,
+      "most_inflated_article": "Payloads, Promises, and Protocols: The MCP/A2A Tightrope",
+      "humblest_article": "Standardizing AI-to-System Integration"
+    }
+  },
+  "rankings": {
+    "highest_avg_eii": [
+      "Stanislav Huseletov",
+      "David Proctor",
+      "Praveen Koka",
+      "Leonardo Gonzalez"
+    ],
+    "most_confident": [
+      "David Proctor",
+      "Stanislav Huseletov",
+      "Leonardo Gonzalez",
+      "Praveen Koka"
+    ],
+    "biggest_jargon_bomber": [
+      "David Proctor",
+      "Stanislav Huseletov",
+      "Leonardo Gonzalez",
+      "Praveen Koka"
+    ],
+    "most_humble": [
+      "Leonardo Gonzalez",
+      "Praveen Koka",
+      "David Proctor",
+      "Stanislav Huseletov"
+    ],
+    "funniest": [
+      "David Proctor",
+      "Stanislav Huseletov",
+      "Leonardo Gonzalez",
+      "Praveen Koka"
+    ]
+  },
+  "detailed_analyses": [
+    {
+      "author": "David Proctor",
+      "article_title": "Standardizing AI-to-System Integration",
+      "article_url": "https://trilogyai.substack.com/p/standardizing-ai-to-system-integration",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Standardizing AI-to-System Integration by David Proctor",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397177"
+    },
+    {
+      "author": "David Proctor",
+      "article_title": "Agent-to-Agent Communication: AI's Missing Link",
+      "article_url": "https://trilogyai.substack.com/p/agent-to-agent-communication-ais",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Agent-to-Agent Communication: AI's Missing Link by David Proctor",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397196"
+    },
+    {
+      "author": "David Proctor",
+      "article_title": "AI Vision and the Future of UI Testing",
+      "article_url": "https://trilogyai.substack.com/p/ai-vision-and-the-future-of-ui-testing",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of AI Vision and the Future of UI Testing by David Proctor",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397220"
+    },
+    {
+      "author": "David Proctor",
+      "article_title": "Payloads, Promises, and Protocols: The MCP/A2A Tightrope",
+      "article_url": "https://trilogyai.substack.com/p/payloads-promises-and-protocols-the",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 3,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.75,
+          "tone_summary": "Analysis of Payloads, Promises, and Protocols: The MCP/A2A Tightrope by David Proctor",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397244"
+    },
+    {
+      "author": "Stanislav Huseletov",
+      "article_title": "AI Ping-Pong: Manual Multi-Model Workflow for 98% Content Quality",
+      "article_url": "https://trilogyai.substack.com/p/ai-ping-pong",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of AI Ping-Pong: Manual Multi-Model Workflow for 98% Content Quality by Stanislav Huseletov",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397261"
+    },
+    {
+      "author": "Stanislav Huseletov",
+      "article_title": "Iterative AI System for Universal Discovery",
+      "article_url": "https://trilogyai.substack.com/p/ai-discovery",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 3,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.75,
+          "tone_summary": "Analysis of Iterative AI System for Universal Discovery by Stanislav Huseletov",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397275"
+    },
+    {
+      "author": "Stanislav Huseletov",
+      "article_title": "Behavioral Anti-Pattern Detection: A Comprehensive Technical Synthesis",
+      "article_url": "https://trilogyai.substack.com/p/anti-pattern-detection",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Behavioral Anti-Pattern Detection: A Comprehensive Technical Synthesis by Stanislav Huseletov",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397287"
+    },
+    {
+      "author": "Stanislav Huseletov",
+      "article_title": "Beyond Adoption: Defining Real AI Impact at Trilogy",
+      "article_url": "https://trilogyai.substack.com/p/real-ai-learning",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 3,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.75,
+          "tone_summary": "Analysis of Beyond Adoption: Defining Real AI Impact at Trilogy by Stanislav Huseletov",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397302"
+    },
+    {
+      "author": "Stanislav Huseletov",
+      "article_title": "The Memory Framework Mirage: Data-Driven Reasons to Go Context-First",
+      "article_url": "https://trilogyai.substack.com/p/memory-framework-mirage",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of The Memory Framework Mirage: Data-Driven Reasons to Go Context-First by Stanislav Huseletov",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397313"
+    },
+    {
+      "author": "Stanislav Huseletov",
+      "article_title": "DeepAgent Value Check",
+      "article_url": "https://trilogyai.substack.com/p/deepagent-reality-check",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of DeepAgent Value Check by Stanislav Huseletov",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397323"
+    },
+    {
+      "author": "Leonardo Gonzalez",
+      "article_title": "The Multi-Agent Moment",
+      "article_url": "https://trilogyai.substack.com/p/the-multi-agent-moment",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of The Multi-Agent Moment by Leonardo Gonzalez",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397333"
+    },
+    {
+      "author": "Leonardo Gonzalez",
+      "article_title": "AI Music Videos",
+      "article_url": "https://trilogyai.substack.com/p/ai-music-videos",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of AI Music Videos by Leonardo Gonzalez",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397347"
+    },
+    {
+      "author": "Leonardo Gonzalez",
+      "article_title": "The Autonomous Developer",
+      "article_url": "https://trilogyai.substack.com/p/the-autonomous-developer",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of The Autonomous Developer by Leonardo Gonzalez",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397355"
+    },
+    {
+      "author": "Leonardo Gonzalez",
+      "article_title": "Grok 4 vs. Kimi K2",
+      "article_url": "https://trilogyai.substack.com/p/grok-4-vs-kimi-k2",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Grok 4 vs. Kimi K2 by Leonardo Gonzalez",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397361"
+    },
+    {
+      "author": "Praveen Koka",
+      "article_title": "Agentic Automation for Social Content",
+      "article_url": "https://trilogyai.substack.com/p/agentic-automation-for-social-content",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Agentic Automation for Social Content by Praveen Koka",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397373"
+    },
+    {
+      "author": "Praveen Koka",
+      "article_title": "Claude Code: Triumphs, Trials & Trade-Offs",
+      "article_url": "https://trilogyai.substack.com/p/claude-code-triumphs-trials-and-trade",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Claude Code: Triumphs, Trials & Trade-Offs by Praveen Koka",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397382"
+    },
+    {
+      "author": "Praveen Koka",
+      "article_title": "Analyzing Large Datasets with LLMs",
+      "article_url": "https://trilogyai.substack.com/p/analyzing-large-datasets-with-llms",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Analyzing Large Datasets with LLMs by Praveen Koka",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397392"
+    },
+    {
+      "author": "Praveen Koka",
+      "article_title": "The Hidden Cost of Scattered AI Tooling",
+      "article_url": "https://trilogyai.substack.com/p/the-hidden-cost-of-scattered-ai-tooling",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 3,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.75,
+          "tone_summary": "Analysis of The Hidden Cost of Scattered AI Tooling by Praveen Koka",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397400"
+    },
+    {
+      "author": "Praveen Koka",
+      "article_title": "Retrieval Benchmarking: Agentic vs. Vanilla, and What Actually Works in 2025",
+      "article_url": "https://trilogyai.substack.com/p/retrieval-benchmarking-agentic-vs",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Retrieval Benchmarking: Agentic vs. Vanilla, and What Actually Works in 2025 by Praveen Koka",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397411"
+    },
+    {
+      "author": "Praveen Koka",
+      "article_title": "Agentic Retrieval Deepdive",
+      "article_url": "https://trilogyai.substack.com/p/agentic-retrieval-deepdive",
+      "eii_data": {
+        "scores": {
+          "confidence": 3,
+          "jargon_density": 2,
+          "self_reference": 2,
+          "originality": 3,
+          "humor_rating": 2
+        },
+        "analysis": {
+          "overall_eii_score": 2.5,
+          "tone_summary": "Analysis of Agentic Retrieval Deepdive by Praveen Koka",
+          "inflation_type": "Balanced",
+          "key_phrases": []
+        }
+      },
+      "timestamp": "2025-07-18T14:48:51.397419"
+    }
+  ]
+}

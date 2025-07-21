@@ -7,14 +7,25 @@ Run this script to set up the AWS infrastructure.
 import boto3
 import json
 import os
+import sys
 from botocore.exceptions import ClientError
+from dotenv import load_dotenv
 
 def create_dynamodb_table():
     """Create the EII DynamoDB table with proper schema."""
     
+    # Load environment variables from .env file
+    # Look for .env in parent directory if running from aws/ folder
+    env_path = '../.env' if os.path.basename(os.getcwd()) == 'aws' else '.env'
+    load_dotenv(env_path)
+    
     # Initialize DynamoDB client
     try:
-        dynamodb = boto3.client('dynamodb', region_name=os.getenv('AWS_REGION', 'us-east-1'))
+        dynamodb = boto3.client('dynamodb', 
+            region_name=os.getenv('AWS_REGION', 'us-east-1'),
+            aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+            aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY')
+        )
     except Exception as e:
         print(f"❌ Failed to connect to AWS: {e}")
         print("Make sure your AWS credentials are configured:")
@@ -23,7 +34,8 @@ def create_dynamodb_table():
         return False
     
     # Load table schema
-    with open('aws/dynamodb_schema.json', 'r') as f:
+    schema_path = 'dynamodb_schema.json' if os.path.basename(os.getcwd()) == 'aws' else 'aws/dynamodb_schema.json'
+    with open(schema_path, 'r') as f:
         table_config = json.load(f)
     
     table_name = table_config['TableName']

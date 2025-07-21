@@ -121,45 +121,122 @@
             </div>
         </div>
 
-        <!-- Articles Grid -->
+        <!-- Articles Display -->
         {% if data.articles %}
-            <div class="space-y-6">
-                {% for article in data.articles %}
-                <div class="article-card glass-card rounded-2xl p-6 hover:shadow-2xl transition-all duration-300">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex-1">
-                            <h3 class="text-xl font-semibold text-white mb-2 hover:text-blue-300 transition-colors">
-                                <a href="{{ article.url }}" target="_blank" class="hover:underline">
-                                    {{ article.title }}
-                                </a>
-                            </h3>
-                            <div class="flex flex-wrap gap-2 mb-3">
-                                <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
-                                    📡 {{ article.source }}
-                                </span>
-                                {% if article.author %}
-                                <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
-                                    ✍️ {{ article.author }}
-                                </span>
-                                {% endif %}
-                                {% if article.relevance_score %}
-                                <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
-                                    🎯 {{ "%.2f"|format(article.relevance_score) }}
-                                </span>
-                                {% endif %}
-                            </div>
+            {% if current_filter == 'trilogy' and data.articles|length > 10 %}
+                <!-- Compact Table View for Large Article Sets -->
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-2xl font-bold text-white">All {{ data.articles|length }} Articles</h2>
+                        <div class="flex gap-2">
+                            <button onclick="sortArticles('date')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">
+                                📅 Sort by Date
+                            </button>
+                            <button onclick="sortArticles('author')" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm">
+                                ✍️ Sort by Author
+                            </button>
+                            <button onclick="sortArticles('relevance')" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm">
+                                🎯 Sort by Relevance
+                            </button>
                         </div>
-                        <button onclick="analyzeArticle('{{ article.url }}', '{{ article.title }}')" 
-                                class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 shadow-lg">
-                            🧠 Analyze
-                        </button>
                     </div>
-                    {% if article.excerpt %}
-                    <p class="text-gray-200 leading-relaxed">{{ article.excerpt }}</p>
-                    {% endif %}
+                    
+                    <div class="glass-card rounded-2xl overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full" id="articles-table">
+                                <thead class="bg-black bg-opacity-30">
+                                    <tr>
+                                        <th class="text-left p-4 text-gray-200 font-medium">#</th>
+                                        <th class="text-left p-4 text-gray-200 font-medium">Title</th>
+                                        <th class="text-left p-4 text-gray-200 font-medium">Author</th>
+                                        <th class="text-left p-4 text-gray-200 font-medium">Date</th>
+                                        <th class="text-left p-4 text-gray-200 font-medium">Relevance</th>
+                                        <th class="text-left p-4 text-gray-200 font-medium">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-700">
+                                    {% for article in data.articles %}
+                                    <tr class="hover:bg-white hover:bg-opacity-5 transition-colors article-row" 
+                                        data-date="{{ article.published_date or '2024-01-01' }}" 
+                                        data-author="{{ article.author or 'Unknown' }}" 
+                                        data-relevance="{{ article.relevance_score or 0 }}">
+                                        <td class="p-3 text-gray-300 text-sm">{{ loop.index }}</td>
+                                        <td class="p-3">
+                                            <a href="{{ article.url }}" target="_blank" 
+                                               class="text-white hover:text-blue-300 font-medium text-sm leading-tight hover:underline">
+                                                {{ article.title[:80] }}{% if article.title|length > 80 %}...{% endif %}
+                                            </a>
+                                        </td>
+                                        <td class="p-3 text-gray-300 text-sm">{{ article.author or 'Unknown' }}</td>
+                                        <td class="p-3 text-gray-300 text-sm">
+                                            {% if article.published_date %}
+                                                {{ article.published_date[:10] }}
+                                            {% else %}
+                                                N/A
+                                            {% endif %}
+                                        </td>
+                                        <td class="p-3">
+                                            {% if article.relevance_score %}
+                                                <span class="bg-blue-600 px-2 py-1 rounded text-xs text-white">
+                                                    {{ "%.2f"|format(article.relevance_score) }}
+                                                </span>
+                                            {% else %}
+                                                <span class="text-gray-400 text-xs">N/A</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="p-3">
+                                            <button onclick="analyzeArticle('{{ article.url }}', '{{ article.title }}')" 
+                                                    class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-3 py-1 rounded text-xs font-medium transition-all duration-300 hover:scale-105">
+                                                🧠 Analyze
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                {% endfor %}
-            </div>
+            {% else %}
+                <!-- Card View for Smaller Article Sets -->
+                <div class="space-y-6">
+                    {% for article in data.articles %}
+                    <div class="article-card glass-card rounded-2xl p-6 hover:shadow-2xl transition-all duration-300">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-white mb-2 hover:text-blue-300 transition-colors">
+                                    <a href="{{ article.url }}" target="_blank" class="hover:underline">
+                                        {{ article.title }}
+                                    </a>
+                                </h3>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
+                                        📡 {{ article.source }}
+                                    </span>
+                                    {% if article.author %}
+                                    <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
+                                        ✍️ {{ article.author }}
+                                    </span>
+                                    {% endif %}
+                                    {% if article.relevance_score %}
+                                    <span class="stat-badge px-3 py-1 rounded-full text-sm text-white">
+                                        🎯 {{ "%.2f"|format(article.relevance_score) }}
+                                    </span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <button onclick="analyzeArticle('{{ article.url }}', '{{ article.title }}')" 
+                                    class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 shadow-lg">
+                                🧠 Analyze
+                            </button>
+                        </div>
+                        {% if article.excerpt %}
+                        <p class="text-gray-200 leading-relaxed">{{ article.excerpt }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% else %}
             <div class="glass-card rounded-2xl p-12 text-center">
                 <div class="text-6xl mb-4">🔍</div>
@@ -240,46 +317,47 @@ function analyzeArticle(url, title) {
                 <div class="space-y-6">
                     <div class="text-center">
                         <h4 class="text-xl font-semibold text-white mb-2">${title}</h4>
-                        <div class="text-3xl font-bold text-yellow-400 mb-2">EII Score: ${data.eii_score}</div>
-                        <div class="text-gray-300">${data.analysis.tone_summary}</div>
+                        <div class="text-3xl font-bold text-yellow-400 mb-2">EII Score: ${data.eii_data.analysis.overall_eii_score}</div>
+                        <div class="text-gray-300">${data.eii_data.analysis.tone_summary}</div>
                     </div>
                     
                     <div class="grid grid-cols-2 gap-4">
                         <div class="glass-card p-4 rounded-xl">
                             <div class="text-sm text-gray-300">Confidence</div>
-                            <div class="text-2xl font-bold text-white">${data.scores.confidence}/10</div>
+                            <div class="text-2xl font-bold text-white">${data.eii_data.scores.confidence}/10</div>
                         </div>
                         <div class="glass-card p-4 rounded-xl">
                             <div class="text-sm text-gray-300">Jargon Density</div>
-                            <div class="text-2xl font-bold text-white">${data.scores.jargon_density}/10</div>
+                            <div class="text-2xl font-bold text-white">${data.eii_data.scores.jargon_density}/10</div>
                         </div>
                         <div class="glass-card p-4 rounded-xl">
                             <div class="text-sm text-gray-300">Self-Reference</div>
-                            <div class="text-2xl font-bold text-white">${data.scores.self_reference}/10</div>
+                            <div class="text-2xl font-bold text-white">${data.eii_data.scores.self_reference}/10</div>
                         </div>
                         <div class="glass-card p-4 rounded-xl">
                             <div class="text-sm text-gray-300">Originality</div>
-                            <div class="text-2xl font-bold text-white">${data.scores.originality}/10</div>
+                            <div class="text-2xl font-bold text-white">${data.eii_data.scores.originality}/10</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-sm text-gray-300">Humor</div>
+                            <div class="text-2xl font-bold text-white">${data.eii_data.scores.humor_rating}/10</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-sm text-gray-300">Type</div>
+                            <div class="text-lg font-semibold text-white">${data.eii_data.analysis.inflation_type}</div>
                         </div>
                     </div>
                     
                     <div class="glass-card p-4 rounded-xl">
-                        <div class="text-sm text-gray-300 mb-2">Inflation Type</div>
-                        <div class="text-lg font-semibold text-blue-300">${data.analysis.inflation_type}</div>
-                    </div>
-                    
-                    <div class="text-center">
-                        <p class="text-sm text-gray-400">Article analyzed and stored in DynamoDB</p>
+                        <div class="text-sm text-gray-300 mb-2">Key Phrases</div>
+                        <div class="flex flex-wrap gap-2">
+                            ${data.eii_data.analysis.key_phrases.map(phrase => `<span class="bg-blue-600 px-2 py-1 rounded text-xs">${phrase}</span>`).join('')}
+                        </div>
                     </div>
                 </div>
             `;
         } else {
-            content.innerHTML = `
-                <div class="text-center py-8 text-red-400">
-                    <div class="text-2xl mb-2">❌</div>
-                    <p>Analysis failed: ${data.error}</p>
-                </div>
-            `;
+            content.innerHTML = `<p class="text-red-400">Error: ${data.error || 'Analysis failed'}</p>`;
         }
     })
     .catch(error => {
@@ -302,5 +380,49 @@ document.getElementById('analysis-modal').addEventListener('click', function(e) 
         closeModal();
     }
 });
+
+// Sorting functionality for table view
+function sortArticles(column) {
+    const table = document.getElementById('articles-table');
+    if (!table) return; // Exit if table doesn't exist
+    
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+
+    rows.sort((rowA, rowB) => {
+        let valueA, valueB;
+        
+        if (column === 'date') {
+            valueA = rowA.getAttribute('data-date') || '2024-01-01';
+            valueB = rowB.getAttribute('data-date') || '2024-01-01';
+            return new Date(valueB) - new Date(valueA); // Newest first
+        } else if (column === 'author') {
+            valueA = rowA.getAttribute('data-author') || 'Unknown';
+            valueB = rowB.getAttribute('data-author') || 'Unknown';
+            return valueA.localeCompare(valueB);
+        } else if (column === 'relevance') {
+            valueA = parseFloat(rowA.getAttribute('data-relevance') || '0');
+            valueB = parseFloat(rowB.getAttribute('data-relevance') || '0');
+            return valueB - valueA; // Higher relevance first
+        }
+        return 0;
+    });
+
+    // Clear tbody and re-append sorted rows
+    tbody.innerHTML = '';
+    rows.forEach((row, index) => {
+        // Update row number
+        row.cells[0].textContent = index + 1;
+        tbody.appendChild(row);
+    });
+    
+    // Update button states to show active sort
+    document.querySelectorAll('button[onclick^="sortArticles"]').forEach(btn => {
+        btn.classList.remove('bg-yellow-600');
+        btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+    });
+    event.target.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+    event.target.classList.add('bg-yellow-600');
+}
 </script>
 {% endblock %} 

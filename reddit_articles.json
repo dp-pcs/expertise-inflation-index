@@ -1,0 +1,52 @@
+{
+  "timestamp": "2025-07-18T15:43:55.738086",
+  "total_articles": 5,
+  "discovery_method": "Multi-source Discovery System",
+  "articles": [
+    {
+      "title": "Grok 4 continues to provide absolutely unhinged recommendations",
+      "url": "https://i.redd.it/9df5ze16fldf1.png",
+      "source": "Reddit r/artificial",
+      "author": "MetaKnowing",
+      "published_date": "2025-07-18T02:26:43",
+      "excerpt": "...",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "AI \"Boost\" Backfires",
+      "url": "https://i.redd.it/tuk35pld4mdf1.jpeg",
+      "source": "Reddit r/artificial",
+      "author": "Formal-Athlete-4241",
+      "published_date": "2025-07-18T05:07:41",
+      "excerpt": "New research from METR shockingly reveals that early-2025 AI tools made experienced open-source developers 19% slower, despite expectations of significant speedup. This study highlights a significant ...",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "Elon might have oneshotted the entire country of Japan",
+      "url": "https://i.redd.it/8tc3tm1phldf1.png",
+      "source": "Reddit r/artificial",
+      "author": "MetaKnowing",
+      "published_date": "2025-07-18T02:40:48",
+      "excerpt": "...",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "Netflix uses generative AI in one of its shows for first time | Netflix",
+      "url": "https://www.theguardian.com/media/2025/jul/18/netflix-uses-generative-ai-in-show-for-first-time-el-eternauta",
+      "source": "Reddit r/artificial",
+      "author": "willm8032",
+      "published_date": "2025-07-18T03:34:10",
+      "excerpt": "...",
+      "relevance_score": 0.8
+    },
+    {
+      "title": "The era of human programmers is coming to its end\", says Softbank founder Masayoshi Son.",
+      "url": "https://www.heise.de/en/news/Softbank-1-000-AI-agents-replace-1-job-10490309.html",
+      "source": "Reddit r/artificial",
+      "author": "Just-Grocery-2229",
+      "published_date": "2025-07-18T01:49:19",
+      "excerpt": "...",
+      "relevance_score": 0.8
+    }
+  ]
+}
