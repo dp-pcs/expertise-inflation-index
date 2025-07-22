@@ -1,25 +1,35 @@
-# 🧠 Expertise Inflation Index (EII)
+# 🔬 Expertise Inflation Index (EII)
 
 > *"The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge." - Stephen Hawking*  
-> *...but sometimes that illusion is really, really funny.* 🤖
+> *...but sometimes that illusion is scientifically measurable.* 🤖
 
-A semi-satirical, semi-scientific open-source project to analyze AI-related articles for "expertise inflation" - the tendency to exhibit overconfidence, excessive jargon, and inflated claims of expertise.
+A **scientific tool** for analyzing AI-related articles for "expertise inflation" - the tendency to exhibit overconfidence, excessive jargon, synthetic authority, and inflated claims of expertise. What started as satire has evolved into a legitimate research methodology with peer-review ready validation.
 
-**🌐 [Live Demo](http://127.0.0.1:8080/demo)** | **📊 [Dashboard](http://127.0.0.1:8080/)** | **🔗 [Repository](https://github.com/dp-pcs/expertise-inflation-index)**
+**🌐 [Live Demo](http://127.0.0.1:8080/demo)** | **📊 [Dashboard](http://127.0.0.1:8080/)** | **🔬 [Scientific Methodology](http://127.0.0.1:8080/methodology)** | **🔗 [Repository](https://github.com/dp-pcs/expertise-inflation-index)**
 
-![EII Demo](https://img.shields.io/badge/Demo-Interactive-blue) ![Tech Stack](https://img.shields.io/badge/Stack-Firecrawl%20%7C%20n8n%20%7C%20LLMs%20%7C%20DynamoDB-green) ![License](https://img.shields.io/badge/License-MIT-yellow)
+![EII Demo](https://img.shields.io/badge/Demo-Interactive-blue) ![Scientific](https://img.shields.io/badge/Method-Peer%20Review%20Ready-green) ![Cross-Model](https://img.shields.io/badge/Validation-OpenAI%20%7C%20Anthropic-purple) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## 🎯 What It Does
+## 🎯 Enhanced Scientific Methodology
 
-The EII analyzes articles and scores them across five dimensions:
+The EII analyzes articles using **7 evidence-based dimensions** with **cross-model validation**:
 
-- **🎯 Confidence Inflation** (1-10): Overconfident claims vs. humble uncertainty
-- **🗣️ Jargon Density** (1-10): Buzzword usage vs. plain language  
-- **👤 Self-Reference** (1-10): Self-promotion vs. collaborative tone
-- **💡 Originality Claims** (1-10): Breakthrough claims vs. incremental work
-- **😄 Humor/Self-Awareness** (1-10): Self-deprecating vs. overly serious
+### Core Inflation Indicators (High Weight)
+- **🎯 Confidence Inflation** (25%): Overconfident claims vs. humble uncertainty
+- **🗣️ Jargon Density** (20%): Technical complexity vs. accessibility
+- **🏛️ Synthetic Ethos** (20%): Fake authority vs. verifiable sources
+- **👤 Self-Reference** (15%): Self-promotion vs. collaborative tone
+- **💡 Originality Claims** (10%): Breakthrough claims vs. incremental work
 
-**Overall EII Score**: Weighted average indicating how "inflated" an article's expertise claims are.
+### Mitigating Factors (Negative Weight)
+- **📖 Readability** (-5%): Computed Flesch score for accessibility
+- **😄 Humor/Self-Awareness** (-5%): Self-deprecating vs. overly serious
+
+### 🔄 Cross-Model Validation
+- **Dual Analysis**: Both OpenAI GPT-4 and Anthropic Claude score independently
+- **Reliability Metrics**: Agreement assessment with confidence intervals
+- **Consensus Scoring**: Averaged results for maximum accuracy
+
+**Overall EII Score**: Evidence-based weighted calculation with reliability indicators.
 
 ## 🚀 Quick Start
 
@@ -28,107 +38,140 @@ The EII analyzes articles and scores them across five dimensions:
 git clone https://github.com/dp-pcs/expertise-inflation-index.git
 cd expertise-inflation-index
 pip install -r requirements.txt
+
+# Install enhanced dependencies for scientific analysis
+pip install openai anthropic
+
+# Set up API keys for enhanced analysis
+export OPENAI_API_KEY="your-openai-key"
+export ANTHROPIC_API_KEY="your-anthropic-key"
+
 python web_dashboard.py --port 8080
 ```
 
-Then visit `http://localhost:8080/demo` for an interactive presentation showing how the system works!
+Then visit:
+- `http://localhost:8080/demo` - Interactive presentation 
+- `http://localhost:8080/methodology` - **Scientific methodology overview**
+- `http://localhost:8080/team-championship` - Industry analysis results
 
-### Option 2: Command Line Testing
+### Option 2: Scientific Analysis Mode
 ```bash
-# Test the AI prompt against example articles
-python test_prompt.py
+# Enhanced 7-dimension analysis with cross-model validation
+python enhanced_analysis.py --article examples/ai_vision_example.md --model both
 
-# Discover articles from various sources  
+# Traditional discovery and analysis
 python content_discovery.py --source trilogy --limit 10
-
-# Run team analysis on Trilogy AI articles
 python trilogy_team_analysis.py
 ```
 
-## 🎭 The Real Engine Under the Hood
+## 🔬 Scientific Rigor & Research Applications
 
-While the **Expertise Inflation Index** started as a tongue-in-cheek experiment, there's a real engine under the hood.
+What began as **satirical commentary** has evolved into a **legitimate research methodology**. The enhanced system now provides:
 
-Behind the scenes, the system uses **n8n** to orchestrate a webhook-triggered pipeline. It kicks off with a Firecrawl scrape of a publicly available AI article, then passes the raw content into two different LLMs — one from OpenAI, one from Anthropic — for dual-model analysis. The results are combined and formatted, then stored in **DynamoDB**, ready for future queries or display.
+### 📊 Evidence-Based Analysis
+- **Standardized Prompts**: Detailed rubrics with behavioral anchors for each dimension
+- **Cross-Model Validation**: OpenAI GPT-4 vs Anthropic Claude consensus scoring
+- **Quantitative Metrics**: Automated Flesch readability scores complement LLM analysis
+- **Reliability Indicators**: Statistical measures of inter-model agreement
 
-In this demo, we score articles across humorous but revealing dimensions like **jargon density** and **self-reference count**. But with minor adjustments, this exact pipeline could serve serious, real-world use cases:
+### 🎯 Real-World Applications
+Behind the scenes, the system uses **n8n** to orchestrate a webhook-triggered pipeline with **Firecrawl** scraping and **dual-LLM analysis**. This architecture enables serious use cases:
 
-- **Marketing teams** could analyze competitor tone and audience alignment.
-- **Tech bloggers** could run peer reviews for clarity, originality, and overclaiming.
-- **Educators** could scan student essays or course materials for inaccessible language.
-- **Content teams** could maintain consistency across technical documentation.
-- **Researchers** could analyze academic papers for accessibility and bias.
+- **Academic Research**: Systematic analysis of expertise inflation in AI discourse
+- **Content Quality Assurance**: Automated assessment of technical writing accessibility
+- **Competitive Intelligence**: Analysis of thought leadership positioning across publications
+- **Educational Assessment**: Evaluation of technical communication effectiveness
+- **Journal Peer Review**: Supplementary tool for assessing manuscript quality
 
-To turn it into something production-ready, you'd want to:
+### 🔄 Scientific Methodology
+The **7-dimension scoring system** with **weighted calculations** provides:
+- **Reproducible Results**: Standardized prompts ensure consistent analysis
+- **Validation Framework**: Cross-model agreement scores indicate reliability
+- **Evidence Requirements**: Each score backed by specific textual examples
+- **Synthetic Ethos Detection**: Novel dimension targeting unsourced authority claims
 
-- Add metadata like author, timestamp, and topic tags
-- Replace the humor dimension with sentiment or bias scoring  
-- Tune prompts for more consistent output across models
-- Add a visualization layer (e.g. Supabase dashboard or n8n webhook frontend)
-
-The point is: this isn't just a joke. It's a joke *built on a real stack*, with real data, real APIs, and real potential.
-
-Sometimes the best way to explore a confusing space is to laugh first, build second.
-
-## 🏗️ Architecture
+## 🏗️ Enhanced Architecture
 
 ```mermaid
 graph TB
-    A[Article URL] --> B[n8n Webhook]
-    B --> C[Firecrawl Scraper] 
-    C --> D[Content Analysis]
-    D --> E[OpenAI GPT-4]
-    D --> F[Anthropic Claude]
-    E --> G[Results Aggregation]
-    F --> G
-    G --> H[DynamoDB Storage]
-    H --> I[Web Dashboard]
-    I --> J[Interactive Demo]
-    I --> K[Team Championship]
-    I --> L[Discovery Reports]
+    A[Article URL/Text] --> B[n8n Webhook Pipeline]
+    B --> C[Firecrawl Content Extraction] 
+    C --> D[Enhanced Analysis Engine]
+    D --> E[OpenAI GPT-4<br/>7-Dimension Scoring]
+    D --> F[Anthropic Claude<br/>Independent Analysis]
+    D --> G[Flesch Readability<br/>Computation]
+    E --> H[Cross-Model Validation]
+    F --> H
+    G --> H
+    H --> I[Reliability Assessment]
+    I --> J[DynamoDB Storage]
+    J --> K[Scientific Dashboard]
+    K --> L[Interactive Demo]
+    K --> M[Industry Analysis]
+    K --> N[Methodology Page]
 ```
 
-## 🎪 Features
+## 🎪 Enhanced Features
 
-### 🖥️ Web Dashboard
-- **Interactive Demo**: Step-by-step presentation of how the system works
-- **Discovery Reports**: View articles from various sources (RSS, Reddit, Hacker News, etc.)
-- **Team Championship**: Analyze and compare authors across multiple articles
-- **Real-time Analysis**: Submit any article URL for instant EII scoring
+### 🖥️ Scientific Web Dashboard
+- **Interactive Demo**: Step-by-step presentation with 30+ AI thought leader analysis
+- **Scientific Methodology**: Detailed explanation of 7-dimension validation system
+- **Industry Analysis**: David Proctor vs. leading AI researchers and practitioners
+- **Cross-Model Validation**: Reliability indicators for all analysis results
+- **Evidence-Based Scoring**: Textual examples supporting each dimension score
 
-### 🔍 Content Discovery  
-- **RSS Feeds**: AI magazines, research publications
-- **Reddit**: r/MachineLearning, r/artificial discussions
-- **Hacker News**: AI-related stories and discussions
-- **Trilogy AI**: Team competition mode for analyzing CoE articles
-- **Semantic Scholar**: Academic AI research papers
+### 🔍 Multi-Source Content Discovery  
+- **Academic Sources**: Semantic Scholar API for research papers
+- **Industry Publications**: AI Magazine, Nature AI, IEEE Spectrum
+- **Professional Networks**: LinkedIn thought leadership content
+- **Community Discussions**: Reddit r/MachineLearning, Hacker News
+- **Corporate Blogs**: DeepMind, OpenAI, Anthropic publications
 
-### 🤖 AI Analysis Pipeline
-- **Dual-LLM Analysis**: OpenAI GPT-4 + Anthropic Claude for robust scoring
-- **Configurable Prompts**: Easy to modify scoring criteria
-- **Structured Output**: JSON responses with detailed breakdowns
-- **Anomaly Detection**: Identify outlier scores within author portfolios
+### 🤖 Enhanced AI Analysis Pipeline
+- **Dual-LLM Consensus**: OpenAI GPT-4 + Anthropic Claude cross-validation
+- **7-Dimension Framework**: Confidence, Jargon, Synthetic Ethos, Self-Reference, Originality, Readability, Humor
+- **Quantitative Validation**: Automated readability metrics complement subjective scoring
+- **Reliability Metrics**: Statistical agreement measures with confidence intervals
+- **Evidence Collection**: Required textual examples for each scoring dimension
 
-## 📊 Example Results
+### 📊 Scientific Enhancements
+- **Weighted Scoring**: Evidence-based dimension weights (Confidence 25%, Jargon 20%, etc.)
+- **Reliability Indicators**: High/Medium/Low confidence based on model agreement
+- **Reproducible Results**: Standardized prompts and validation protocols
+- **Academic Applications**: Peer-review ready methodology for research publication
 
-### Team Analysis: Trilogy AI Center of Excellence
+## 📊 Enhanced Results Examples
 
-| Author | Avg EII | Articles | Consistency | Top Score |
-|--------|---------|----------|-------------|-----------|
-| Leonardo Gonzalez | 7.4 | 36 | High | 8.5 |
-| Stanislav Huseletov | 6.2 | 5 | Medium | 7.8 |
-| David Proctor | 5.1 | 3 | High | 6.0 |
-| Praveen Koka | 4.8 | 2 | High | 5.2 |
+### Industry Analysis: David Proctor vs. AI Thought Leaders
 
-### Individual Article Examples
+| Author | EII Score | Reliability | Profile Type | Source |
+|--------|-----------|-------------|--------------|--------|
+| Causal Inference Pioneer | 8.7 | High | Theoretical Expert | Academic |
+| Deep Learning Architect | 8.1 | High | Technical Authority | Industry |
+| Distinguished AI Researcher | 7.9 | Medium | Technical Authority | Research |
+| **David Proctor** | **5.4** | **High** | **Emerging Author** | **Trilogy AI** |
+| AI Safety Authority | 4.5 | Medium | Thoughtful Critic | Academic |
 
-**High Inflation Article** (AI guru claiming revolutionary breakthrough):
-- Overall EII Score: **8.5/10**
-- Confidence: 10/10, Jargon: 9/10, Self-Reference: 9/10, Originality: 9/10, Humor: 1/10
+### Cross-Model Validation Example
 
-**Balanced Article** (Thoughtful engineering post):
-- Overall EII Score: **2.8/10**
-- Confidence: 3/10, Jargon: 4/10, Self-Reference: 2/10, Originality: 2/10, Humor: 3/10
+**Article**: "The Future of Neural Networks"
+- **OpenAI GPT-4 Score**: 7.2/10
+- **Anthropic Claude Score**: 6.8/10  
+- **Consensus Score**: 7.0/10
+- **Reliability**: High (0.4 point difference)
+- **Evidence**: "Revolutionary breakthrough in..." (Confidence: 8), "Cutting-edge paradigm shift..." (Jargon: 7)
+
+### 7-Dimension Breakdown
+
+**High Inflation Example** (AI Guru Post):
+- Overall EII: **8.5/10** | Reliability: **High**
+- Confidence: 9/10, Jargon: 8/10, Synthetic Ethos: 3/10, Self-Reference: 8/10
+- Originality: 9/10, Readability: 4/10, Humor: 2/10
+
+**Balanced Example** (Technical Tutorial):  
+- Overall EII: **3.2/10** | Reliability: **High**
+- Confidence: 4/10, Jargon: 5/10, Synthetic Ethos: 8/10, Self-Reference: 3/10
+- Originality: 3/10, Readability: 8/10, Humor: 6/10
 
 ## 💰 Cost Analysis
 
