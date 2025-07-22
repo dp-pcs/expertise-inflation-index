@@ -113,16 +113,19 @@ def query_openai(prompt: str, article: str) -> Optional[Dict[str, Any]]:
     if not api_key:
         print("\u26a0\ufe0f  OPENAI_API_KEY not set. Skipping OpenAI analysis.")
         return None
-    openai.api_key = api_key
+    
+    # Use the new OpenAI v1.0+ client format
+    from openai import OpenAI
+    client = OpenAI(api_key=api_key)
     full_prompt = prompt.replace('[INSERT ARTICLE TEXT HERE]', article)
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4-0613",
             messages=[{"role": "user", "content": full_prompt}],
             temperature=0.3,
             max_tokens=1000
         )
-        result_text = response.choices[0].message['content']
+        result_text = response.choices[0].message.content
         # Find JSON object in the response
         json_start = result_text.find('{')
         json_end = result_text.rfind('}') + 1
@@ -146,13 +149,14 @@ def query_anthropic(prompt: str, article: str) -> Optional[Dict[str, Any]]:
     client = Anthropic(api_key=api_key)
     full_prompt = prompt.replace('[INSERT ARTICLE TEXT HERE]', article)
     try:
-        completion = client.completions.create(
-            model="claude-3-opus-20240229",
+        # Use the correct Claude-3 messages API
+        completion = client.messages.create(
+            model="claude-3-haiku-20240307",  # Using Haiku for cost efficiency
             messages=[{"role": "user", "content": full_prompt}],
             max_tokens=1000,
             temperature=0.3
         )
-        result_text = completion.completion
+        result_text = completion.content[0].text
         json_start = result_text.find('{')
         json_end = result_text.rfind('}') + 1
         if json_start == -1 or json_end == -1:
