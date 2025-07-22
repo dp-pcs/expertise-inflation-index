@@ -2295,7 +2295,9 @@ def real_industry_analysis():
             "david_articles_count": len(david_articles_analyzed),
             "external_articles_count": len(external_articles_analyzed),
             "analysis_method": "real_enhanced_analysis",
-            "cross_model_validation": True
+            "cross_model_validation": True,
+            "inflation_champion": [author for author, _ in ranked_authors if author and author != "null"][0] if ranked_authors else "No data",
+            "humility_champion": sorted([(author, stats['avg_eii_score']) for author, stats in final_author_stats.items() if author and author != "null"], key=lambda x: x[1])[0][0] if final_author_stats else "No data"
         }
     }
     
