@@ -31,7 +31,16 @@ except ImportError:
     from flask import Flask, render_template, jsonify, request, send_from_directory
     from flask_cors import CORS
 
-app = Flask(__name__)
+# Initialize Flask app with correct paths for templates and static files
+# Since we're now in src/, we need to point to parent directory
+import os
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+template_dir = os.path.join(parent_dir, 'templates')
+static_dir = os.path.join(parent_dir, 'static')
+
+app = Flask(__name__, 
+           template_folder=template_dir,
+           static_folder=static_dir)
 CORS(app)
 
 # Add custom Jinja2 filter for average
@@ -283,7 +292,9 @@ class EIIDashboard:
             }
         }
 
-dashboard = EIIDashboard()
+# Initialize dashboard with correct data directory path
+# Since we're now in src/, data directory is in parent directory
+dashboard = EIIDashboard(data_dir=parent_dir)
 
 @app.route('/')
 def index():
