@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}EII Scientific Methodology{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>🔬 EII Scientific Methodology</h1>
+        <p>Enhanced 7-Dimension Expertise Inflation Analysis with Cross-Model Validation</p>
+    </div>
+    
+    <div class="methodology-grid">
+        <!-- Core Methodology -->
+        <div class="card methodology-card">
+            <h3>📊 Enhanced Scoring Dimensions</h3>
+            <div class="dimensions-list">
+                <div class="dimension">
+                    <h4>1. Confidence Inflation (25% weight)</h4>
+                    <p>Measures overconfident claims and lack of hedging language</p>
+                    <div class="scale">1-3: Humble → 4-6: Balanced → 7-10: Overconfident</div>
+                </div>
+                <div class="dimension">
+                    <h4>2. Jargon Density (20% weight)</h4>
+                    <p>Quantifies technical complexity and accessibility</p>
+                    <div class="scale">1-3: Plain language → 7-10: Jargon wall</div>
+                </div>
+                <div class="dimension">
+                    <h4>3. Synthetic Ethos (20% weight)</h4>
+                    <p>Detects fake authority without verifiable sources</p>
+                    <div class="scale">1-3: High synthetic → 7-10: Evidence-based</div>
+                </div>
+                <div class="dimension">
+                    <h4>4. Self-Reference (15% weight)</h4>
+                    <p>Measures self-promotion vs collaborative tone</p>
+                </div>
+                <div class="dimension">
+                    <h4>5. Originality Claims (10% weight)</h4>
+                    <p>Evaluates breakthrough claims vs incremental insights</p>
+                </div>
+                <div class="dimension">
+                    <h4>6. Readability (-5% weight)</h4>
+                    <p>Computed Flesch score: Better readability = Lower inflation</p>
+                </div>
+                <div class="dimension">
+                    <h4>7. Humor/Self-Awareness (-5% weight)</h4>
+                    <p>Higher humor correlates with lower expertise inflation</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cross-Model Validation -->
+        <div class="card methodology-card">
+            <h3>🔄 Cross-Model Validation</h3>
+            <div class="validation-process">
+                <div class="step">
+                    <h4>Step 1: Dual Analysis</h4>
+                    <p>Both OpenAI GPT-4 and Anthropic Claude analyze each article independently</p>
+                </div>
+                <div class="step">
+                    <h4>Step 2: Agreement Assessment</h4>
+                    <p>Calculate absolute differences between model scores</p>
+                    <ul>
+                        <li><strong>High Reliability:</strong> Avg difference ≤ 1.0</li>
+                        <li><strong>Medium Reliability:</strong> Avg difference ≤ 2.0</li>
+                        <li><strong>Low Reliability:</strong> Avg difference > 2.0</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Step 3: Consensus Scoring</h4>
+                    <p>Final scores use averaged values from both models for reliability</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quantitative Metrics -->
+        <div class="card methodology-card">
+            <h3>📐 Quantitative Metrics</h3>
+            <div class="metrics-list">
+                <div class="metric">
+                    <h4>Flesch Reading Ease</h4>
+                    <p>Automated readability computation using syllable counting and sentence length analysis</p>
+                    <code>206.835 - 1.015 × (words/sentences) - 84.6 × (syllables/words)</code>
+                </div>
+                <div class="metric">
+                    <h4>Weighted EII Score</h4>
+                    <p>Comprehensive inflation index with evidence-based dimension weights</p>
+                    <div class="weight-breakdown">
+                        <span>Confidence (25%) + Jargon (20%) + Synthetic Ethos (20%) + Self-Reference (15%) + Originality (10%) - Readability (5%) - Humor (5%)</span>
+                    </div>
+                </div>
+                <div class="metric">
+                    <h4>Inter-Model Reliability</h4>
+                    <p>Statistical measure of agreement between AI models for scoring consistency</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scientific Improvements -->
+        <div class="card methodology-card full-width">
+            <h3>🎯 Scientific Enhancements</h3>
+            <div class="improvements-grid">
+                <div class="improvement">
+                    <h4>🔬 Evidence-Based Scoring</h4>
+                    <p>Each score requires specific textual examples and detailed analysis</p>
+                </div>
+                <div class="improvement">
+                    <h4>📊 Quantitative Validation</h4>
+                    <p>Combines subjective LLM analysis with objective readability metrics</p>
+                </div>
+                <div class="improvement">
+                    <h4>🔄 Reproducibility</h4>
+                    <p>Standardized prompts and cross-model validation ensure consistent results</p>
+                </div>
+                <div class="improvement">
+                    <h4>⚖️ Calibrated Weights</h4>
+                    <p>Dimension weights based on expertise inflation literature and empirical testing</p>
+                </div>
+                <div class="improvement">
+                    <h4>🎯 Synthetic Ethos Detection</h4>
+                    <p>Novel dimension targeting fake authority and unsourced credibility claims</p>
+                </div>
+                <div class="improvement">
+                    <h4>📈 Reliability Metrics</h4>
+                    <p>Cross-model agreement scores provide confidence intervals for results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="methodology-actions">
+        <a href="/demo" class="nav-button">🎭 Try Interactive Demo</a>
+        <a href="/team-championship" class="nav-button">🌍 See Analysis Results</a>
+        <a href="https://github.com/dp-pcs/expertise-inflation-index" class="nav-button" target="_blank">📖 View Source Code</a>
+    </div>
+</div>
+
+<style>
+.methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.methodology-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.dimensions-list .dimension {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.dimension h4 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.scale {
+    font-size: 0.85em;
+    color: #666;
+    font-style: italic;
+    background: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+.validation-process .step {
+    margin-bottom: 20px;
+}
+
+.step h4 {
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+}
+
+.metrics-list .metric {
+    margin-bottom: 25px;
+}
+
+.metric h4 {
+    color: #e74c3c;
+    margin-bottom: 8px;
+}
+
+.metric code {
+    background: #f1f1f1;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    display: block;
+    margin-top: 10px;
+}
+
+.weight-breakdown {
+    background: #e8f4fd;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+
+.improvements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.improvement {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.improvement h4 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.methodology-actions {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.methodology-actions .nav-button {
+    margin: 0 15px;
+}
+</style>
+{% endblock %} 

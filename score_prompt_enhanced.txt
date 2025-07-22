@@ -1,0 +1,74 @@
+You are an expert analyst tasked with evaluating articles for "expertise inflation" – the tendency for AI‑related content to exhibit overconfidence, excessive jargon, inflated claims of expertise, poor readability, and synthetic ethos (appearance of authority without verifiable sources).
+
+Analyze the following article and score it on these dimensions (1-10):
+
+**CONFIDENCE INFLATION (1-10):**
+1-3: Humble, acknowledges limitations, uses hedging language ("might", "could", "appears")
+4-6: Moderate confidence, some definitive statements but balanced with nuance and humility
+7-8: High confidence, frequent definitive claims, minimal uncertainty, dismisses alternatives
+9-10: Extreme overconfidence, absolute statements, dismisses alternatives and critique
+
+**JARGON DENSITY (1-10):**
+1-3: Plain language, minimal technical terms, concepts well-explained
+4-6: Some technical language but accessible, good explanations
+7-8: Heavy jargon, buzzwords, assumes expert knowledge
+9-10: Incomprehensible jargon wall, buzzword bingo, obfuscating
+
+**SELF-REFERENCE/AUTHORITY (1-10):**
+1-3: Minimal self-promotion, cites others, collaborative tone
+4-6: Some personal expertise mentioned, balanced citations
+7-8: Frequent self-citation, emphasizes own authority/experience
+9-10: Extreme self-promotion, dismisses others, "guru" positioning
+
+**ORIGINALITY CLAIMS (1-10):**
+1-3: Builds on existing work, gives credit, incremental insights
+4-6: Some novel ideas mixed with established concepts
+7-8: Claims significant breakthroughs, overstates novelty
+9-10: Claims to have "cracked the code", revolutionary breakthrough
+
+**HUMOR/SELF‑AWARENESS (1-10):**
+1-3: No humor, takes itself very seriously, lacks perspective
+4-6: Occasional light moments, some self-awareness
+7-8: Good humor, acknowledges absurdities, self-deprecating
+9-10: Satirical, highly self-aware, embraces the absurd
+
+**READABILITY (1-10):**
+1-3: Very low readability; complex sentences, high average sentence length, difficult vocabulary; article is hard to read.
+4-6: Moderate readability; some long sentences and jargon but generally understandable.
+7-10: High readability; clear, concise sentences, explains technical terms, accessible to non‑experts.
+
+**SYNTHETIC ETHOS (1-10):**
+1-3: High synthetic ethos; the article projects authority without providing verifiable sources or authorship; uses generic "researchers say" but offers no citations.
+4-6: Some citations but unclear authorship; moderate reliance on synthetic authority.
+7-10: Low synthetic ethos; article cites credible sources, authorship is clear, arguments grounded in evidence.
+
+Return your analysis as a JSON object with this exact structure:
+{
+  "scores": {
+    "confidence": <1-10 integer>,
+    "jargon_density": <1-10 integer>,
+    "self_reference": <1-10 integer>,
+    "originality": <1-10 integer>,
+    "humor_rating": <1-10 integer>,
+    "readability": <1-10 integer>,
+    "synthetic_ethos": <1-10 integer>
+  },
+  "analysis": {
+    "confidence": "...",
+    "jargon_density": "...",
+    "self_reference": "...",
+    "originality": "...",
+    "humor_rating": "...",
+    "readability": "...",
+    "synthetic_ethos": "..."
+  },
+  "examples": {
+    "confidence": ["example phrase showing over/under confidence", ...],
+    "jargon_density": [...],
+    "self_reference": [...],
+    "originality": [...],
+    "humor_rating": [...],
+    "readability": [...],
+    "synthetic_ethos": [...]
+  }
+}

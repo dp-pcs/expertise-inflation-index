@@ -19,6 +19,8 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 import argparse
 from pathlib import Path
+import subprocess
+import tempfile
 
 try:
     from flask import Flask, render_template, jsonify, request, send_from_directory
@@ -1792,6 +1794,125 @@ def main():
     print(f"📸 Perfect for screenshots and presentations!")
     
     app.run(host=args.host, port=args.port, debug=args.debug)
+
+@app.route('/api/enhanced-analysis', methods=['POST'])
+def enhanced_analysis():
+    """Enhanced EII analysis using scientific 7-dimension scoring"""
+    import subprocess
+    import tempfile
+    import json
+    from datetime import datetime
+    
+    data = request.get_json()
+    article_text = data.get('article_text', '')
+    article_url = data.get('article_url', '')
+    
+    if not article_text:
+        return jsonify({"success": False, "error": "No article text provided"})
+    
+    try:
+        # Create temporary file for article
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
+            f.write(article_text)
+            temp_article_path = f.name
+        
+        # Create temporary output file
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            temp_output_path = f.name
+        
+        # Run enhanced analysis
+        result = subprocess.run([
+            'python', 'enhanced_analysis.py',
+            '--article', temp_article_path,
+            '--prompt', 'score_prompt_enhanced.txt',
+            '--model', 'both',
+            '--output', temp_output_path
+        ], capture_output=True, text=True, timeout=60)
+        
+        if result.returncode != 0:
+            return jsonify({
+                "success": False, 
+                "error": f"Analysis failed: {result.stderr}"
+            })
+        
+        # Load results
+        with open(temp_output_path, 'r') as f:
+            analysis_results = json.load(f)
+        
+        # Calculate EII score using 7-dimension system
+        # Use average of OpenAI and Anthropic if both available
+        scores = {}
+        if 'openai' in analysis_results and 'anthropic' in analysis_results:
+            # Average both models for reliability
+            openai_scores = analysis_results['openai']['scores']
+            anthropic_scores = analysis_results['anthropic']['scores']
+            
+            for dimension in ['confidence', 'jargon_density', 'self_reference', 
+                            'originality', 'humor_rating', 'readability', 'synthetic_ethos']:
+                scores[dimension] = round((openai_scores[dimension] + anthropic_scores[dimension]) / 2, 1)
+        
+        elif 'openai' in analysis_results:
+            scores = analysis_results['openai']['scores']
+        elif 'anthropic' in analysis_results:
+            scores = analysis_results['anthropic']['scores']
+        else:
+            return jsonify({"success": False, "error": "No valid model results"})
+        
+        # Calculate comprehensive EII score (weighted average)
+        # Higher weights for confidence, jargon, synthetic_ethos (core inflation indicators)
+        # Lower weight for humor and readability (positive indicators)
+        weights = {
+            'confidence': 0.25,
+            'jargon_density': 0.20,
+            'synthetic_ethos': 0.20,
+            'self_reference': 0.15,
+            'originality': 0.10,
+            'readability': -0.05,  # Negative weight (better readability = lower inflation)
+            'humor_rating': -0.05   # Negative weight (more humor = lower inflation)
+        }
+        
+        eii_score = sum(scores[dim] * weights[dim] for dim in weights.keys())
+        eii_score = max(1.0, min(10.0, eii_score))  # Clamp to 1-10 range
+        
+        # Determine reliability based on cross-model agreement
+        reliability = "Unknown"
+        if 'score_differences' in analysis_results:
+            avg_difference = sum(analysis_results['score_differences'].values()) / len(analysis_results['score_differences'])
+            if avg_difference <= 1.0:
+                reliability = "High"
+            elif avg_difference <= 2.0:
+                reliability = "Medium"
+            else:
+                reliability = "Low"
+        
+        # Clean up temporary files
+        os.unlink(temp_article_path)
+        os.unlink(temp_output_path)
+        
+        return jsonify({
+            "success": True,
+            "eii_score": round(eii_score, 1),
+            "reliability": reliability,
+            "scores": scores,
+            "computed_readability": analysis_results.get('readability_computed'),
+            "model_comparison": analysis_results.get('score_differences', {}),
+            "analysis_details": {
+                "openai": analysis_results.get('openai', {}),
+                "anthropic": analysis_results.get('anthropic', {})
+            },
+            "methodology": "7-dimension enhanced EII with cross-model validation",
+            "timestamp": datetime.now().isoformat()
+        })
+        
+    except subprocess.TimeoutExpired:
+        return jsonify({"success": False, "error": "Analysis timed out"})
+    except Exception as e:
+        return jsonify({"success": False, "error": f"Analysis error: {str(e)}"})
+
+@app.route('/methodology')
+def methodology():
+    """Enhanced EII methodology and scientific approach page"""
+    return render_template('methodology.html')
 
 if __name__ == "__main__":
     main() 
