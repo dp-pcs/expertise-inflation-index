@@ -1,4 +1,4 @@
-/* Cache refresh comment v23 - Force 4-column dashboard layout for presentations */
+/* Cache refresh comment v24 - FLEXBOX forced single-row layout for presentations */
 
 /* EII Dashboard Styles */
 :root {
@@ -56,8 +56,8 @@ body {
 }
 
 .dashboard-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
     gap: 12px;
     margin-bottom: 25px;
     width: 100%;
@@ -66,12 +66,14 @@ body {
 .card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
-    padding: 14px;
+    padding: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #333; /* Ensure dark text on white background */
-    min-width: 0; /* Allow cards to shrink below content size */
+    min-width: 0 !important; /* Allow cards to shrink below content size */
     overflow: hidden; /* Prevent content overflow */
+    flex: 1 1 0 !important; /* Equal width, can shrink/grow */
+    max-width: 25% !important; /* Force 25% width */
 }
 
 .card:hover {
@@ -2159,8 +2161,8 @@ body {
 
 /* Force 4 columns always for presentations - override any responsive rules */
 .dashboard-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
-    display: grid !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
 }
 
 /* Responsive design for mobile only */
