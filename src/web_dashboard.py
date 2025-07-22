@@ -63,7 +63,7 @@ class EIIDashboard:
         
     def load_team_results(self) -> Optional[Dict]:
         """Load team championship results from JSON file"""
-        results_file = self.data_dir / "results" / "trilogy_eii_results.json"
+        results_file = self.data_dir / "data" / "results" / "trilogy_eii_results.json"
         if results_file.exists():
             with open(results_file, 'r') as f:
                 return json.load(f)
@@ -71,7 +71,7 @@ class EIIDashboard:
     
     def load_discovery_results(self) -> Optional[Dict]:
         """Load content discovery results from JSON file"""
-        discovery_file = self.data_dir / "discovery" / "discovered_articles.json"
+        discovery_file = self.data_dir / "data" / "discovery" / "discovered_articles.json"
         if discovery_file.exists():
             with open(discovery_file, 'r') as f:
                 return json.load(f)
@@ -96,7 +96,7 @@ class EIIDashboard:
         
         # Try to load the specific file
         if filename:
-            discovery_file = self.data_dir / "discovery" / filename
+            discovery_file = self.data_dir / "data" / "discovery" / filename
             if discovery_file.exists():
                 try:
                     with open(discovery_file, 'r') as f:
