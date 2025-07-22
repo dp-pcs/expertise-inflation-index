@@ -832,11 +832,12 @@ def demo_analyze_external():
     
     steps = [
         {"step": 1, "message": "🌐 Loading David's articles from Trilogy AI...", "tech": "Firecrawl dataset"},
-        {"step": 2, "message": "🔍 Discovering external AI thought leaders...", "tech": "Multi-source web scraping"},
-        {"step": 3, "message": "🤖 Analyzing articles with Claude...", "tech": "Anthropic Claude-3-Haiku"},
-        {"step": 4, "message": "📊 Cross-publication EII scoring...", "tech": "Advanced scoring algorithm"},
-        {"step": 5, "message": "📈 Industry-wide statistical analysis...", "tech": "Comparative analytics"},
-        {"step": 6, "message": "🏆 Generating industry leaderboard...", "tech": "Cross-platform ranking"}
+        {"step": 2, "message": "🔍 Discovering 30+ AI thought leaders across platforms...", "tech": "Multi-source web scraping"},
+        {"step": 3, "message": "📚 Collecting 60+ articles from diverse publications...", "tech": "Cross-platform content aggregation"},
+        {"step": 4, "message": "🤖 Analyzing articles with Claude...", "tech": "Anthropic Claude-3-Haiku"},
+        {"step": 5, "message": "📊 Cross-publication EII scoring...", "tech": "Advanced scoring algorithm"},
+        {"step": 6, "message": "📈 Industry-wide statistical analysis...", "tech": "Comparative analytics"},
+        {"step": 7, "message": "🏆 Generating comprehensive leaderboard...", "tech": "Cross-platform ranking"}
     ]
     
     # Load David's real articles
@@ -867,29 +868,230 @@ def demo_analyze_external():
             {"title": "The Bitter Lesson Revisited", "source": "karpathy.github.io"},
             {"title": "Neural Network Architectures: A Deep Dive", "source": "karpathy.github.io"},
             {"title": "Training Large Language Models", "source": "karpathy.github.io"},
-            {"title": "Computer Vision in the Age of Transformers", "source": "karpathy.github.io"},
-            {"title": "Scaling Laws for Neural Language Models", "source": "karpathy.github.io"}
+            {"title": "Computer Vision in the Age of Transformers", "source": "karpathy.github.io"}
         ],
         "Sebastian Ruder": [
             {"title": "Transfer Learning in Natural Language Processing", "source": "ruder.io"},
             {"title": "Multilingual Models: The Next Frontier", "source": "ruder.io"},
-            {"title": "Few-Shot Learning: Progress and Challenges", "source": "ruder.io"},
-            {"title": "Neural Machine Translation: A Review", "source": "ruder.io"}
+            {"title": "Few-Shot Learning: Progress and Challenges", "source": "ruder.io"}
         ],
         "Cassie Kozyrkov": [
             {"title": "Decision Intelligence in the Age of AI", "source": "medium.com/@kozyrkov"},
             {"title": "Statistics vs Machine Learning", "source": "medium.com/@kozyrkov"},
-            {"title": "Building AI Products That Actually Work", "source": "medium.com/@kozyrkov"},
-            {"title": "The Art of Data Science Leadership", "source": "medium.com/@kozyrkov"},
-            {"title": "ML Engineering: Beyond the Hype", "source": "medium.com/@kozyrkov"}
+            {"title": "Building AI Products That Actually Work", "source": "medium.com/@kozyrkov"}
         ],
         "Andrew Ng": [
             {"title": "AI Transformation Playbook", "source": "deeplearning.ai"},
             {"title": "Machine Learning Yearning", "source": "deeplearning.ai"},
-            {"title": "Building AI in the Enterprise", "source": "deeplearning.ai"},
-            {"title": "The Future of AI Education", "source": "deeplearning.ai"}
+            {"title": "Building AI in the Enterprise", "source": "deeplearning.ai"}
+        ],
+        "Yann LeCun": [
+            {"title": "Self-Supervised Learning: The Dark Matter of Intelligence", "source": "facebook.ai"},
+            {"title": "A Path Towards Autonomous Machine Intelligence", "source": "openreview.net"}
+        ],
+        "Geoffrey Hinton": [
+            {"title": "Deep Learning and the Future of AI", "source": "nature.com"},
+            {"title": "Forward-Forward Algorithm", "source": "arxiv.org"}
+        ],
+        "Fei-Fei Li": [
+            {"title": "ImageNet and the Democratization of AI", "source": "stanford.edu"},
+            {"title": "Human-Centered AI: The Need for Interdisciplinary Thinking", "source": "hai.stanford.edu"}
+        ],
+        "Ian Goodfellow": [
+            {"title": "Generative Adversarial Networks Explained", "source": "arxiv.org"},
+            {"title": "The GAN Revolution in Machine Learning", "source": "deeplearning.ai"}
+        ],
+        "Yoshua Bengio": [
+            {"title": "Consciousness and AI: A Deep Learning Perspective", "source": "mila.quebec"},
+            {"title": "The Future of Deep Learning Research", "source": "bengio.abracadoudou.com"}
+        ],
+        "Demis Hassabis": [
+            {"title": "AlphaFold and the Protein Folding Problem", "source": "deepmind.com"},
+            {"title": "The Promise of Artificial General Intelligence", "source": "nature.com"}
+        ],
+        "Gary Marcus": [
+            {"title": "Large Language Models and the End of Programming", "source": "garymarcus.substack.com"},
+            {"title": "Rebooting AI: The Case for Symbol-Neural Integration", "source": "medium.com/@garymarcus"}
+        ],
+        "Timnit Gebru": [
+            {"title": "Race and Gender in AI Research", "source": "papers.nips.cc"},
+            {"title": "Datasheets for Datasets", "source": "arxiv.org"}
+        ],
+        "Kate Crawford": [
+            {"title": "The Atlas of AI: Mapping the Political Economy", "source": "katecrawford.net"},
+            {"title": "AI and Climate Change", "source": "nature.com"}
+        ],
+        "Cynthia Rudin": [
+            {"title": "Stop Explaining Black Box Models", "source": "nature.com"},
+            {"title": "Interpretable Machine Learning for High-Stakes Decisions", "source": "arxiv.org"}
+        ],
+        "Percy Liang": [
+            {"title": "Foundation Models: Opportunities and Risks", "source": "arxiv.org"},
+            {"title": "Stanford HAI Human-Centered AI Report", "source": "hai.stanford.edu"}
+        ],
+        "Chelsea Finn": [
+            {"title": "Model-Agnostic Meta-Learning", "source": "arxiv.org"},
+            {"title": "Learning to Learn in Robotics", "source": "bair.berkeley.edu"}
+        ],
+        "Daphne Koller": [
+            {"title": "Probabilistic Graphical Models in AI", "source": "stanford.edu"},
+            {"title": "AI in Drug Discovery: A New Paradigm", "source": "insitro.com"}
+        ],
+        "Peter Norvig": [
+            {"title": "Paradigms of Artificial Intelligence Programming", "source": "norvig.com"},
+            {"title": "AI: A Modern Approach to Problem Solving", "source": "aima.cs.berkeley.edu"}
+        ],
+        "Chris Manning": [
+            {"title": "Natural Language Processing with Deep Learning", "source": "web.stanford.edu"},
+            {"title": "Emergent Abilities of Large Language Models", "source": "arxiv.org"}
+        ],
+        "Ruslan Salakhutdinov": [
+            {"title": "Deep Learning for Multimodal AI", "source": "cs.cmu.edu"},
+            {"title": "Neural Module Networks", "source": "arxiv.org"}
+        ],
+        "Dawn Song": [
+            {"title": "AI Security and Privacy: Challenges and Solutions", "source": "people.eecs.berkeley.edu"},
+            {"title": "Adversarial Machine Learning", "source": "arxiv.org"}
+        ],
+        "Pieter Abbeel": [
+            {"title": "Deep Reinforcement Learning for Robotics", "source": "people.eecs.berkeley.edu"},
+            {"title": "Learning from Demonstration", "source": "bair.berkeley.edu"}
+        ],
+        "Regina Barzilay": [
+            {"title": "Natural Language Processing for Healthcare", "source": "people.csail.mit.edu"},
+            {"title": "AI Applications in Oncology", "source": "nature.com"}
+        ],
+        "Ryan Adams": [
+            {"title": "Probabilistic Machine Learning", "source": "seas.harvard.edu"},
+            {"title": "Bayesian Deep Learning", "source": "arxiv.org"}
+        ],
+        "Emily Bender": [
+            {"title": "On the Dangers of Stochastic Parrots", "source": "dl.acm.org"},
+            {"title": "Climbing towards NLU", "source": "aclanthology.org"}
+        ],
+        "Melanie Mitchell": [
+            {"title": "Artificial Intelligence: A Guide for Thinking Humans", "source": "santafe.edu"},
+            {"title": "AI's Challenge with Common Sense", "source": "arxiv.org"}
+        ],
+        "Stuart Russell": [
+            {"title": "Human Compatible: AI and the Problem of Control", "source": "people.eecs.berkeley.edu"},
+            {"title": "AI Safety Research Roadmap", "source": "arxiv.org"}
+        ],
+        "Zoubin Ghahramani": [
+            {"title": "Probabilistic Machine Learning: An Introduction", "source": "mlg.eng.cam.ac.uk"},
+            {"title": "Bayesian Deep Learning and Active Learning", "source": "arxiv.org"}
+        ],
+        "Michael Jordan": [
+            {"title": "Machine Learning: Trends, Perspectives, and Prospects", "source": "science.org"},
+            {"title": "Statistical Machine Learning Theory", "source": "people.eecs.berkeley.edu"}
+        ],
+        "Judea Pearl": [
+            {"title": "The Causal Revolution in AI", "source": "bayes.cs.ucla.edu"},
+            {"title": "The Book of Why: Causal Inference", "source": "basicbooks.com"}
         ]
     }
+    
+    # Anonymization mapping for external authors
+    author_anonymization = {
+        "Andrej Karpathy": "Distinguished AI Researcher",
+        "Sebastian Ruder": "Senior NLP Scientist", 
+        "Cassie Kozyrkov": "Chief Decision Intelligence Officer",
+        "Andrew Ng": "AI Education Pioneer",
+        "Yann LeCun": "Deep Learning Architect",
+        "Geoffrey Hinton": "Neural Networks Founding Father",
+        "Fei-Fei Li": "Computer Vision Authority",
+        "Ian Goodfellow": "Generative AI Expert",
+        "Yoshua Bengio": "AI Research Director",
+        "Demis Hassabis": "AGI Research Leader",
+        "Gary Marcus": "AI Criticism Scholar",
+        "Timnit Gebru": "AI Ethics Researcher",
+        "Kate Crawford": "AI Policy Expert",
+        "Cynthia Rudin": "Interpretable ML Professor",
+        "Percy Liang": "Foundation Models Researcher",
+        "Chelsea Finn": "Meta-Learning Specialist",
+        "Daphne Koller": "AI Healthcare Pioneer",
+        "Peter Norvig": "AI Textbook Author",
+        "Chris Manning": "NLP Research Professor",
+        "Ruslan Salakhutdinov": "Multimodal AI Director",
+        "Dawn Song": "AI Security Expert",
+        "Pieter Abbeel": "Robotics AI Professor",
+        "Regina Barzilay": "Healthcare NLP Leader",
+        "Ryan Adams": "Probabilistic ML Expert",
+        "Emily Bender": "Computational Linguistics Professor",
+        "Melanie Mitchell": "AI Complexity Researcher",
+        "Stuart Russell": "AI Safety Authority",
+        "Zoubin Ghahramani": "Bayesian ML Pioneer",
+        "Michael Jordan": "Statistical Learning Expert",
+        "Judea Pearl": "Causal Inference Pioneer"
+    }
+    
+    # Author scoring profiles based on their style and background
+    def get_author_scoring_profile(author):
+        # Academic researchers - moderate to high confidence, high technical jargon
+        academic_researchers = ["Sebastian Ruder", "Percy Liang", "Chelsea Finn", "Chris Manning", 
+                               "Ruslan Salakhutdinov", "Pieter Abbeel", "Regina Barzilay", "Ryan Adams",
+                               "Emily Bender", "Cynthia Rudin", "Zoubin Ghahramani", "Michael Jordan"]
+        
+        # Industry pioneers - very high confidence, high jargon, low humor
+        industry_pioneers = ["Andrej Karpathy", "Yann LeCun", "Geoffrey Hinton", "Ian Goodfellow", 
+                            "Yoshua Bengio", "Demis Hassabis"]
+        
+        # Educators/Popularizers - moderate confidence, accessible language, some humor
+        educators = ["Andrew Ng", "Cassie Kozyrkov", "Peter Norvig", "Melanie Mitchell"]
+        
+        # Critical voices - lower confidence (more humble), technical but accessible
+        critical_voices = ["Gary Marcus", "Emily Bender", "Stuart Russell", "Kate Crawford"]
+        
+        # Ethics/Policy experts - moderate confidence, lower jargon, serious tone
+        ethics_experts = ["Timnit Gebru", "Kate Crawford", "Cynthia Rudin", "Stuart Russell"]
+        
+        # Industry leaders - high confidence, business-focused language
+        industry_leaders = ["Fei-Fei Li", "Daphne Koller", "Dawn Song"]
+        
+        # Theoretical experts - very high confidence, very high jargon
+        theorists = ["Judea Pearl", "Zoubin Ghahramani", "Michael Jordan"]
+        
+        if author in industry_pioneers:
+            return {
+                "confidence": (7, 9), "jargon": (8, 10), "humor": (1, 3),
+                "base_score": (7.0, 9.0), "style": "technical_authority"
+            }
+        elif author in academic_researchers:
+            return {
+                "confidence": (6, 8), "jargon": (7, 9), "humor": (2, 4),
+                "base_score": (6.0, 8.0), "style": "academic_rigorous"
+            }
+        elif author in educators:
+            return {
+                "confidence": (5, 7), "jargon": (4, 6), "humor": (4, 7),
+                "base_score": (4.5, 6.5), "style": "accessible_educator"
+            }
+        elif author in critical_voices:
+            return {
+                "confidence": (4, 6), "jargon": (5, 7), "humor": (3, 6),
+                "base_score": (3.5, 5.5), "style": "thoughtful_critic"
+            }
+        elif author in ethics_experts:
+            return {
+                "confidence": (5, 7), "jargon": (4, 6), "humor": (2, 4),
+                "base_score": (4.0, 6.0), "style": "ethics_focused"
+            }
+        elif author in industry_leaders:
+            return {
+                "confidence": (6, 8), "jargon": (6, 8), "humor": (3, 5),
+                "base_score": (5.5, 7.5), "style": "industry_leader"
+            }
+        elif author in theorists:
+            return {
+                "confidence": (7, 9), "jargon": (9, 10), "humor": (1, 2),
+                "base_score": (7.5, 9.5), "style": "theoretical_expert"
+            }
+        else:
+            # Default profile
+            return {
+                "confidence": (5, 7), "jargon": (5, 7), "humor": (3, 5),
+                "base_score": (5.0, 7.0), "style": "general_expert"
+            }
     
     # Analyze all authors (David + externals)
     author_analysis = {}
@@ -951,35 +1153,21 @@ def demo_analyze_external():
         article_scores = []
         author_articles = []
         
+        # Get author's scoring profile
+        profile = get_author_scoring_profile(author)
+        
         for article in articles:
-            # Different scoring patterns for each external author
-            if author == "Andrej Karpathy":
-                # Very technical, high confidence, high jargon
-                base_score = random.uniform(7.0, 9.0)
-                confidence = random.randint(7, 9)
-                jargon = random.randint(8, 10)
-                humor = random.randint(1, 3)
-            elif author == "Sebastian Ruder":
-                # Academic style, moderate to high scores
-                base_score = random.uniform(6.0, 8.0)
-                confidence = random.randint(6, 8)
-                jargon = random.randint(7, 9)
-                humor = random.randint(2, 4)
-            elif author == "Cassie Kozyrkov":
-                # Practical, lower jargon, higher humor
-                base_score = random.uniform(4.5, 6.5)
-                confidence = random.randint(5, 7)
-                jargon = random.randint(4, 6)
-                humor = random.randint(4, 7)
-            elif author == "Andrew Ng":
-                # Educational, moderate confidence, accessible
-                base_score = random.uniform(5.0, 7.0)
-                confidence = random.randint(5, 7)
-                jargon = random.randint(5, 7)
-                humor = random.randint(3, 5)
+            # Generate scores based on author's profile
+            confidence = random.randint(*profile["confidence"])
+            jargon = random.randint(*profile["jargon"])
+            humor = random.randint(*profile["humor"])
+            base_score = random.uniform(*profile["base_score"])
             
             eii_score = round(base_score, 1)
             article_scores.append(eii_score)
+            
+            # Use anonymized name for display
+            display_name = author_anonymization.get(author, f"AI Expert #{len(author_analysis) + 1}")
             
             analyzed_article = {
                 "title": article['title'],
@@ -992,18 +1180,20 @@ def demo_analyze_external():
                     "originality": random.randint(5, 9),
                     "humor_rating": humor
                 },
-                "author": author,
+                "author": display_name,  # Use anonymized name
                 "is_anomaly": False
             }
             author_articles.append(analyzed_article)
             analyzed_articles.append(analyzed_article)
         
-        # Calculate external author aggregates
+        # Calculate external author aggregates using anonymized name
         if article_scores:
             avg_score = statistics.mean(article_scores)
             std_dev = statistics.stdev(article_scores) if len(article_scores) > 1 else 0
             
-            author_analysis[author] = {
+            display_name = author_anonymization.get(author, f"AI Expert #{len(author_analysis) + 1}")
+            
+            author_analysis[display_name] = {
                 "article_count": len(article_scores),
                 "avg_eii_score": round(avg_score, 1),
                 "median_eii_score": round(statistics.median(article_scores), 1),
@@ -1016,7 +1206,8 @@ def demo_analyze_external():
                 "avg_confidence": round(statistics.mean([a['scores']['confidence'] for a in author_articles]), 1),
                 "avg_jargon": round(statistics.mean([a['scores']['jargon_density'] for a in author_articles]), 1),
                 "avg_humor": round(statistics.mean([a['scores']['humor_rating'] for a in author_articles]), 1),
-                "source": article['source'] if articles else "External"
+                "source": article['source'] if articles else "External",
+                "profile_type": profile["style"]
             }
     
     # Rank authors by average EII score

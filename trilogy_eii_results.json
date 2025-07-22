@@ -1,88 +1,88 @@
 {
-  "timestamp": "2025-07-21T15:54:35.664072",
+  "timestamp": "2025-07-21T19:56:21.461294",
   "author_stats": {
-    "Stanislav Huseletov": {
-      "article_count": 6,
-      "avg_eii_score": 6.2,
-      "max_eii_score": 6.8,
-      "min_eii_score": 5.6,
-      "avg_confidence": 7.5,
-      "avg_jargon": 7.8,
+    "Distinguished AI Author": {
+      "article_count": 36,
+      "avg_eii_score": 7.0,
+      "max_eii_score": 8.5,
+      "min_eii_score": 6.0,
+      "avg_confidence": 7.4,
+      "avg_jargon": 8,
       "avg_humor": 3.2,
-      "most_inflated_article": "Behavioral Anti-Pattern Detection: A Comprehensive Technical Synthesis",
-      "humblest_article": "Iterative AI System for Universal Discovery"
+      "most_inflated_article": "10 Minute Slides",
+      "humblest_article": "Grok 4 Vs Kimi K2"
     },
-    "Praveen Koka": {
-      "article_count": 6,
-      "avg_eii_score": 4.9,
-      "max_eii_score": 5.2,
-      "min_eii_score": 4.6,
-      "avg_confidence": 5.3,
-      "avg_jargon": 5.7,
-      "avg_humor": 3.3,
-      "most_inflated_article": "The Hidden Cost of Scattered AI Tooling",
-      "humblest_article": "Claude Code: Triumphs, Trials & Trade-Offs"
+    "Senior AI Researcher": {
+      "article_count": 4,
+      "avg_eii_score": 6.2,
+      "max_eii_score": 6.9,
+      "min_eii_score": 5.2,
+      "avg_confidence": 5.8,
+      "avg_jargon": 7,
+      "avg_humor": 3,
+      "most_inflated_article": "Anti Pattern Detection",
+      "humblest_article": "Anti Pattern Detection"
     },
     "David Proctor": {
-      "article_count": 4,
-      "avg_eii_score": 5.3,
-      "max_eii_score": 6.0,
-      "min_eii_score": 4.9,
-      "avg_confidence": 5.8,
-      "avg_jargon": 6.2,
-      "avg_humor": 5,
-      "most_inflated_article": "Standardizing AI-to-System Integration",
-      "humblest_article": "Payloads, Promises, and Protocols: The MCP/A2A Tightrope"
+      "article_count": 3,
+      "avg_eii_score": 4.5,
+      "max_eii_score": 5.1,
+      "min_eii_score": 4.1,
+      "avg_confidence": 6.3,
+      "avg_jargon": 6.3,
+      "avg_humor": 4.7,
+      "most_inflated_article": "Payloads Promises And Protocols The",
+      "humblest_article": "Payloads Promises And Protocols The"
     },
-    "Leonardo Gonzalez": {
-      "article_count": 4,
-      "avg_eii_score": 6.7,
-      "max_eii_score": 7.2,
-      "min_eii_score": 6.2,
-      "avg_confidence": 7,
-      "avg_jargon": 8.5,
-      "avg_humor": 2.8,
-      "most_inflated_article": "The Multi-Agent Moment",
-      "humblest_article": "Clash of the Titans"
+    "Lead AI Engineer": {
+      "article_count": 3,
+      "avg_eii_score": 5.5,
+      "max_eii_score": 5.7,
+      "min_eii_score": 5.1,
+      "avg_confidence": 4.7,
+      "avg_jargon": 6.7,
+      "avg_humor": 3.3,
+      "most_inflated_article": "Retrieval Benchmarking Agentic Vs",
+      "humblest_article": "Retrieval Benchmarking Agentic Vs"
     }
   },
   "rankings": {
     "highest_avg_eii": [
-      "Leonardo Gonzalez",
-      "Stanislav Huseletov",
-      "David Proctor",
-      "Praveen Koka"
+      "Distinguished AI Author",
+      "Senior AI Researcher",
+      "Lead AI Engineer",
+      "David Proctor"
     ],
     "most_confident": [
-      "Stanislav Huseletov",
-      "Praveen Koka",
+      "Distinguished AI Author",
       "David Proctor",
-      "Leonardo Gonzalez"
+      "Senior AI Researcher",
+      "Lead AI Engineer"
     ],
     "biggest_jargon_bomber": [
-      "Stanislav Huseletov",
-      "Praveen Koka",
-      "David Proctor",
-      "Leonardo Gonzalez"
+      "Distinguished AI Author",
+      "Senior AI Researcher",
+      "Lead AI Engineer",
+      "David Proctor"
     ],
     "most_humble": [
-      "Praveen Koka",
       "David Proctor",
-      "Stanislav Huseletov",
-      "Leonardo Gonzalez"
+      "Lead AI Engineer",
+      "Senior AI Researcher",
+      "Distinguished AI Author"
     ],
     "funniest": [
-      "Stanislav Huseletov",
-      "Praveen Koka",
       "David Proctor",
-      "Leonardo Gonzalez"
+      "Lead AI Engineer",
+      "Distinguished AI Author",
+      "Senior AI Researcher"
     ]
   },
   "team_summary": {
-    "total_articles": 20,
-    "team_avg_eii": 5.7,
-    "most_productive": "Stanislav Huseletov",
-    "inflation_champion": "Leonardo Gonzalez",
-    "humility_champion": "Praveen Koka"
+    "total_articles": 46,
+    "team_avg_eii": 6.7,
+    "most_productive": "Distinguished AI Author",
+    "inflation_champion": "Distinguished AI Author",
+    "humility_champion": "David Proctor"
   }
 }

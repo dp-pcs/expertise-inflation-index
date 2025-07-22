@@ -157,6 +157,7 @@
                 </div>
             </div>
             <button class="demo-next-btn" onclick="animateAISteps()">Show Me The Magic! ✨</button>
+            <button class="demo-skip-btn" onclick="skipToDemo()">Skip to Demo 🚀</button>
         </div>
         
         <!-- Step Detail Overlays -->
@@ -357,14 +358,27 @@ Results:
         </div>
     </div>
 
-    <!-- Slide 7: Live Discovery -->
+    <!-- Slide 7: Discovery & Comparison Choice -->
     <div class="slide" id="slide-7">
         <div class="slide-content">
-            <h2>🔍 Step 1: Discover Trilogy AI Articles</h2>
+            <h2>🔍 Step 1: Choose Comparison & Discover Articles</h2>
             <div class="live-demo-section">
-                <button class="big-action-btn" id="scan-btn" onclick="startDiscovery()">
-                    🎯 Scan Trilogy AI Center of Excellence
-                </button>
+                
+                <!-- Comparison Type Selection -->
+                <div class="discovery-options" id="discovery-options">
+                    <h3>🔬 Choose Your EII Comparison:</h3>
+                    <div class="option-buttons">
+                        <button class="analysis-option-btn" id="team-discovery-btn" onclick="startDiscovery('team')">
+                            👥 Team Analysis
+                            <span class="option-subtitle">David vs. Anonymized Colleagues</span>
+                        </button>
+                        <button class="analysis-option-btn" id="industry-discovery-btn" onclick="startDiscovery('external')">
+                            🌍 Industry Comparison
+                            <span class="option-subtitle">David vs. 30+ AI Thought Leaders</span>
+                        </button>
+                    </div>
+                </div>
+                
                 <div class="progress-container" id="discovery-progress" style="display: none;">
                     <div class="progress-bar">
                         <div class="progress-fill" id="discovery-progress-fill"></div>
@@ -373,7 +387,7 @@ Results:
                     <div class="tech-highlight" id="discovery-tech"></div>
                 </div>
                 <div class="discovery-results" id="discovery-results" style="display: none;">
-                    <h3>📚 Articles Found:</h3>
+                    <h3>📚 Articles Discovered:</h3>
                     <div class="articles-list" id="articles-list"></div>
                     <button class="demo-next-btn" onclick="nextSlide()">Now Let's Analyze! 🧠</button>
                 </div>
@@ -388,20 +402,9 @@ Results:
             <div class="live-demo-section">
                 <p>Now we're going to send these articles through our AI analysis pipeline...</p>
                 
-                <!-- Analysis Options -->
-                <div class="analysis-options">
-                    <h3>🔬 Choose Your Comparison:</h3>
-                    <div class="option-buttons">
-                        <button class="analysis-option-btn" id="team-analysis-btn" onclick="startAnalysis('team')">
-                            👥 Team Analysis
-                            <span class="option-subtitle">David vs. Anonymized Colleagues</span>
-                        </button>
-                        <button class="analysis-option-btn" id="industry-analysis-btn" onclick="startAnalysis('external')">
-                            🌍 Industry Comparison
-                            <span class="option-subtitle">David vs. AI Thought Leaders</span>
-                        </button>
-                    </div>
-                </div>
+                <button class="big-action-btn" id="analyze-btn" onclick="startAnalysis()">
+                    ⚡ Analyze All Articles
+                </button>
                 
                 <div class="progress-container" id="analysis-progress" style="display: none;">
                     <div class="progress-bar">
@@ -599,6 +602,12 @@ function animateAISteps() {
     processNextStep();
 }
 
+function skipToDemo() {
+    currentSlide = 6; // Skip to the "Without Further Ado" slide
+    document.getElementById(`slide-${currentSlide}`).classList.add('active');
+    updateNavigation();
+}
+
 function closeOverlay(stepNumber = null) {
     if (stepNumber) {
         // Close specific overlay
@@ -627,35 +636,77 @@ document.addEventListener('click', function(event) {
     }
 });
 
-function startDiscovery() {
-    const button = document.getElementById('scan-btn');
+function startDiscovery(comparisonType = 'team') {
+    // Hide discovery option buttons and show progress
+    const discoveryOptions = document.getElementById('discovery-options');
     const progress = document.getElementById('discovery-progress');
     const results = document.getElementById('discovery-results');
     
-    button.style.display = 'none';
+    discoveryOptions.style.display = 'none';
     progress.style.display = 'block';
     
-    fetch('/api/demo-discover', {
+    console.log(`🔍 Starting discovery for comparison type: ${comparisonType}`);
+    
+    // Store comparison type for later use in analysis
+    window.currentComparisonType = comparisonType;
+    
+    // Use appropriate endpoint based on comparison type
+    const apiEndpoint = comparisonType === 'external' ? '/api/demo-discover' : '/api/demo-discover';
+    
+    fetch(apiEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comparison_type: comparisonType })
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('📡 Discovery response received:', response.status);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
-        simulateProgress('discovery', data.steps, () => {
-            displayDiscoveryResults(data.articles);
-            progress.style.display = 'none';
-            results.style.display = 'block';
-        });
+        console.log('📊 Discovery data received:', data);
+
+        if (data.success) {
+            const steps = data.steps || [];
+            const technologies = data.technologies_used || [];
+
+            // Show progress simulation
+            simulateProgress('discovery', steps, () => {
+                console.log('✅ Discovery simulation complete');
+                
+                // Display results
+                displayDiscoveryResults(data.articles || [], technologies, comparisonType);
+                progress.style.display = 'none';
+                results.style.display = 'block';
+            });
+        } else {
+            throw new Error(data.error || 'Discovery failed');
+        }
+    })
+    .catch(error => {
+        console.error('❌ Discovery error:', error);
+        progress.innerHTML = `
+            <div class="error-step">
+                <h3>⚠️ Discovery Error</h3>
+                <p>Error: ${error.message}</p>
+                <button onclick="location.reload()" class="retry-btn">Try Again</button>
+            </div>
+        `;
     });
 }
 
-function startAnalysis(comparisonType = 'team') {
-    // Hide analysis option buttons
-    const analysisOptions = document.querySelector('.analysis-options');
+function startAnalysis() {
+    // Use the comparison type stored from discovery phase
+    const comparisonType = window.currentComparisonType || 'team';
+    
+    // Hide analysis button and show progress
+    const button = document.getElementById('analyze-btn');
     const progress = document.getElementById('analysis-progress');
     const results = document.getElementById('analysis-results');
     
-    analysisOptions.style.display = 'none';
+    button.style.display = 'none';
     progress.style.display = 'block';
     
     console.log(`🔍 Starting analysis for comparison type: ${comparisonType}`);
@@ -763,22 +814,88 @@ function simulateProgress(type, steps, callback) {
     showNextStep();
 }
 
-function displayDiscoveryResults(articles) {
+function displayDiscoveryResults(articles, technologies, comparisonType) {
     const container = document.getElementById('articles-list');
-    // Show all 6 articles from the demo
-    const displayArticles = articles.slice(0, 6);
-    container.innerHTML = displayArticles.map(article => `
-        <div class="discovered-article">
-            <h4>${article.title}</h4>
-            <p>By ${article.author} • ${article.source}</p>
-        </div>
-    `).join('');
     
-    if (articles.length > 6) {
-        container.innerHTML += `
-            <div class="discovered-article" style="opacity: 0.7; font-style: italic;">
-                <h4>... and ${articles.length - 6} more articles</h4>
-                <p>Additional team articles found</p>
+    let discoveryTitle = comparisonType === 'external' ? 
+        '🌍 Industry-Wide Article Discovery' : 
+        '📚 Trilogy AI Articles Discovered';
+    
+    let discoveryDescription = comparisonType === 'external' ? 
+        'Found articles from 30+ leading AI researchers across multiple platforms' :
+        'Discovered team articles from Trilogy AI Center of Excellence';
+    
+    // Show all articles from the discovery, grouping by author for diversity
+    const groupedArticles = {};
+    articles.forEach(article => {
+        const author = article.author || 'Unknown';
+        if (!groupedArticles[author]) {
+            groupedArticles[author] = [];
+        }
+        groupedArticles[author].push(article);
+    });
+
+    // For external comparison, show a summary instead of all articles
+    if (comparisonType === 'external') {
+        const totalArticles = Object.values(groupedArticles).reduce((sum, authorArticles) => sum + authorArticles.length, 0);
+        const totalAuthors = Object.keys(groupedArticles).length;
+        
+        container.innerHTML = `
+            <div class="discovery-summary">
+                <h4>${discoveryTitle}</h4>
+                <p>${discoveryDescription}</p>
+                <div class="discovery-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">${totalArticles}</span>
+                        <span class="stat-label">Articles Found</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">${totalAuthors}</span>
+                        <span class="stat-label">AI Experts</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Platforms</span>
+                    </div>
+                </div>
+                <div class="sample-sources">
+                    <h5>📖 Sample Sources:</h5>
+                    <div class="source-tags">
+                        <span class="source-tag">Nature AI</span>
+                        <span class="source-tag">arXiv</span>
+                        <span class="source-tag">Stanford HAI</span>
+                        <span class="source-tag">MIT CSAIL</span>
+                        <span class="source-tag">Berkeley BAIR</span>
+                        <span class="source-tag">DeepMind</span>
+                        <span class="source-tag">OpenAI</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        // Show detailed articles for team comparison
+        let displayArticles = [];
+        
+        // Take up to 3 articles from each author for diversity, up to 10 total
+        Object.entries(groupedArticles).forEach(([author, authorArticles]) => {
+            const recentArticles = authorArticles.slice(0, 3);
+            displayArticles.push(...recentArticles);
+        });
+        
+        // Limit to 10 articles total
+        displayArticles = displayArticles.slice(0, 10);
+        
+        container.innerHTML = `
+            <div class="articles-grid">
+                <h4>${discoveryTitle}</h4>
+                <p>${discoveryDescription}</p>
+                ${displayArticles.map(article => `
+                    <div class="article-card">
+                        <h5>${article.title}</h5>
+                        <p><strong>Author:</strong> ${article.author}</p>
+                        <p><strong>Source:</strong> ${article.source || 'Trilogy AI CoE'}</p>
+                    </div>
+                `).join('')}
             </div>
         `;
     }
