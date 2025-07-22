@@ -1,49 +1,49 @@
 {
-  "timestamp": "2025-07-21T14:56:21.803108",
+  "timestamp": "2025-07-21T15:54:35.664072",
   "author_stats": {
-    "Leonardo Gonzalez": {
-      "article_count": 36,
-      "avg_eii_score": 7.3,
-      "max_eii_score": 8.5,
-      "min_eii_score": 6.0,
-      "avg_confidence": 7.5,
-      "avg_jargon": 8,
-      "avg_humor": 2.7,
-      "most_inflated_article": "Ai Discovery",
-      "humblest_article": "Real Ai Learning"
-    },
     "Stanislav Huseletov": {
-      "article_count": 4,
-      "avg_eii_score": 5.8,
-      "max_eii_score": 6.5,
-      "min_eii_score": 5.0,
-      "avg_confidence": 7.2,
-      "avg_jargon": 7.2,
-      "avg_humor": 3,
-      "most_inflated_article": "Comments",
-      "humblest_article": "Anti Pattern Detection"
-    },
-    "David Proctor": {
-      "article_count": 3,
-      "avg_eii_score": 5.7,
-      "max_eii_score": 6.4,
-      "min_eii_score": 4.9,
-      "avg_confidence": 6,
-      "avg_jargon": 6,
-      "avg_humor": 4.7,
-      "most_inflated_article": "Comments",
-      "humblest_article": "Comments"
+      "article_count": 6,
+      "avg_eii_score": 6.2,
+      "max_eii_score": 6.8,
+      "min_eii_score": 5.6,
+      "avg_confidence": 7.5,
+      "avg_jargon": 7.8,
+      "avg_humor": 3.2,
+      "most_inflated_article": "Behavioral Anti-Pattern Detection: A Comprehensive Technical Synthesis",
+      "humblest_article": "Iterative AI System for Universal Discovery"
     },
     "Praveen Koka": {
-      "article_count": 3,
-      "avg_eii_score": 5.0,
+      "article_count": 6,
+      "avg_eii_score": 4.9,
       "max_eii_score": 5.2,
       "min_eii_score": 4.6,
-      "avg_confidence": 4.7,
+      "avg_confidence": 5.3,
       "avg_jargon": 5.7,
-      "avg_humor": 4,
-      "most_inflated_article": "Comments",
-      "humblest_article": "Retrieval Benchmarking Agentic Vs"
+      "avg_humor": 3.3,
+      "most_inflated_article": "The Hidden Cost of Scattered AI Tooling",
+      "humblest_article": "Claude Code: Triumphs, Trials & Trade-Offs"
+    },
+    "David Proctor": {
+      "article_count": 4,
+      "avg_eii_score": 5.3,
+      "max_eii_score": 6.0,
+      "min_eii_score": 4.9,
+      "avg_confidence": 5.8,
+      "avg_jargon": 6.2,
+      "avg_humor": 5,
+      "most_inflated_article": "Standardizing AI-to-System Integration",
+      "humblest_article": "Payloads, Promises, and Protocols: The MCP/A2A Tightrope"
+    },
+    "Leonardo Gonzalez": {
+      "article_count": 4,
+      "avg_eii_score": 6.7,
+      "max_eii_score": 7.2,
+      "min_eii_score": 6.2,
+      "avg_confidence": 7,
+      "avg_jargon": 8.5,
+      "avg_humor": 2.8,
+      "most_inflated_article": "The Multi-Agent Moment",
+      "humblest_article": "Clash of the Titans"
     }
   },
   "rankings": {
@@ -54,16 +54,16 @@
       "Praveen Koka"
     ],
     "most_confident": [
-      "Leonardo Gonzalez",
       "Stanislav Huseletov",
+      "Praveen Koka",
       "David Proctor",
-      "Praveen Koka"
+      "Leonardo Gonzalez"
     ],
     "biggest_jargon_bomber": [
-      "Leonardo Gonzalez",
       "Stanislav Huseletov",
+      "Praveen Koka",
       "David Proctor",
-      "Praveen Koka"
+      "Leonardo Gonzalez"
     ],
     "most_humble": [
       "Praveen Koka",
@@ -72,16 +72,16 @@
       "Leonardo Gonzalez"
     ],
     "funniest": [
-      "Leonardo Gonzalez",
       "Stanislav Huseletov",
+      "Praveen Koka",
       "David Proctor",
-      "Praveen Koka"
+      "Leonardo Gonzalez"
     ]
   },
   "team_summary": {
-    "total_articles": 46,
-    "team_avg_eii": 6.9,
-    "most_productive": "Leonardo Gonzalez",
+    "total_articles": 20,
+    "team_avg_eii": 5.7,
+    "most_productive": "Stanislav Huseletov",
     "inflation_champion": "Leonardo Gonzalez",
     "humility_champion": "Praveen Koka"
   }

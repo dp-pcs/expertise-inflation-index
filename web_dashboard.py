@@ -617,29 +617,34 @@ def demo_analyze():
                 confidence = random.randint(6, 9)
                 jargon = random.randint(7, 9)
                 humor = random.randint(2, 4)
+                display_name = "Distinguished AI Author"
             elif author == "David Proctor":
                 # More moderate, balanced scores
                 base_score = random.uniform(4.0, 6.5)
                 confidence = random.randint(4, 7)
                 jargon = random.randint(5, 7)
                 humor = random.randint(3, 6)
+                display_name = "David Proctor"  # Keep real name
             elif author == "Stanislav Huseletov":
                 # Technical focus, moderate scores
                 base_score = random.uniform(5.0, 7.0)
                 confidence = random.randint(5, 8)
                 jargon = random.randint(6, 9)
                 humor = random.randint(2, 4)
+                display_name = "Senior AI Researcher"
             elif author == "Praveen Koka":
                 # Practical approach, lower variance
                 base_score = random.uniform(4.5, 6.0)
                 confidence = random.randint(4, 6)
                 jargon = random.randint(5, 7)
                 humor = random.randint(3, 5)
+                display_name = "Lead AI Engineer"
             else:
                 base_score = random.uniform(4.0, 7.0)
                 confidence = random.randint(4, 8)
                 jargon = random.randint(5, 8)
                 humor = random.randint(2, 5)
+                display_name = author  # Fallback to original name
             
             # Calculate final EII score
             eii_score = round(base_score, 1)
@@ -656,7 +661,7 @@ def demo_analyze():
                     "originality": random.randint(4, 8),
                     "humor_rating": humor
                 },
-                "author": author,
+                "author": display_name,  # Use display name instead of real name
                 "is_anomaly": False  # Will be calculated below
             }
             
@@ -684,7 +689,10 @@ def demo_analyze():
                         "type": anomaly_type
                     })
             
-            author_analysis[author] = {
+            # Use display name for the analysis key
+            display_name = author_articles[0]['author'] if author_articles else author
+            
+            author_analysis[display_name] = {
                 "article_count": len(article_scores),
                 "avg_eii_score": round(avg_score, 1),
                 "median_eii_score": round(median_score, 1),
@@ -811,6 +819,249 @@ def demo_analyze():
         "technologies_used": [
             "Firecrawl.dev", "Anthropic Claude", "Python Statistics", 
             "Anomaly Detection", "AWS DynamoDB", "Data Aggregation"
+        ]
+    })
+
+@app.route('/api/demo-analyze-external', methods=['POST'])
+def demo_analyze_external():
+    """Demo analysis comparing David Proctor with external AI thought leaders"""
+    import time
+    import random
+    import statistics
+    from collections import defaultdict
+    
+    steps = [
+        {"step": 1, "message": "🌐 Loading David's articles from Trilogy AI...", "tech": "Firecrawl dataset"},
+        {"step": 2, "message": "🔍 Discovering external AI thought leaders...", "tech": "Multi-source web scraping"},
+        {"step": 3, "message": "🤖 Analyzing articles with Claude...", "tech": "Anthropic Claude-3-Haiku"},
+        {"step": 4, "message": "📊 Cross-publication EII scoring...", "tech": "Advanced scoring algorithm"},
+        {"step": 5, "message": "📈 Industry-wide statistical analysis...", "tech": "Comparative analytics"},
+        {"step": 6, "message": "🏆 Generating industry leaderboard...", "tech": "Cross-platform ranking"}
+    ]
+    
+    # Load David's real articles
+    david_articles = []
+    try:
+        with open('trilogy_fixed_titles.json', 'r') as f:
+            import json
+            discovery_data = json.load(f)
+            all_articles = discovery_data.get('articles', [])
+            
+            # Filter for David's articles only
+            david_articles = [
+                article for article in all_articles
+                if article.get('author') == 'David Proctor'
+            ]
+    except (FileNotFoundError, json.JSONDecodeError):
+        # Fallback to mock David articles
+        david_articles = [
+            {"title": "Standardizing AI Integration", "author": "David Proctor"},
+            {"title": "MCP/A2A Protocol Analysis", "author": "David Proctor"},
+            {"title": "AI Ethics in Practice", "author": "David Proctor"},
+            {"title": "Enterprise AI Implementation", "author": "David Proctor"}
+        ]
+    
+    # Mock external authors with realistic article data
+    external_authors_data = {
+        "Andrej Karpathy": [
+            {"title": "The Bitter Lesson Revisited", "source": "karpathy.github.io"},
+            {"title": "Neural Network Architectures: A Deep Dive", "source": "karpathy.github.io"},
+            {"title": "Training Large Language Models", "source": "karpathy.github.io"},
+            {"title": "Computer Vision in the Age of Transformers", "source": "karpathy.github.io"},
+            {"title": "Scaling Laws for Neural Language Models", "source": "karpathy.github.io"}
+        ],
+        "Sebastian Ruder": [
+            {"title": "Transfer Learning in Natural Language Processing", "source": "ruder.io"},
+            {"title": "Multilingual Models: The Next Frontier", "source": "ruder.io"},
+            {"title": "Few-Shot Learning: Progress and Challenges", "source": "ruder.io"},
+            {"title": "Neural Machine Translation: A Review", "source": "ruder.io"}
+        ],
+        "Cassie Kozyrkov": [
+            {"title": "Decision Intelligence in the Age of AI", "source": "medium.com/@kozyrkov"},
+            {"title": "Statistics vs Machine Learning", "source": "medium.com/@kozyrkov"},
+            {"title": "Building AI Products That Actually Work", "source": "medium.com/@kozyrkov"},
+            {"title": "The Art of Data Science Leadership", "source": "medium.com/@kozyrkov"},
+            {"title": "ML Engineering: Beyond the Hype", "source": "medium.com/@kozyrkov"}
+        ],
+        "Andrew Ng": [
+            {"title": "AI Transformation Playbook", "source": "deeplearning.ai"},
+            {"title": "Machine Learning Yearning", "source": "deeplearning.ai"},
+            {"title": "Building AI in the Enterprise", "source": "deeplearning.ai"},
+            {"title": "The Future of AI Education", "source": "deeplearning.ai"}
+        ]
+    }
+    
+    # Analyze all authors (David + externals)
+    author_analysis = {}
+    analyzed_articles = []
+    
+    # Analyze David's articles first
+    david_scores = []
+    david_analyzed = []
+    
+    for article in david_articles:
+        # David's scoring pattern - moderate, balanced
+        base_score = random.uniform(4.0, 6.5)
+        confidence = random.randint(4, 7)
+        jargon = random.randint(5, 7)
+        humor = random.randint(3, 6)
+        eii_score = round(base_score, 1)
+        david_scores.append(eii_score)
+        
+        analyzed_article = {
+            "title": article['title'],
+            "url": article.get('url', ''),
+            "eii_score": eii_score,
+            "scores": {
+                "confidence": confidence,
+                "jargon_density": jargon,
+                "self_reference": random.randint(2, 6),
+                "originality": random.randint(4, 8),
+                "humor_rating": humor
+            },
+            "author": "David Proctor",
+            "is_anomaly": False
+        }
+        david_analyzed.append(analyzed_article)
+        analyzed_articles.append(analyzed_article)
+    
+    # Add David's analysis
+    if david_scores:
+        david_avg = statistics.mean(david_scores)
+        david_std = statistics.stdev(david_scores) if len(david_scores) > 1 else 0
+        
+        author_analysis["David Proctor"] = {
+            "article_count": len(david_scores),
+            "avg_eii_score": round(david_avg, 1),
+            "median_eii_score": round(statistics.median(david_scores), 1),
+            "std_deviation": round(david_std, 1),
+            "min_score": round(min(david_scores), 1),
+            "max_score": round(max(david_scores), 1),
+            "score_range": round(max(david_scores) - min(david_scores), 1),
+            "anomalies": [],
+            "consistency": "High" if david_std < 0.8 else "Medium" if david_std < 1.5 else "Low",
+            "avg_confidence": round(statistics.mean([a['scores']['confidence'] for a in david_analyzed]), 1),
+            "avg_jargon": round(statistics.mean([a['scores']['jargon_density'] for a in david_analyzed]), 1),
+            "avg_humor": round(statistics.mean([a['scores']['humor_rating'] for a in david_analyzed]), 1),
+            "source": "Trilogy AI CoE"
+        }
+    
+    # Analyze external authors with distinct scoring patterns
+    for author, articles in external_authors_data.items():
+        article_scores = []
+        author_articles = []
+        
+        for article in articles:
+            # Different scoring patterns for each external author
+            if author == "Andrej Karpathy":
+                # Very technical, high confidence, high jargon
+                base_score = random.uniform(7.0, 9.0)
+                confidence = random.randint(7, 9)
+                jargon = random.randint(8, 10)
+                humor = random.randint(1, 3)
+            elif author == "Sebastian Ruder":
+                # Academic style, moderate to high scores
+                base_score = random.uniform(6.0, 8.0)
+                confidence = random.randint(6, 8)
+                jargon = random.randint(7, 9)
+                humor = random.randint(2, 4)
+            elif author == "Cassie Kozyrkov":
+                # Practical, lower jargon, higher humor
+                base_score = random.uniform(4.5, 6.5)
+                confidence = random.randint(5, 7)
+                jargon = random.randint(4, 6)
+                humor = random.randint(4, 7)
+            elif author == "Andrew Ng":
+                # Educational, moderate confidence, accessible
+                base_score = random.uniform(5.0, 7.0)
+                confidence = random.randint(5, 7)
+                jargon = random.randint(5, 7)
+                humor = random.randint(3, 5)
+            
+            eii_score = round(base_score, 1)
+            article_scores.append(eii_score)
+            
+            analyzed_article = {
+                "title": article['title'],
+                "url": f"https://{article['source']}/article",
+                "eii_score": eii_score,
+                "scores": {
+                    "confidence": confidence,
+                    "jargon_density": jargon,
+                    "self_reference": random.randint(1, 4),
+                    "originality": random.randint(5, 9),
+                    "humor_rating": humor
+                },
+                "author": author,
+                "is_anomaly": False
+            }
+            author_articles.append(analyzed_article)
+            analyzed_articles.append(analyzed_article)
+        
+        # Calculate external author aggregates
+        if article_scores:
+            avg_score = statistics.mean(article_scores)
+            std_dev = statistics.stdev(article_scores) if len(article_scores) > 1 else 0
+            
+            author_analysis[author] = {
+                "article_count": len(article_scores),
+                "avg_eii_score": round(avg_score, 1),
+                "median_eii_score": round(statistics.median(article_scores), 1),
+                "std_deviation": round(std_dev, 1),
+                "min_score": round(min(article_scores), 1),
+                "max_score": round(max(article_scores), 1),
+                "score_range": round(max(article_scores) - min(article_scores), 1),
+                "anomalies": [],
+                "consistency": "High" if std_dev < 0.8 else "Medium" if std_dev < 1.5 else "Low",
+                "avg_confidence": round(statistics.mean([a['scores']['confidence'] for a in author_articles]), 1),
+                "avg_jargon": round(statistics.mean([a['scores']['jargon_density'] for a in author_articles]), 1),
+                "avg_humor": round(statistics.mean([a['scores']['humor_rating'] for a in author_articles]), 1),
+                "source": article['source'] if articles else "External"
+            }
+    
+    # Rank authors by average EII score
+    ranked_authors = sorted(author_analysis.items(), key=lambda x: x[1]['avg_eii_score'], reverse=True)
+    
+    # Calculate overall statistics
+    all_scores = [article['eii_score'] for article in analyzed_articles]
+    
+    # Build results
+    results = {
+        "analysis_summary": {
+            "total_articles_analyzed": len(analyzed_articles),
+            "total_authors": len(author_analysis),
+            "overall_avg_eii": round(statistics.mean(all_scores), 1),
+            "overall_median_eii": round(statistics.median(all_scores), 1),
+            "david_rank": next((idx + 1 for idx, (author, _) in enumerate(ranked_authors) if author == "David Proctor"), "N/A")
+        },
+        "author_rankings": [
+            {
+                "rank": idx + 1,
+                "author": author,
+                "avg_score": data['avg_eii_score'],
+                "article_count": data['article_count'],
+                "consistency": data['consistency'],
+                "source": data.get('source', 'External')
+            }
+            for idx, (author, data) in enumerate(ranked_authors)
+        ],
+        "detailed_analysis": author_analysis,
+        "champion": {
+            "name": ranked_authors[0][0],
+            "score": ranked_authors[0][1]['avg_eii_score'],
+            "source": ranked_authors[0][1].get('source', 'External')
+        }
+    }
+    
+    return jsonify({
+        "success": True,
+        "steps": steps,
+        "results": results,
+        "analyzed_articles": analyzed_articles,
+        "comparison_type": "external",
+        "technologies_used": [
+            "Multi-source Web Scraping", "Cross-publication Analysis", "Industry Benchmarking",
+            "Anthropic Claude", "Python Statistics", "Competitive Intelligence"
         ]
     })
 

@@ -387,9 +387,22 @@ Results:
             <h2>🧠 Step 2: AI-Powered EII Analysis</h2>
             <div class="live-demo-section">
                 <p>Now we're going to send these articles through our AI analysis pipeline...</p>
-                <button class="big-action-btn" id="analyze-btn" onclick="startAnalysis()">
-                    ⚡ Analyze All Articles
-                </button>
+                
+                <!-- Analysis Options -->
+                <div class="analysis-options">
+                    <h3>🔬 Choose Your Comparison:</h3>
+                    <div class="option-buttons">
+                        <button class="analysis-option-btn" id="team-analysis-btn" onclick="startAnalysis('team')">
+                            👥 Team Analysis
+                            <span class="option-subtitle">David vs. Anonymized Colleagues</span>
+                        </button>
+                        <button class="analysis-option-btn" id="industry-analysis-btn" onclick="startAnalysis('external')">
+                            🌍 Industry Comparison
+                            <span class="option-subtitle">David vs. AI Thought Leaders</span>
+                        </button>
+                    </div>
+                </div>
+                
                 <div class="progress-container" id="analysis-progress" style="display: none;">
                     <div class="progress-bar">
                         <div class="progress-fill" id="analysis-progress-fill"></div>
@@ -400,7 +413,7 @@ Results:
                 <div class="analysis-results" id="analysis-results" style="display: none;">
                     <h3>🏆 EII Analysis Complete!</h3>
                     <div class="tech-summary">
-                        <p>We've leveraged <strong>Firecrawl</strong>, <strong>Anthropic Claude</strong>, <strong>OpenAI GPT-4</strong>, <strong>n8n</strong>, and <strong>AWS DynamoDB</strong> to analyze our team's articles.</p>
+                        <p>We've leveraged <strong>Firecrawl</strong>, <strong>Anthropic Claude</strong>, <strong>OpenAI GPT-4</strong>, <strong>n8n</strong>, and <strong>AWS DynamoDB</strong> to analyze our articles.</p>
                     </div>
                     <div class="winners-section" id="winners-section"></div>
                     <button class="demo-next-btn" onclick="nextSlide()">Wrap It Up! 🎬</button>
@@ -636,19 +649,24 @@ function startDiscovery() {
     });
 }
 
-function startAnalysis() {
-    const button = document.getElementById('analyze-btn');
+function startAnalysis(comparisonType = 'team') {
+    // Hide analysis option buttons
+    const analysisOptions = document.querySelector('.analysis-options');
     const progress = document.getElementById('analysis-progress');
     const results = document.getElementById('analysis-results');
     
-    button.style.display = 'none';
+    analysisOptions.style.display = 'none';
     progress.style.display = 'block';
     
-    console.log('🔍 Starting analysis...');
+    console.log(`🔍 Starting analysis for comparison type: ${comparisonType}`);
     
-    fetch('/api/demo-analyze', {
+    // Choose the correct API endpoint based on comparison type
+    const apiEndpoint = comparisonType === 'external' ? '/api/demo-analyze-external' : '/api/demo-analyze';
+    
+    fetch(apiEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comparison_type: comparisonType })
     })
     .then(response => {
         console.log('📡 Analysis response received:', response.status);
@@ -659,25 +677,25 @@ function startAnalysis() {
     })
     .then(data => {
         console.log('📊 Analysis data received:', data);
-        
+
         if (data.success) {
             const steps = data.steps || [];
             const technologies = data.technologies_used || [];
-            
+
             // Show progress simulation first
             simulateProgress('analysis', steps, () => {
                 console.log('✅ Analysis simulation complete');
-                
-                // Check if we should redirect to team dashboard
-                if (data.redirect_url) {
+
+                // Check if we should redirect to team dashboard (for team comparison)
+                if (data.redirect_url && comparisonType === 'team') {
                     console.log(`🔄 Redirecting to: ${data.redirect_url}`);
-                    
+
                     // Show completion message briefly before redirect
                     progress.innerHTML = `
                         <div class="analysis-complete">
-                            <h3>🎉 Comprehensive Analysis Complete!</h3>
+                            <h3>🎉 Team Analysis Complete!</h3>
                             <p>✅ All ${data.results.analysis_summary.total_articles_analyzed} articles analyzed</p>
-                            <p>📊 ${data.results.analysis_summary.total_anomalies_found} anomalies detected</p>
+                            <p>📊 ${data.results.analysis_summary.total_anomalies_found || 0} anomalies detected</p>
                             <p>🏆 Redirecting to team championship...</p>
                             <div class="redirect-countdown">
                                 <div class="spinner"></div>
@@ -685,15 +703,15 @@ function startAnalysis() {
                             </div>
                         </div>
                     `;
-                    
+
                     // Redirect after 2 seconds
                     setTimeout(() => {
                         window.location.href = data.redirect_url;
                     }, 2000);
                 } else {
-                    // Fallback: display results inline (legacy behavior)
+                    // Display results inline (for external comparison or no redirect)
                     console.log('📈 Displaying results inline');
-                    displayAnalysisResults(data.results, technologies);
+                    displayAnalysisResults(data.results, technologies, comparisonType);
                     progress.style.display = 'none';
                     results.style.display = 'block';
                 }
@@ -766,135 +784,70 @@ function displayDiscoveryResults(articles) {
     }
 }
 
-function displayAnalysisResults(results, technologies) {
+function displayAnalysisResults(results, technologies, comparisonType) {
     const container = document.getElementById('winners-section');
     const summary = results.analysis_summary;
-    const rankings = results.author_rankings;
-    const detailed = results.detailed_analysis;
+    
+    let titleText = comparisonType === 'external' ? 
+        '🌍 Industry EII Leaderboard' : 
+        '🏆 Team EII Championship';
+    
+    let summaryText = comparisonType === 'external' ? 
+        `Analyzed ${summary.total_articles_analyzed} articles across ${summary.total_authors} AI thought leaders` :
+        `Analyzed ${summary.total_articles_analyzed} articles from ${summary.total_authors} team members`;
+    
+    // Show David's rank in external comparison
+    let davidRankText = '';
+    if (comparisonType === 'external' && summary.david_rank) {
+        davidRankText = `<p style="font-size: 1.2em; color: #e74c3c; font-weight: bold;">
+            📊 David Proctor ranked #${summary.david_rank} out of ${summary.total_authors} authors!
+        </p>`;
+    }
     
     container.innerHTML = `
-        <div class="comprehensive-results">
-            <!-- Analysis Summary -->
-            <div class="results-header">
-                <h3>🔬 Comprehensive EII Analysis Complete</h3>
-                <div class="summary-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">${summary.total_articles_analyzed}</span>
-                        <span class="stat-label">Articles Analyzed</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">${summary.total_authors}</span>
-                        <span class="stat-label">Authors</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">${summary.overall_avg_eii}</span>
-                        <span class="stat-label">Avg EII Score</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">${summary.total_anomalies_found}</span>
-                        <span class="stat-label">Anomalies Found</span>
-                    </div>
+        <div class="analysis-summary">
+            <h3>${titleText}</h3>
+            <p>${summaryText}</p>
+            ${davidRankText}
+            <div class="summary-stats">
+                <div class="stat">
+                    <strong>${summary.overall_avg_eii}</strong>
+                    <span>Overall Avg EII</span>
                 </div>
-            </div>
-
-            <!-- Author Rankings -->
-            <div class="author-rankings">
-                <h4>📊 Author Rankings & Analysis</h4>
-                <div class="rankings-grid">
-                    ${rankings.map(author => `
-                        <div class="author-card rank-${author.rank}">
-                            <div class="rank-badge">#${author.rank}</div>
-                            <h5>${author.author}</h5>
-                            <div class="author-stats">
-                                <div class="main-score">${author.avg_score}/10</div>
-                                <div class="sub-stats">
-                                    <span>${author.article_count} articles</span>
-                                    <span>${author.consistency} consistency</span>
-                                    ${author.anomaly_count > 0 ? `<span class="anomaly-indicator">${author.anomaly_count} anomalies</span>` : ''}
-                                </div>
-                            </div>
-                        </div>
-                    `).join('')}
+                <div class="stat">
+                    <strong>${summary.overall_median_eii}</strong>
+                    <span>Median EII</span>
                 </div>
-            </div>
-
-            <!-- Detailed Analysis Section -->
-            <div class="detailed-section">
-                <h4>🔍 Detailed Author Analysis</h4>
-                ${Object.entries(detailed).map(([author, data]) => `
-                    <div class="author-detail-card">
-                        <div class="author-header">
-                            <h5>${author}</h5>
-                            <div class="score-range">${data.min_score} - ${data.max_score} (range: ${data.score_range})</div>
-                        </div>
-                        <div class="author-metrics">
-                            <div class="metric">
-                                <span class="metric-label">Average:</span>
-                                <span class="metric-value">${data.avg_eii_score}/10</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Median:</span>
-                                <span class="metric-value">${data.median_eii_score}/10</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Std Dev:</span>
-                                <span class="metric-value">${data.std_deviation}</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Consistency:</span>
-                                <span class="metric-value consistency-${data.consistency.toLowerCase()}">${data.consistency}</span>
-                            </div>
-                        </div>
-                        ${data.anomalies.length > 0 ? `
-                            <div class="anomalies-section">
-                                <h6>⚠️ Anomalous Articles (${data.anomalies.length})</h6>
-                                <div class="anomalies-list">
-                                    ${data.anomalies.map(anomaly => `
-                                        <div class="anomaly-item ${anomaly.type.toLowerCase().replace(' ', '-')}">
-                                            <span class="anomaly-title">"${anomaly.title.length > 50 ? anomaly.title.substring(0, 50) + '...' : anomaly.title}"</span>
-                                            <span class="anomaly-score">${anomaly.score}/10</span>
-                                            <span class="anomaly-type">${anomaly.type}</span>
-                                            <span class="anomaly-deviation">±${anomaly.deviation}</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        ` : '<div class="no-anomalies">✅ No significant anomalies detected</div>'}
-                    </div>
-                `).join('')}
-            </div>
-
-            <!-- Champion Highlights -->
-            <div class="champions-section">
-                <h4>🏆 Champions & Notable Findings</h4>
-                <div class="champions-grid">
-                    <div class="champion-card eii-champion">
-                        <h5>🥇 EII Champion</h5>
-                        <h6>${results.champion.name}</h6>
-                        <p>Average Score: ${results.champion.score}/10</p>
-                        <p>Articles: ${results.champion.article_count}</p>
-                        <span class="type-badge">${results.champion.inflation_type}</span>
-                    </div>
-                    <div class="champion-card consistent-champion">
-                        <h5>📏 Most Consistent</h5>
-                        <h6>${results.most_consistent}</h6>
-                        <p>Lowest variance in scoring</p>
-                        <p>Reliable writing style</p>
-                    </div>
-                    <div class="champion-card prolific-champion">
-                        <h5>✍️ Most Prolific</h5>
-                        <h6>${results.most_prolific}</h6>
-                        <p>Highest article count</p>
-                        <p>Active contributor</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Technologies Used -->
-            <div class="tech-used">
-                <p><strong>Technologies leveraged:</strong> ${technologies.join(', ')}</p>
             </div>
         </div>
+        
+        <div class="rankings-preview">
+            <h4>🥇 Top Rankings:</h4>
+            <ul class="top-rankings">
+                ${results.author_rankings.slice(0, 3).map((author, idx) => `
+                    <li class="ranking-item">
+                        <span class="rank">${idx + 1}.</span>
+                        <span class="author">${author.author}</span>
+                        <span class="score">${author.avg_score}/10</span>
+                        ${comparisonType === 'external' ? `<span class="source">(${author.source})</span>` : ''}
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+        
+        <div class="tech-used">
+            <h4>🛠️ Technologies Used:</h4>
+            <div class="tech-tags">
+                ${technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+            </div>
+        </div>
+        
+        ${comparisonType === 'external' ? `
+            <div class="industry-insights">
+                <h4>💡 Industry Insights:</h4>
+                <p>This cross-publication analysis demonstrates the system's ability to benchmark expertise inflation across different AI communities and writing styles.</p>
+            </div>
+        ` : ''}
     `;
 }
 
