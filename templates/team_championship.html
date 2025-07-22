@@ -7,13 +7,13 @@
 <div class="container">
     <div class="header">
         <h1>🌍 AI Industry EII Analysis</h1>
-        <p>David Proctor vs. Leading AI Researchers & Thought Leaders</p>
+        <p>Benchmarking against Leading AI Researchers & Thought Leaders</p>
         <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
             Last updated: {{ data.timestamp.split('T')[0] }}
         </div>
         {% if data.team_summary.david_industry_rank %}
         <div style="margin-top: 10px; padding: 10px; background: #e3f2fd; border-radius: 8px; color: #1976d2;">
-            <strong>🎯 David's Industry Rank: #{{ data.team_summary.david_industry_rank }} out of {{ data.author_stats|length }} AI experts</strong>
+            <strong>🎯 Our Author's Industry Position: #{{ data.team_summary.david_industry_rank }} out of {{ data.author_stats|length }} AI experts analyzed</strong>
         </div>
         {% endif %}
     </div>
@@ -48,14 +48,13 @@
         <div class="ranking-section">
             <h3>🔥 Highest Average EII (Most Inflated)</h3>
             <ul class="ranking-list">
-                {% for author in data.rankings.highest_avg_eii %}
+                {% for author in data.rankings.highest_avg_eii[:3] %}
                 <li class="ranking-item">
                     <div>
                         <span class="rank-medal">
                             {% if loop.index == 1 %}🥇
                             {% elif loop.index == 2 %}🥈
                             {% elif loop.index == 3 %}🥉
-                            {% else %}{{ loop.index }}.
                             {% endif %}
                         </span>
                         <span class="author-name">{{ author }}</span>
@@ -64,19 +63,33 @@
                 </li>
                 {% endfor %}
             </ul>
+            
+            <!-- How Our Author Compares -->
+            {% set david_rank = data.rankings.highest_avg_eii.index("David Proctor") + 1 if "David Proctor" in data.rankings.highest_avg_eii else None %}
+            {% if david_rank and david_rank > 3 %}
+            <div style="margin-top: 20px; padding: 15px; background: #f0f8ff; border-radius: 8px; border-left: 4px solid #1976d2;">
+                <h4 style="margin: 0 0 10px 0; color: #1976d2;">📍 How Our Author Compares</h4>
+                <div class="ranking-item" style="border: none; margin: 0; padding: 8px 0;">
+                    <div>
+                        <span class="rank-medal">{{ david_rank }}.</span>
+                        <span class="author-name">David Proctor</span>
+                    </div>
+                    <span class="score medium">{{ "%.1f"|format(data.author_stats["David Proctor"].avg_eii_score) }}/10</span>
+                </div>
+            </div>
+            {% endif %}
         </div>
         
         <div class="ranking-section">
             <h3>😇 Most Humble (Lowest EII)</h3>
             <ul class="ranking-list">
-                {% for author in data.rankings.most_humble %}
+                {% for author in data.rankings.most_humble[:3] %}
                 <li class="ranking-item">
                     <div>
                         <span class="rank-medal">
                             {% if loop.index == 1 %}👼
                             {% elif loop.index == 2 %}🕊️
                             {% elif loop.index == 3 %}🌸
-                            {% else %}{{ loop.index }}.
                             {% endif %}
                         </span>
                         <span class="author-name">{{ author }}</span>
@@ -85,19 +98,33 @@
                 </li>
                 {% endfor %}
             </ul>
+            
+            <!-- How Our Author Compares -->
+            {% set david_humble_rank = data.rankings.most_humble.index("David Proctor") + 1 if "David Proctor" in data.rankings.most_humble else None %}
+            {% if david_humble_rank and david_humble_rank > 3 %}
+            <div style="margin-top: 20px; padding: 15px; background: #f0fff0; border-radius: 8px; border-left: 4px solid #27ae60;">
+                <h4 style="margin: 0 0 10px 0; color: #27ae60;">📍 How Our Author Compares</h4>
+                <div class="ranking-item" style="border: none; margin: 0; padding: 8px 0;">
+                    <div>
+                        <span class="rank-medal">{{ david_humble_rank }}.</span>
+                        <span class="author-name">David Proctor</span>
+                    </div>
+                    <span class="score low">{{ "%.1f"|format(data.author_stats["David Proctor"].avg_eii_score) }}/10</span>
+                </div>
+            </div>
+            {% endif %}
         </div>
         
         <div class="ranking-section">
             <h3>💪 Most Confident</h3>
             <ul class="ranking-list">
-                {% for author in data.rankings.most_confident %}
+                {% for author in data.rankings.most_confident[:3] %}
                 <li class="ranking-item">
                     <div>
                         <span class="rank-medal">
                             {% if loop.index == 1 %}💪
                             {% elif loop.index == 2 %}🦁
                             {% elif loop.index == 3 %}⚡
-                            {% else %}{{ loop.index }}.
                             {% endif %}
                         </span>
                         <span class="author-name">{{ author }}</span>
@@ -106,19 +133,33 @@
                 </li>
                 {% endfor %}
             </ul>
+            
+            <!-- How Our Author Compares -->
+            {% set david_conf_rank = data.rankings.most_confident.index("David Proctor") + 1 if "David Proctor" in data.rankings.most_confident else None %}
+            {% if david_conf_rank and david_conf_rank > 3 %}
+            <div style="margin-top: 20px; padding: 15px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #ff9800;">
+                <h4 style="margin: 0 0 10px 0; color: #ff9800;">📍 How Our Author Compares</h4>
+                <div class="ranking-item" style="border: none; margin: 0; padding: 8px 0;">
+                    <div>
+                        <span class="rank-medal">{{ david_conf_rank }}.</span>
+                        <span class="author-name">David Proctor</span>
+                    </div>
+                    <span class="score medium">{{ "%.1f"|format(data.author_stats["David Proctor"].avg_confidence) }}/10</span>
+                </div>
+            </div>
+            {% endif %}
         </div>
         
         <div class="ranking-section">
             <h3>💣 Biggest Jargon Bomber</h3>
             <ul class="ranking-list">
-                {% for author in data.rankings.biggest_jargon_bomber %}
+                {% for author in data.rankings.biggest_jargon_bomber[:3] %}
                 <li class="ranking-item">
                     <div>
                         <span class="rank-medal">
                             {% if loop.index == 1 %}💣
                             {% elif loop.index == 2 %}🤖
                             {% elif loop.index == 3 %}📚
-                            {% else %}{{ loop.index }}.
                             {% endif %}
                         </span>
                         <span class="author-name">{{ author }}</span>
@@ -127,39 +168,84 @@
                 </li>
                 {% endfor %}
             </ul>
+            
+            <!-- How Our Author Compares -->
+            {% set david_jargon_rank = data.rankings.biggest_jargon_bomber.index("David Proctor") + 1 if "David Proctor" in data.rankings.biggest_jargon_bomber else None %}
+            {% if david_jargon_rank and david_jargon_rank > 3 %}
+            <div style="margin-top: 20px; padding: 15px; background: #fce4ec; border-radius: 8px; border-left: 4px solid #e91e63;">
+                <h4 style="margin: 0 0 10px 0; color: #e91e63;">📍 How Our Author Compares</h4>
+                <div class="ranking-item" style="border: none; margin: 0; padding: 8px 0;">
+                    <div>
+                        <span class="rank-medal">{{ david_jargon_rank }}.</span>
+                        <span class="author-name">David Proctor</span>
+                    </div>
+                    <span class="score medium">{{ "%.1f"|format(data.author_stats["David Proctor"].avg_jargon) }}/10</span>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     
     <div class="author-details">
-        <h3>📋 Individual Author Details</h3>
+        <h3>📋 Detailed Author Analysis</h3>
         <div class="author-grid">
-            {% for author, stats in data.author_stats.items() %}
-            <div class="author-card">
-                <h4>{{ author }}</h4>
+            <!-- Focus on David Proctor's performance -->
+            {% set david_stats = data.author_stats["David Proctor"] %}
+            <div class="author-card" style="border: 2px solid #1976d2; background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);">
+                <h4 style="color: #1976d2;">📍 David Proctor <span style="font-size: 0.8em; font-weight: normal;">(Our Author)</span></h4>
                 <div class="stat-row">
-                    <span>📈 Articles:</span>
-                    <strong>{{ stats.article_count }}</strong>
+                    <span>📈 Articles Analyzed:</span>
+                    <strong>{{ david_stats.article_count }}</strong>
                 </div>
                 <div class="stat-row">
-                    <span>🎯 Avg EII:</span>
-                    <strong>{{ "%.1f"|format(stats.avg_eii_score) }}/10</strong>
+                    <span>🎯 Average EII Score:</span>
+                    <strong>{{ "%.1f"|format(david_stats.avg_eii_score) }}/10</strong>
                 </div>
                 <div class="stat-row">
-                    <span>📊 Range:</span>
-                    <strong>{{ "%.1f"|format(stats.min_eii_score) }} - {{ "%.1f"|format(stats.max_eii_score) }}</strong>
+                    <span>📊 Score Range:</span>
+                    <strong>{{ "%.1f"|format(david_stats.min_eii_score) }} - {{ "%.1f"|format(david_stats.max_eii_score) }}</strong>
                 </div>
-                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                {% if data.team_summary.david_industry_rank %}
+                <div class="stat-row" style="background: rgba(25, 118, 210, 0.1); padding: 8px; border-radius: 4px; margin: 10px 0;">
+                    <span>🏆 Industry Ranking:</span>
+                    <strong>#{{ data.team_summary.david_industry_rank }} of {{ data.author_stats|length }}</strong>
+                </div>
+                {% endif %}
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
                     <div style="font-size: 0.85em; margin-bottom: 5px;">
-                        <strong>🔥 Most Inflated:</strong><br>
-                        "{{ stats.most_inflated_article }}"
+                        <strong>🔥 Most Inflated Article:</strong><br>
+                        "{{ david_stats.most_inflated_article }}"
                     </div>
                     <div style="font-size: 0.85em;">
-                        <strong>😇 Most Humble:</strong><br>
-                        "{{ stats.humblest_article }}"
+                        <strong>😇 Most Humble Article:</strong><br>
+                        "{{ david_stats.humblest_article }}"
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            
+            <!-- Industry comparison context -->
+            <div class="author-card" style="border: 2px solid #27ae60;">
+                <h4 style="color: #27ae60;">🌍 Industry Context</h4>
+                <div class="stat-row">
+                    <span>📊 Total Industry Experts:</span>
+                    <strong>{{ data.author_stats|length }}</strong>
+                </div>
+                <div class="stat-row">
+                    <span>📈 Industry Average EII:</span>
+                    <strong>{{ "%.1f"|format(data.team_summary.team_avg_eii) }}/10</strong>
+                </div>
+                <div class="stat-row">
+                    <span>👑 Most Inflated Expert:</span>
+                    <strong>{{ data.team_summary.inflation_champion }}</strong>
+                </div>
+                <div class="stat-row">
+                    <span>😇 Most Humble Expert:</span>
+                    <strong>{{ data.team_summary.humility_champion }}</strong>
+                </div>
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 0.85em; color: #666;">
+                    <p><strong>Analysis includes:</strong> Academic researchers, industry pioneers, thought leaders, and ethics experts from major AI publications and conferences.</p>
+                </div>
+            </div>
         </div>
     </div>
     
