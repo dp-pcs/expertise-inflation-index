@@ -32,6 +32,19 @@
                 {% elif data.eii_score >= 4 %}📊 Balanced
                 {% else %}😇 Humble{% endif %}
             </div>
+            
+            {% if data.cross_model_validation %}
+            <div style="margin-top: 15px; font-size: 0.85em; opacity: 0.9; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
+                <div>🔬 <strong>Scientific Analysis</strong></div>
+                <div style="margin-top: 5px;">
+                    {% if data.flesch_score %}📖 Flesch Readability: {{ data.flesch_score }}/10{% endif %}
+                    {% if data.reliability %} • 🎯 Reliability: {{ data.reliability }}{% endif %}
+                </div>
+                <div style="margin-top: 3px; font-size: 0.8em; opacity: 0.8;">
+                    Cross-model validation (OpenAI + Anthropic)
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     
@@ -87,6 +100,21 @@
                     {{ 'Self-Aware' if data.scores.humor_rating >= 6 else 'Some Humor' if data.scores.humor_rating >= 4 else 'Serious' if data.scores.humor_rating >= 2 else 'Overly Serious' }}
                 </div>
             </div>
+            
+            {% if data.scores.readability %}
+            <div class="score-item">
+                <div class="score-value" style="color: {{ '#27ae60' if data.scores.readability >= 7 else '#f39c12' if data.scores.readability >= 4 else '#e74c3c' }}">
+                    {{ data.scores.readability }}
+                </div>
+                <div class="score-label">📖 Readability (Flesch)</div>
+                <div style="font-size: 0.75em; color: #666; margin-top: 3px;">
+                    {{ 'Very Readable' if data.scores.readability >= 8 else 'Good' if data.scores.readability >= 6 else 'Moderate' if data.scores.readability >= 4 else 'Difficult' }}
+                </div>
+                <div style="font-size: 0.7em; color: #999; margin-top: 2px; font-style: italic;">
+                    Quantitative Analysis
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     
