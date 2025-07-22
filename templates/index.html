@@ -109,6 +109,42 @@
                 </a>
             </div>
         </div>
+
+        <div class="card">
+            <h3>🔄 Admin: Refresh Analysis</h3>
+            <p>Re-run the full 64-article industry analysis and update stored results</p>
+            <div class="card-buttons">
+                <a href="#" onclick="refreshAnalysis()" class="btn-primary">Refresh Analysis</a>
+                <span class="btn-secondary" id="refresh-status">Ready</span>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function refreshAnalysis() {
+            const statusSpan = document.getElementById('refresh-status');
+            statusSpan.textContent = 'Running...';
+            statusSpan.style.color = '#ff9500';
+            
+            fetch('/api/refresh-industry-analysis', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    statusSpan.textContent = `✅ Complete (${data.message})`;
+                    statusSpan.style.color = '#28a745';
+                } else {
+                    statusSpan.textContent = `❌ Error: ${data.error}`;
+                    statusSpan.style.color = '#dc3545';
+                }
+            })
+            .catch(error => {
+                statusSpan.textContent = `❌ Failed: ${error.message}`;
+                statusSpan.style.color = '#dc3545';
+            });
+        }
+    </script>
 </div>
 {% endblock %}
