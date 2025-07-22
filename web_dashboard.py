@@ -340,19 +340,19 @@ def demo_discover():
                     if author != 'Unknown':
                         articles_by_author[author].append(article)
                 
-                # Get 2-3 recent articles from each author for diversity
+                # Get 2-3 high-relevance articles from each author for diversity
                 diverse_articles = []
                 for author, author_articles in articles_by_author.items():
-                    # Sort by date if available, otherwise use order from discovery
-                    author_articles.sort(key=lambda x: x.get('published_date', ''), reverse=True)
+                    # Sort by relevance score, fall back to original order
+                    author_articles.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
                     # Take up to 3 articles per author
                     diverse_articles.extend(author_articles[:3])
                 
-                # If we still don't have enough diverse articles, fall back to most recent overall
+                # If we still don't have enough diverse articles, fall back to highest relevance overall
                 if len(diverse_articles) < 10:
-                    # Sort all articles by date and take most recent 10
+                    # Sort all articles by relevance score and take top 10
                     sorted_articles = sorted(trilogy_articles, 
-                                           key=lambda x: x.get('published_date', ''), 
+                                           key=lambda x: x.get('relevance_score', 0), 
                                            reverse=True)
                     articles = sorted_articles[:10]
                 else:
@@ -380,19 +380,19 @@ def demo_discover():
                         if author != 'Unknown':
                             articles_by_author[author].append(article)
                     
-                    # Get 2-3 recent articles from each author for diversity
+                    # Get 2-3 high-relevance articles from each author for diversity
                     diverse_articles = []
                     for author, author_articles in articles_by_author.items():
-                        # Sort by date if available, otherwise use order from Firecrawl
-                        author_articles.sort(key=lambda x: x.get('published_date', ''), reverse=True)
+                        # Sort by relevance score, fall back to original order
+                        author_articles.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
                         # Take up to 3 articles per author
                         diverse_articles.extend(author_articles[:3])
                     
-                    # If we still don't have enough diverse articles, fall back to most recent overall
+                    # If we still don't have enough diverse articles, fall back to highest relevance overall
                     if len(diverse_articles) < 10:
-                        # Sort all articles by date and take most recent 10
+                        # Sort all articles by relevance score and take top 10
                         sorted_articles = sorted(trilogy_articles, 
-                                               key=lambda x: x.get('published_date', ''), 
+                                               key=lambda x: x.get('relevance_score', 0), 
                                                reverse=True)
                         articles = sorted_articles[:10]
                     else:
@@ -451,7 +451,6 @@ def demo_discover():
                                         "title": "AI Discovery Systems",
                                         "url": "https://trilogyai.substack.com/p/ai-discovery-systems",
                                         "author": "Leonardo Gonzalez",
-                                        "published_date": "2025-07-21",
                                         "excerpt": "Building next-generation discovery systems...",
                                         "relevance_score": 0.95
                                     },
@@ -459,7 +458,6 @@ def demo_discover():
                                         "title": "Agent-to-Agent Communication",
                                         "url": "https://trilogyai.substack.com/p/agent-communication",
                                         "author": "Stanislav Huseletov", 
-                                        "published_date": "2025-07-20",
                                         "excerpt": "Exploring the future of AI communication...",
                                         "relevance_score": 0.92
                                     },
@@ -467,7 +465,6 @@ def demo_discover():
                                         "title": "Standardizing AI Integration",
                                         "url": "https://trilogyai.substack.com/p/ai-integration",
                                         "author": "David Proctor",
-                                        "published_date": "2025-07-19", 
                                         "excerpt": "Creating standards for AI-to-system integration...",
                                         "relevance_score": 0.90
                                     },
@@ -475,7 +472,6 @@ def demo_discover():
                                         "title": "Retrieval Benchmarking",
                                         "url": "https://trilogyai.substack.com/p/retrieval-benchmarking",
                                         "author": "Praveen Koka",
-                                        "published_date": "2025-07-18",
                                         "excerpt": "Comprehensive analysis of retrieval systems...",
                                         "relevance_score": 0.88
                                     }
@@ -488,7 +484,6 @@ def demo_discover():
                                 "title": "AI Discovery Systems",
                                 "url": "https://trilogyai.substack.com/p/ai-discovery-systems",
                                 "author": "Leonardo Gonzalez",
-                                "published_date": "2025-07-21",
                                 "excerpt": "Building next-generation discovery systems...",
                                 "relevance_score": 0.95
                             }

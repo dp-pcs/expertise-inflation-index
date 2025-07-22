@@ -58,14 +58,12 @@ class TrilogyAIClient:
                 "id": "grok-4-vs-kimi-k2",
                 "title": "Grok 4 vs. Kimi K2: Clash of the Titans",
                 "author": "Leonardo Gonzalez",
-                "published_date": "2025-07-15",
                 "url": "https://trilogyai.substack.com/p/grok-4-vs-kimi-k2"
             },
             {
                 "id": "deepagent-value-check",
                 "title": "DeepAgent Value Check: Revolutionary Multi-Agent Framework",
                 "author": "Stanislav Huseletov",
-                "published_date": "2025-07-14",
                 "url": "https://trilogyai.substack.com/p/deepagent-value-check"
             }
         ]
