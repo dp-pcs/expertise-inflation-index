@@ -57,8 +57,8 @@ body {
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
     margin-bottom: 30px;
 }
 
@@ -2154,8 +2154,21 @@ body {
     margin: 3px 0;
 }
 
-/* Presentation-optimized styles for championship page */
-@media (min-width: 1200px) {
+/* Responsive design for smaller screens */
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .rankings {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+/* Presentation-optimized styles for larger screens */
+@media (min-width: 901px) {
     .container {
         max-width: 1100px;
         padding: 12px;
