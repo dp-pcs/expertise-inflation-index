@@ -48,7 +48,7 @@
         <div class="ranking-section">
             <h3>🔥 Highest Average EII (Most Inflated)</h3>
             <ul class="ranking-list">
-                {% for author in data.rankings.highest_avg_eii[:3] if author %}
+                {% for author in data.rankings.highest_avg_eii[:3] %}
                 <li class="ranking-item">
                     <div>
                         <span class="rank-medal">
@@ -83,7 +83,7 @@
         <div class="ranking-section">
             <h3>😇 Most Humble (Lowest EII)</h3>
             <ul class="ranking-list">
-                {% for author in data.rankings.most_humble[:3] if author %}
+                {% for author in data.rankings.most_humble[:3] %}
                 <li class="ranking-item">
                     <div>
                         <span class="rank-medal">
@@ -118,7 +118,7 @@
         <div class="ranking-section">
             <h3>💪 Most Confident</h3>
             <ul class="ranking-list">
-                {% for author in data.rankings.most_confident[:3] if author %}
+                {% for author in data.rankings.most_confident[:3] %}
                 <li class="ranking-item">
                     <div>
                         <span class="rank-medal">
@@ -153,7 +153,7 @@
         <div class="ranking-section">
             <h3>💣 Biggest Jargon Bomber</h3>
             <ul class="ranking-list">
-                {% for author in data.rankings.biggest_jargon_bomber[:3] if author %}
+                {% for author in data.rankings.biggest_jargon_bomber[:3] %}
                 <li class="ranking-item">
                     <div>
                         <span class="rank-medal">

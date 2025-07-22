@@ -2281,11 +2281,11 @@ def real_industry_analysis():
         "timestamp": datetime.now().isoformat(),
         "author_stats": final_author_stats,
         "rankings": {
-            "highest_avg_eii": [author for author, _ in ranked_authors],
-            "most_confident": [author for author, _ in sorted(final_author_stats.items(), key=lambda x: x[1]['avg_confidence'], reverse=True)],
-            "biggest_jargon_bomber": [author for author, _ in sorted(final_author_stats.items(), key=lambda x: x[1]['avg_jargon'], reverse=True)],
-            "most_humble": [author for author, _ in sorted(final_author_stats.items(), key=lambda x: x[1]['avg_eii_score'])],
-            "funniest": [author for author, _ in sorted(final_author_stats.items(), key=lambda x: x[1]['avg_humor'], reverse=True)]
+            "highest_avg_eii": [author for author, _ in ranked_authors if author and author != "null"],
+            "most_confident": [author for author, _ in sorted(final_author_stats.items(), key=lambda x: x[1]['avg_confidence'], reverse=True) if author and author != "null"],
+            "biggest_jargon_bomber": [author for author, _ in sorted(final_author_stats.items(), key=lambda x: x[1]['avg_jargon'], reverse=True) if author and author != "null"],
+            "most_humble": [author for author, _ in sorted(final_author_stats.items(), key=lambda x: x[1]['avg_eii_score']) if author and author != "null"],
+            "funniest": [author for author, _ in sorted(final_author_stats.items(), key=lambda x: x[1]['avg_humor'], reverse=True) if author and author != "null"]
         },
         "team_summary": {
             "total_articles": len(analyzed_articles),
