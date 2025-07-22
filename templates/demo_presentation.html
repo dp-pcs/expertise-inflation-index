@@ -366,17 +366,16 @@ Results:
                 
                 <!-- Comparison Type Selection -->
                 <div class="discovery-options" id="discovery-options">
-                    <h3>🔬 Choose Your EII Comparison:</h3>
+                    <h3>🔬 EII Industry Analysis:</h3>
                     <div class="option-buttons">
-                        <button class="analysis-option-btn" id="team-discovery-btn" onclick="startDiscovery('team')">
-                            👥 Team Analysis
-                            <span class="option-subtitle">David vs. Anonymized Colleagues</span>
-                        </button>
                         <button class="analysis-option-btn" id="industry-discovery-btn" onclick="startDiscovery('external')">
                             🌍 Industry Comparison
                             <span class="option-subtitle">David vs. 30+ AI Thought Leaders</span>
                         </button>
                     </div>
+                    <p style="margin-top: 20px; color: #ccc; font-style: italic;">
+                        Compare expertise inflation across the entire AI research community
+                    </p>
                 </div>
                 
                 <div class="progress-container" id="discovery-progress" style="display: none;">
@@ -474,7 +473,7 @@ Results:
 
             <div class="demo-actions">
                 <a href="/discovery-report?source=trilogy" class="nav-button">🔍 Explore Real Data</a>
-                <a href="/team-championship" class="nav-button">🏆 See Team Results</a>
+                <a href="/team-championship" class="nav-button">🌍 See Industry Analysis</a>
                 <a href="/" class="nav-button">🏠 Main Dashboard</a>
             </div>
         </div>
@@ -644,7 +643,7 @@ document.addEventListener('click', function(event) {
     }
 });
 
-function startDiscovery(comparisonType = 'team') {
+function startDiscovery(comparisonType = 'external') {
     // Hide discovery option buttons and show progress
     const discoveryOptions = document.getElementById('discovery-options');
     const progress = document.getElementById('discovery-progress');
@@ -655,16 +654,16 @@ function startDiscovery(comparisonType = 'team') {
     
     console.log(`🔍 Starting discovery for comparison type: ${comparisonType}`);
     
-    // Store comparison type for later use in analysis
-    window.currentComparisonType = comparisonType;
+    // Store comparison type for later use in analysis (always external now)
+    window.currentComparisonType = 'external';
     
-    // Use appropriate endpoint based on comparison type
-    const apiEndpoint = comparisonType === 'external' ? '/api/demo-discover' : '/api/demo-discover';
+    // Use demo-discover endpoint for external comparison
+    const apiEndpoint = '/api/demo-discover';
     
     fetch(apiEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ comparison_type: comparisonType })
+        body: JSON.stringify({ comparison_type: 'external' })
     })
     .then(response => {
         console.log('📡 Discovery response received:', response.status);
@@ -706,8 +705,8 @@ function startDiscovery(comparisonType = 'team') {
 }
 
 function startAnalysis() {
-    // Use the comparison type stored from discovery phase
-    const comparisonType = window.currentComparisonType || 'team';
+    // Always use external comparison now
+    const comparisonType = 'external';
     
     // Hide analysis button and show progress
     const button = document.getElementById('analyze-btn');
@@ -719,8 +718,8 @@ function startAnalysis() {
     
     console.log(`🔍 Starting analysis for comparison type: ${comparisonType}`);
     
-    // Choose the correct API endpoint based on comparison type
-    const apiEndpoint = comparisonType === 'external' ? '/api/demo-analyze-external' : '/api/demo-analyze';
+    // Always use external analysis endpoint
+    const apiEndpoint = '/api/demo-analyze-external';
     
     fetch(apiEndpoint, {
         method: 'POST',
@@ -745,20 +744,20 @@ function startAnalysis() {
             simulateProgress('analysis', steps, () => {
                 console.log('✅ Analysis simulation complete');
 
-                // Check if we should redirect to team dashboard (for team comparison)
-                if (data.redirect_url && comparisonType === 'team') {
+                // Always redirect to industry analysis dashboard
+                if (data.redirect_url) {
                     console.log(`🔄 Redirecting to: ${data.redirect_url}`);
 
                     // Show completion message briefly before redirect
                     progress.innerHTML = `
                         <div class="analysis-complete">
-                            <h3>🎉 Team Analysis Complete!</h3>
+                            <h3>🎉 Industry Analysis Complete!</h3>
                             <p>✅ All ${data.results.analysis_summary.total_articles_analyzed} articles analyzed</p>
-                            <p>📊 ${data.results.analysis_summary.total_anomalies_found || 0} anomalies detected</p>
-                            <p>🏆 Redirecting to team championship...</p>
+                            <p>🌍 Compared against ${data.results.analysis_summary.total_authors} AI experts</p>
+                            <p>🏆 Redirecting to industry leaderboard...</p>
                             <div class="redirect-countdown">
                                 <div class="spinner"></div>
-                                <span>Loading team dashboard...</span>
+                                <span>Loading industry analysis...</span>
                             </div>
                         </div>
                     `;
@@ -768,7 +767,7 @@ function startAnalysis() {
                         window.location.href = data.redirect_url;
                     }, 2000);
                 } else {
-                    // Display results inline (for external comparison or no redirect)
+                    // Fallback: display results inline
                     console.log('📈 Displaying results inline');
                     displayAnalysisResults(data.results, technologies, comparisonType);
                     progress.style.display = 'none';
