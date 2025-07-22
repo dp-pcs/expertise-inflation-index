@@ -31,6 +31,17 @@ except ImportError:
     from flask import Flask, render_template, jsonify, request, send_from_directory
     from flask_cors import CORS
 
+# Co-worker anonymization mapping - protects internal team privacy while keeping external names real
+COWORKER_ANONYMIZATION = {
+    "Stanislav Huseletov": "NeuralArchitect",
+    "Leonardo Gonzalez": "VectorMaster", 
+    "Praveen Koka": "AlgorithmSage"
+}
+
+def anonymize_author_name(author_name):
+    """Apply anonymization only to specific co-worker names"""
+    return COWORKER_ANONYMIZATION.get(author_name, author_name)
+
 # Initialize Flask app with correct paths for templates and static files
 # Since we're now in src/, we need to point to parent directory
 import os
@@ -347,7 +358,7 @@ def demo_discover():
                 
                 # Group articles by author
                 for article in trilogy_articles:
-                    author = article.get('author', 'Unknown')
+                    author = anonymize_author_name(article.get('author', 'Unknown'))
                     if author != 'Unknown':
                         articles_by_author[author].append(article)
                 
@@ -387,7 +398,7 @@ def demo_discover():
                     
                     # Group articles by author
                     for article in trilogy_articles:
-                        author = article.get('author', 'Unknown')
+                        author = anonymize_author_name(article.get('author', 'Unknown'))
                         if author != 'Unknown':
                             articles_by_author[author].append(article)
                     
@@ -2122,7 +2133,7 @@ def real_industry_analysis():
             # Extract article content
             url = article.get('url', '')
             title = article.get('title', 'Unknown Title')
-            author = article.get('author', 'Unknown Author')
+            author = anonymize_author_name(article.get('author', 'Unknown Author'))
             
             # For external articles, try to fetch content
             article_text = ""
