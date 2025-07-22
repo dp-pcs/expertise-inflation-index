@@ -54,7 +54,7 @@ class EIIDashboard:
         
     def load_team_results(self) -> Optional[Dict]:
         """Load team championship results from JSON file"""
-        results_file = self.data_dir / "trilogy_eii_results.json"
+        results_file = self.data_dir / "results" / "trilogy_eii_results.json"
         if results_file.exists():
             with open(results_file, 'r') as f:
                 return json.load(f)
@@ -62,7 +62,7 @@ class EIIDashboard:
     
     def load_discovery_results(self) -> Optional[Dict]:
         """Load content discovery results from JSON file"""
-        discovery_file = self.data_dir / "discovered_articles.json"
+        discovery_file = self.data_dir / "discovery" / "discovered_articles.json"
         if discovery_file.exists():
             with open(discovery_file, 'r') as f:
                 return json.load(f)
@@ -87,7 +87,7 @@ class EIIDashboard:
         
         # Try to load the specific file
         if filename:
-            discovery_file = self.data_dir / filename
+            discovery_file = self.data_dir / "discovery" / filename
             if discovery_file.exists():
                 try:
                     with open(discovery_file, 'r') as f:
@@ -991,9 +991,9 @@ def demo_analyze_external():
     
     # Save to team dashboard file
     try:
-        with open('trilogy_eii_results.json', 'w') as f:
+        with open('data/results/trilogy_eii_results.json', 'w') as f:
             json.dump(team_dashboard_data, f, indent=2)
-        print("✅ Saved industry comparison analysis to trilogy_eii_results.json")
+        print("✅ Saved industry comparison analysis to data/results/trilogy_eii_results.json")
     except Exception as e:
         print(f"⚠️ Error saving team dashboard data: {e}")
     
@@ -1056,9 +1056,9 @@ def article_analysis():
             
             # Execute enhanced analysis
             result = subprocess.run([
-                'python', 'enhanced_analysis.py',
+                'python', 'src/enhanced_analysis.py',
                 '--article', temp_article_path,
-                '--prompt', 'score_prompt_enhanced.txt', 
+                '--prompt', 'config/score_prompt_enhanced.txt', 
                 '--model', 'both',
                 '--output', temp_output_path
             ], capture_output=True, text=True, timeout=30)
@@ -1918,9 +1918,9 @@ def enhanced_analysis():
         
         # Run enhanced analysis
         result = subprocess.run([
-            'python', 'enhanced_analysis.py',
+            'python', 'src/enhanced_analysis.py',
             '--article', temp_article_path,
-            '--prompt', 'score_prompt_enhanced.txt',
+            '--prompt', 'config/score_prompt_enhanced.txt',
             '--model', 'both',
             '--output', temp_output_path
         ], capture_output=True, text=True, timeout=60)

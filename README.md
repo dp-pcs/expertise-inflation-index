@@ -48,7 +48,7 @@ pip install openai anthropic
 export OPENAI_API_KEY="your-openai-key"
 export ANTHROPIC_API_KEY="your-anthropic-key"
 
-python web_dashboard.py --port 8080
+python app.py --port 8080
 ```
 
 Then visit:
@@ -59,11 +59,38 @@ Then visit:
 ### Option 2: Scientific Analysis Mode
 ```bash
 # Enhanced 7-dimension analysis with cross-model validation
-python enhanced_analysis.py --article examples/ai_vision_example.md --model both
+python src/enhanced_analysis.py --article examples/ai_vision_example.md --model both
 
 # Traditional discovery and analysis
-python content_discovery.py --source trilogy --limit 10
-python trilogy_team_analysis.py
+python scripts/content_discovery.py --source trilogy --limit 10
+python scripts/trilogy_team_analysis.py
+```
+
+## 📁 Repository Structure
+
+```
+expertise-inflation-index/
+├── 🚀 app.py                    # Main launcher (run this!)
+├── 📊 src/                      # Core source code
+│   ├── web_dashboard.py         # Flask web application
+│   └── enhanced_analysis.py     # Scientific analysis engine
+├── 📝 scripts/                  # Utility scripts
+│   ├── content_discovery.py     # Article discovery
+│   ├── trilogy_team_analysis.py # Team analysis
+│   └── test_prompt.py           # Prompt testing
+├── 🗃️ data/                     # Organized data files
+│   ├── discovery/               # Discovered articles
+│   ├── analysis/                # Analysis results
+│   └── results/                 # Final EII results
+├── ⚙️ config/                   # Configuration files
+│   ├── score_prompt_enhanced.txt # Enhanced scoring prompts
+│   └── score_prompt.txt         # Basic scoring prompts
+├── 🎨 templates/                # HTML templates
+├── 🎯 static/                   # CSS, JS, images
+├── 📖 examples/                 # Sample articles
+├── 🔧 n8n/                     # Workflow definitions
+├── ☁️ aws/                      # AWS configurations
+└── 📚 docs/                     # Documentation
 ```
 
 ## 🔬 Scientific Rigor & Research Applications

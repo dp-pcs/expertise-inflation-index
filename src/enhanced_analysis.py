@@ -179,7 +179,7 @@ def compute_differences(scores_a: Dict[str, Any], scores_b: Dict[str, Any]) -> D
 def main():
     parser = argparse.ArgumentParser(description="Enhanced EII Analysis")
     parser.add_argument('--article', type=str, required=True, help="Path to article file")
-    parser.add_argument('--prompt', type=str, default='prompts/score_prompt_enhanced.txt', help="Path to prompt file")
+    parser.add_argument('--prompt', type=str, default='config/score_prompt_enhanced.txt', help="Path to prompt file")
     parser.add_argument('--model', type=str, choices=['openai','anthropic','both'], default='both', help="Which model to use")
     parser.add_argument('--output', type=str, help="Path to save output JSON")
     args = parser.parse_args()
