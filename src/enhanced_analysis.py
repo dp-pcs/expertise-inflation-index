@@ -160,7 +160,18 @@ def query_openai(prompt: str, article: str) -> Optional[Dict[str, Any]]:
         # Validate JSON structure
         if 'scores' not in parsed_json:
             raise ValueError("Invalid JSON structure: missing 'scores' field")
-            
+        
+        # Validate that scores are actual numbers, not None
+        scores = parsed_json['scores']
+        for dimension, score in scores.items():
+            if score is None:
+                raise ValueError(f"Score for {dimension} is None")
+            if not isinstance(score, (int, float)):
+                try:
+                    scores[dimension] = float(score)
+                except (ValueError, TypeError):
+                    raise ValueError(f"Score for {dimension} is not a valid number: {score}")
+        
         return parsed_json
         
     except Exception as e:
@@ -222,7 +233,18 @@ def query_anthropic(prompt: str, article: str) -> Optional[Dict[str, Any]]:
         # Validate JSON structure
         if 'scores' not in parsed_json:
             raise ValueError("Invalid JSON structure: missing 'scores' field")
-            
+        
+        # Validate that scores are actual numbers, not None
+        scores = parsed_json['scores']
+        for dimension, score in scores.items():
+            if score is None:
+                raise ValueError(f"Score for {dimension} is None")
+            if not isinstance(score, (int, float)):
+                try:
+                    scores[dimension] = float(score)
+                except (ValueError, TypeError):
+                    raise ValueError(f"Score for {dimension} is not a valid number: {score}")
+        
         return parsed_json
         
     except Exception as e:

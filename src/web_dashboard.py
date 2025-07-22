@@ -2557,6 +2557,17 @@ def real_industry_analysis_core():
             if not content or len(content) < 50:
                 content = title  # Fallback to title if no content
             
+            # Validate content quality
+            # Check if content is mostly HTML or metadata
+            if content.count('<') > len(content) / 10:  # More than 10% HTML tags
+                print(f"⚠️  Skipping article with poor content quality: {title[:50]}...")
+                continue
+            
+            # Ensure content is substantial enough for analysis
+            if len(content.strip()) < 100:
+                print(f"⚠️  Skipping article with insufficient content: {title[:50]}...")
+                continue
+            
             # Run REAL enhanced analysis via subprocess
             with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as temp_file:
                 temp_file.write(content)
@@ -2604,18 +2615,28 @@ def real_industry_analysis_core():
                     
                     for dimension in all_dimensions:
                         # Priority 1: Both models have scores -> use consensus (average)
-                        if dimension in openai_scores and dimension in anthropic_scores:
-                            consensus_scores[dimension] = round(
-                                (openai_scores[dimension] + anthropic_scores[dimension]) / 2, 1
-                            )
+                        if (dimension in openai_scores and openai_scores[dimension] is not None and
+                            dimension in anthropic_scores and anthropic_scores[dimension] is not None):
+                            try:
+                                openai_val = float(openai_scores[dimension])
+                                anthropic_val = float(anthropic_scores[dimension])
+                                consensus_scores[dimension] = round((openai_val + anthropic_val) / 2, 1)
+                            except (ValueError, TypeError):
+                                print(f"⚠️  Invalid scores for {dimension}: OpenAI={openai_scores[dimension]}, Anthropic={anthropic_scores[dimension]}")
                         # Priority 2: Only OpenAI has score -> use OpenAI
-                        elif dimension in openai_scores:
-                            consensus_scores[dimension] = float(openai_scores[dimension])
-                            print(f"🔄 Fallback: Using OpenAI-only score for {dimension}: {openai_scores[dimension]}")
+                        elif dimension in openai_scores and openai_scores[dimension] is not None:
+                            try:
+                                consensus_scores[dimension] = float(openai_scores[dimension])
+                                print(f"🔄 Fallback: Using OpenAI-only score for {dimension}: {openai_scores[dimension]}")
+                            except (ValueError, TypeError):
+                                print(f"⚠️  Invalid OpenAI score for {dimension}: {openai_scores[dimension]}")
                         # Priority 3: Only Anthropic has score -> use Anthropic  
-                        elif dimension in anthropic_scores:
-                            consensus_scores[dimension] = float(anthropic_scores[dimension])
-                            print(f"🔄 Fallback: Using Anthropic-only score for {dimension}: {anthropic_scores[dimension]}")
+                        elif dimension in anthropic_scores and anthropic_scores[dimension] is not None:
+                            try:
+                                consensus_scores[dimension] = float(anthropic_scores[dimension])
+                                print(f"🔄 Fallback: Using Anthropic-only score for {dimension}: {anthropic_scores[dimension]}")
+                            except (ValueError, TypeError):
+                                print(f"⚠️  Invalid Anthropic score for {dimension}: {anthropic_scores[dimension]}")
                         # Priority 4: Neither model has score -> will default to 5.0 later
                     
                     print(f"🔍 Consensus scores: {consensus_scores}")
