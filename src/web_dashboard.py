@@ -2575,22 +2575,55 @@ def real_industry_analysis_core():
                     '--output', temp_output_path
                 ], capture_output=True, text=True, timeout=45)
                 
+                # DEBUG: Show subprocess output
+                if result.stdout:
+                    print(f"🔍 Subprocess stdout: {result.stdout[:200]}...")
+                if result.stderr:
+                    print(f"🔍 Subprocess stderr: {result.stderr[:200]}...")
+                
                 if result.returncode == 0:
                     # Parse REAL results from enhanced_analysis.py
                     with open(temp_output_path, 'r') as f:
                         analysis_results = json.load(f)
                     
+                    # DEBUG: Print what we got from enhanced_analysis.py
+                    print(f"🔍 DEBUG: Analysis results for {title[:30]}...")
+                    print(f"🔍 OpenAI present: {'openai' in analysis_results}")
+                    print(f"🔍 Anthropic present: {'anthropic' in analysis_results}")
+                    
                     # Extract real scores from the analysis
                     openai_scores = analysis_results.get('openai', {}).get('scores', {})
                     anthropic_scores = analysis_results.get('anthropic', {}).get('scores', {})
                     
-                    # Calculate consensus scores (real cross-model validation)
+                    print(f"🔍 OpenAI scores: {openai_scores}")
+                    print(f"🔍 Anthropic scores: {anthropic_scores}")
+                    
+                    # Calculate consensus scores with fallback logic
                     consensus_scores = {}
-                    for dimension in ['confidence', 'jargon_density', 'self_reference', 'originality', 'humor_rating']:
+                    all_dimensions = ['confidence', 'jargon_density', 'self_reference', 'originality', 'humor_rating', 'synthetic_ethos']
+                    
+                    for dimension in all_dimensions:
+                        # Priority 1: Both models have scores -> use consensus (average)
                         if dimension in openai_scores and dimension in anthropic_scores:
                             consensus_scores[dimension] = round(
                                 (openai_scores[dimension] + anthropic_scores[dimension]) / 2, 1
                             )
+                        # Priority 2: Only OpenAI has score -> use OpenAI
+                        elif dimension in openai_scores:
+                            consensus_scores[dimension] = float(openai_scores[dimension])
+                            print(f"🔄 Fallback: Using OpenAI-only score for {dimension}: {openai_scores[dimension]}")
+                        # Priority 3: Only Anthropic has score -> use Anthropic  
+                        elif dimension in anthropic_scores:
+                            consensus_scores[dimension] = float(anthropic_scores[dimension])
+                            print(f"🔄 Fallback: Using Anthropic-only score for {dimension}: {anthropic_scores[dimension]}")
+                        # Priority 4: Neither model has score -> will default to 5.0 later
+                    
+                    print(f"🔍 Consensus scores: {consensus_scores}")
+                    missing_dims = [dim for dim in all_dimensions if dim not in consensus_scores]
+                    if missing_dims:
+                        print(f"🔍 Missing dimensions will default to 5.0: {missing_dims}")
+                    else:
+                        print(f"✅ All dimensions have real scores (no 5.0 defaults needed)")
                     
                     # Get real Flesch reading ease score
                     flesch_score = analysis_results.get('readability', {}).get('flesch_reading_ease', 0)
@@ -2609,6 +2642,14 @@ def real_industry_analysis_core():
                         consensus_scores.get(dim, 5.0) * weight 
                         for dim, weight in weights.items()
                     )
+                    
+                    # DEBUG: Show weighted calculation step by step
+                    print(f"🔍 Weighted EII calculation:")
+                    for dim, weight in weights.items():
+                        score = consensus_scores.get(dim, 5.0)
+                        contribution = score * weight
+                        print(f"   {dim}: {score} × {weight} = {contribution:.3f}")
+                    print(f"🔍 Total weighted EII: {weighted_eii:.3f}")
                     
                     analyzed_articles.append({
                         "title": title,

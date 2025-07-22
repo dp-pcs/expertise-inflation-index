@@ -123,18 +123,49 @@ def query_openai(prompt: str, article: str) -> Optional[Dict[str, Any]]:
             model="gpt-4-0613",
             messages=[{"role": "user", "content": full_prompt}],
             temperature=0.3,
-            max_tokens=1000
+            max_tokens=1500  # Increased for full JSON response
         )
         result_text = response.choices[0].message.content
-        # Find JSON object in the response
+        
+        # More robust JSON extraction
+        if not result_text:
+            raise ValueError("Empty response from OpenAI")
+            
+        # Try multiple JSON extraction methods
+        json_data = None
+        
+        # Method 1: Find complete JSON object
         json_start = result_text.find('{')
-        json_end = result_text.rfind('}') + 1
-        if json_start == -1 or json_end == -1:
-            raise ValueError("No JSON object found in OpenAI response.")
-        json_data = result_text[json_start:json_end]
-        return json.loads(json_data)
+        if json_start != -1:
+            # Find matching closing brace
+            brace_count = 0
+            json_end = json_start
+            for i in range(json_start, len(result_text)):
+                if result_text[i] == '{':
+                    brace_count += 1
+                elif result_text[i] == '}':
+                    brace_count -= 1
+                    if brace_count == 0:
+                        json_end = i + 1
+                        break
+            
+            if brace_count == 0:  # Found complete JSON
+                json_data = result_text[json_start:json_end]
+        
+        if not json_data:
+            raise ValueError("No complete JSON object found in OpenAI response")
+            
+        parsed_json = json.loads(json_data)
+        
+        # Validate JSON structure
+        if 'scores' not in parsed_json:
+            raise ValueError("Invalid JSON structure: missing 'scores' field")
+            
+        return parsed_json
+        
     except Exception as e:
         print(f"\u274c Error querying OpenAI: {e}")
+        print(f"🔍 Raw response: {result_text[:200] if 'result_text' in locals() else 'No response'}")
         return None
 
 
@@ -153,18 +184,50 @@ def query_anthropic(prompt: str, article: str) -> Optional[Dict[str, Any]]:
         completion = client.messages.create(
             model="claude-3-haiku-20240307",  # Using Haiku for cost efficiency
             messages=[{"role": "user", "content": full_prompt}],
-            max_tokens=1000,
+            max_tokens=1500,  # Increased for full JSON response
             temperature=0.3
         )
         result_text = completion.content[0].text
+        
+        # More robust JSON extraction (same as OpenAI)
+        if not result_text:
+            raise ValueError("Empty response from Anthropic")
+            
+        # Try multiple JSON extraction methods
+        json_data = None
+        
+        # Method 1: Find complete JSON object
         json_start = result_text.find('{')
-        json_end = result_text.rfind('}') + 1
-        if json_start == -1 or json_end == -1:
-            raise ValueError("No JSON object found in Anthropic response.")
-        json_data = result_text[json_start:json_end]
-        return json.loads(json_data)
+        if json_start != -1:
+            # Find matching closing brace
+            brace_count = 0
+            json_end = json_start
+            for i in range(json_start, len(result_text)):
+                if result_text[i] == '{':
+                    brace_count += 1
+                elif result_text[i] == '}':
+                    brace_count -= 1
+                    if brace_count == 0:
+                        json_end = i + 1
+                        break
+            
+            if brace_count == 0:  # Found complete JSON
+                json_data = result_text[json_start:json_end]
+        
+        if not json_data:
+            raise ValueError("No complete JSON object found in Anthropic response")
+            
+        parsed_json = json.loads(json_data)
+        
+        # Validate JSON structure
+        if 'scores' not in parsed_json:
+            raise ValueError("Invalid JSON structure: missing 'scores' field")
+            
+        return parsed_json
+        
     except Exception as e:
         print(f"\u274c Error querying Anthropic: {e}")
+        print(f"🔍 Raw response: {result_text[:200] if 'result_text' in locals() else 'No response'}")
         return None
 
 
