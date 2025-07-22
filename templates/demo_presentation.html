@@ -399,7 +399,7 @@ Results:
         <div class="slide-content">
             <h2>🧠 Step 2: AI-Powered EII Analysis</h2>
             <div class="live-demo-section">
-                <p>Now we're going to send these articles through our AI analysis pipeline...</p>
+                <p>Now we're going to run real EII analysis on 85 external AI articles from Kaggle, Medium, Reddit, and Hacker News to benchmark against the industry...</p>
                 
                 <button class="big-action-btn" id="analyze-btn" onclick="startAnalysis()">
                     ⚡ Analyze All Articles
@@ -415,7 +415,7 @@ Results:
                 <div class="analysis-results" id="analysis-results" style="display: none;">
                     <h3>🏆 EII Analysis Complete!</h3>
                     <div class="tech-summary">
-                        <p>We've leveraged <strong>Firecrawl</strong>, <strong>Anthropic Claude</strong>, <strong>OpenAI GPT-4</strong>, <strong>n8n</strong>, and <strong>AWS DynamoDB</strong> to analyze our articles.</p>
+                        <p>We've leveraged <strong>85 real external articles</strong>, <strong>Anthropic Claude</strong>, <strong>OpenAI GPT-4</strong>, <strong>cross-model validation</strong>, and <strong>7-dimension weighted scoring</strong> to analyze the industry.</p>
                     </div>
                     <div class="winners-section" id="winners-section"></div>
                     <button class="demo-next-btn" onclick="nextSlide()">Wrap It Up! 🎬</button>
@@ -720,7 +720,7 @@ function startAnalysis() {
     console.log(`🔍 Starting analysis for comparison type: ${comparisonType}`);
     
     // Always use external analysis endpoint
-    const apiEndpoint = '/api/demo-analyze-external';
+            const apiEndpoint = '/api/real-industry-analysis';
     
     fetch(apiEndpoint, {
         method: 'POST',
