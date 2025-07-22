@@ -91,6 +91,7 @@
 </div>
 
 <style>
+/* Cache refresh v2 - Force override of global navigation styles */
 /* High-contrast card styling for better readability */
 .custom-url-card, .articles-card {
     background: white;
@@ -188,23 +189,26 @@
     box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
 }
 
+/* Standalone nav buttons outside navigation containers */
 .nav-button {
     background: #1a73e8 !important;
     color: white !important;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    border: none !important;
+    cursor: pointer !important;
 }
 
 .nav-button:hover {
     background: #1557b0 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3) !important;
+    color: white !important;
+    text-decoration: none !important;
 }
 
 /* Input styling */
@@ -220,18 +224,36 @@ input[type="url"]:focus {
     box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
 }
 
-/* Navigation styling */
-.navigation {
-    text-align: center;
-    margin: 20px 0;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+/* Navigation styling - Override global styles with higher specificity */
+.container .navigation {
+    text-align: center !important;
+    margin: 20px 0 !important;
+    padding: 20px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
 }
 
-.navigation .nav-button {
-    margin: 5px 8px;
+.container .navigation .nav-button {
+    display: inline-block !important;
+    padding: 12px 24px !important;
+    margin: 5px 8px !important;
+    background: #1a73e8 !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.container .navigation .nav-button:hover {
+    background: #1557b0 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3) !important;
+    color: white !important;
+    text-decoration: none !important;
 }
 
 /* Responsive design */
@@ -256,10 +278,10 @@ input[type="url"]:focus {
         width: 100%;
     }
     
-    .navigation .nav-button {
-        display: block;
-        margin: 8px auto;
-        max-width: 250px;
+    .container .navigation .nav-button {
+        display: block !important;
+        margin: 8px auto !important;
+        max-width: 250px !important;
     }
 }
 </style>
