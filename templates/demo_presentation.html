@@ -76,7 +76,7 @@
     <!-- Slide 4: Scoring System -->
     <div class="slide" id="slide-4">
         <div class="slide-content">
-            <h2>🎯 The EII Scoring System</h2>
+            <h2>🎯 The EII 7-Dimension Scoring System</h2>
             <div class="scoring-grid">
                 <div class="score-category">
                     <h3>💪 Confidence Inflation</h3>
@@ -102,6 +102,16 @@
                     <h3>😂 Humor/Self-Awareness</h3>
                     <p>Do you know you're being ridiculous?</p>
                     <div class="score-range">1 = Deadly serious → 10 = "This is all nonsense"</div>
+                </div>
+                <div class="score-category">
+                    <h3>📖 Flesch Reading Ease</h3>
+                    <p>How accessible is your writing?</p>
+                    <div class="score-range">Quantitative: 0-30 = Graduate → 90-100 = 5th grade</div>
+                </div>
+                <div class="score-category">
+                    <h3>🎭 Synthetic Ethos</h3>
+                    <p>How artificially authoritative do you sound?</p>
+                    <div class="score-range">1 = Natural voice → 10 = "Studies show experts agree"</div>
                 </div>
             </div>
             <button class="demo-next-btn" onclick="nextSlide()">Now The AI Part! 🤖</button>
@@ -271,10 +281,13 @@ anthropic_scores = results['anthropic']['scores']
 
 consensus_scores = {}
 for dimension in ['confidence', 'jargon_density', 'self_reference', 
-                  'originality', 'humor_rating']:
+                  'originality', 'humor_rating', 'synthetic_ethos']:
     consensus_scores[dimension] = round(
         (openai_scores[dimension] + anthropic_scores[dimension]) / 2, 1
-    )</code></pre>
+    )
+
+# Add quantitative Flesch Reading Ease score
+consensus_scores['readability'] = compute_flesch_reading_ease(article_text)</code></pre>
                 </div>
                 
                 <div class="methodology-highlight">
