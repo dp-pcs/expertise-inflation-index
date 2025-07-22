@@ -603,8 +603,16 @@ function animateAISteps() {
 }
 
 function skipToDemo() {
-    currentSlide = 6; // Skip to the "Without Further Ado" slide
+    // Remove active class from current slide
+    document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+    
+    // Skip to slide 7 (Discovery & Comparison Choice)
+    currentSlide = 7;
+    
+    // Add active class to target slide
     document.getElementById(`slide-${currentSlide}`).classList.add('active');
+    
+    // Update navigation
     updateNavigation();
 }
 
