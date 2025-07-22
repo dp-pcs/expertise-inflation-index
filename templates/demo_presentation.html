@@ -793,9 +793,9 @@ function startAnalysis() {
             const steps = data.steps || [];
             const technologies = data.technologies_used || [];
 
-            // Show progress simulation first
-            simulateProgress('analysis', steps, () => {
-                console.log('✅ Analysis simulation complete');
+            // Simulate realistic article-by-article analysis
+            simulateRealtimeAnalysis(data, () => {
+                console.log('✅ Demo analysis simulation complete');
 
                 // Always redirect to industry analysis dashboard
                 if (data.redirect_url) {
@@ -905,6 +905,96 @@ function simulateProgress(type, steps, callback) {
     }
     
     showNextStep();
+}
+
+function simulateRealtimeAnalysis(data, callback) {
+    const progressFill = document.getElementById('analysis-progress-fill');
+    const stepsContainer = document.getElementById('analysis-steps');
+    const techContainer = document.getElementById('analysis-tech');
+    
+    console.log('🎬 Starting realistic analysis simulation');
+    
+    // Simulate realistic article analysis with titles and scores
+    const sampleArticles = [
+        { title: "Standardizing AI-to-System Integration", author: "David Proctor", eii: 4.2 },
+        { title: "Agent-to-Agent Communication: AI's Missing Link", author: "David Proctor", eii: 4.5 },
+        { title: "AI Vision and the Future of UI Testing", author: "David Proctor", eii: 3.8 },
+        { title: "Payloads, Promises, and Protocols: The MCP/A2A Tightrope", author: "David Proctor", eii: 6.0 },
+        { title: "When his hobbies went on hiatus, this Kaggler made fighting COVID-19...", author: "Kaggle Team", eii: 3.6 },
+        { title: "I trained a model. What is next?", author: "Medium Author", eii: 2.8 },
+        { title: "PyTorch 2: Faster Machine Learning Through Dynamic Python", author: "PyTorch Team", eii: 5.1 },
+        { title: "Scaling Up Reinforcement Learning for Traffic Smoothing", author: "DeepMind", eii: 4.8 },
+        { title: "A Gentle Introduction to Graph Neural Networks", author: "Distill", eii: 2.2 },
+        { title: "The Multi-Agent Moment", author: "OpenAI", eii: 4.4 },
+        { title: "Iterative AI System for Universal Discovery", author: "Research Lab", eii: 6.3 },
+        { title: "Behavioral Anti-Pattern Detection: A Comprehensive Analysis", author: "AI Researcher", eii: 6.2 },
+        { title: "Beyond Adoption: Defining Real AI Impact at Trilogy", author: "David Proctor", eii: 5.8 },
+        { title: "The Memory Framework Mirage: Data-Driven Reasons to Avoid...", author: "AI Engineer", eii: 5.9 },
+        { title: "Feature Engineering with LLM Embeddings: Enhancing Predictions", author: "Data Scientist", eii: 4.8 },
+        { title: "Naturally Occurring Equivariance in Neural Networks", author: "Academic", eii: 5.7 },
+        { title: "FDA's draft guidance on AI/ML has startups on high alert", author: "Healthcare AI", eii: 4.6 },
+        { title: "The robot will see you now: Foundation models in healthcare", author: "Medical AI", eii: 5.5 },
+        { title: "AI Ping-Pong: Manual Multi-Model Workflow for 98% Accuracy", author: "ML Engineer", eii: 5.9 },
+        { title: "Chess Llama - Training a tiny Llama model to play chess", author: "Hobbyist", eii: 4.9 }
+    ];
+    
+    let currentArticle = 0;
+    let totalArticles = 64; // Based on real analysis count
+    
+    // Initial setup message
+    stepsContainer.innerHTML = `<div class="current-step">🔍 Loading 64 articles for analysis...</div>`;
+    techContainer.innerHTML = `<div class="tech-used">Using: <strong>OpenAI GPT-4 + Anthropic Claude</strong></div>`;
+    
+    function analyzeNextArticle() {
+        if (currentArticle >= sampleArticles.length) {
+            // Show completion phase
+            const progress = ((totalArticles) / totalArticles) * 100;
+            progressFill.style.width = `${progress}%`;
+            
+            stepsContainer.innerHTML = `
+                <div class="current-step">✅ Analysis complete! Processed ${totalArticles} articles</div>
+                <div class="analysis-summary">
+                    <div>📊 Generated cross-model consensus scores</div>
+                    <div>🏆 Computed industry rankings</div>
+                    <div>📈 Statistical analysis complete</div>
+                </div>
+            `;
+            techContainer.innerHTML = `<div class="tech-used">Results: <strong>Real pre-computed EII analysis</strong></div>`;
+            
+            setTimeout(callback, 1500);
+            return;
+        }
+        
+        const article = sampleArticles[currentArticle];
+        const simulatedProgress = Math.min(((currentArticle + 1) / sampleArticles.length) * 85, 85); // Cap at 85% during analysis
+        
+        progressFill.style.width = `${simulatedProgress}%`;
+        
+        // Show current article being "analyzed"
+        stepsContainer.innerHTML = `
+            <div class="current-step">
+                <div class="analyzing-article">
+                    <span class="article-counter">[${currentArticle + 1}/${totalArticles}]</span>
+                    <span class="article-title">✅ Analyzed: ${article.title}</span>
+                    <span class="eii-score">(EII: ${article.eii})</span>
+                </div>
+            </div>
+        `;
+        
+        // Show current tech being used
+        const techs = ['OpenAI GPT-4', 'Anthropic Claude', 'Flesch Calculation', 'Cross-Model Validation'];
+        const currentTech = techs[currentArticle % techs.length];
+        techContainer.innerHTML = `<div class="tech-used">Using: <strong>${currentTech}</strong></div>`;
+        
+        currentArticle++;
+        
+        // Realistic timing: faster than real analysis but not instant
+        const analysisTime = Math.random() * 400 + 200; // 200-600ms per article
+        setTimeout(analyzeNextArticle, analysisTime);
+    }
+    
+    // Start analysis simulation after brief delay
+    setTimeout(analyzeNextArticle, 500);
 }
 
 function displayDiscoveryResults(articles, technologies, comparisonType) {

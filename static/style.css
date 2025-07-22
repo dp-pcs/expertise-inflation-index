@@ -2108,3 +2108,45 @@ body {
         justify-content: center;
     }
 }
+
+/* Demo Analysis Simulation Styles */
+.analyzing-article {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: 'Courier New', monospace;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid #28a745;
+}
+
+.article-counter {
+    font-size: 0.9em;
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.article-title {
+    font-size: 1em;
+    color: #28a745;
+    font-weight: normal;
+    margin: 2px 0;
+}
+
+.eii-score {
+    font-size: 0.9em;
+    color: #ff6b35;
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+.analysis-summary {
+    margin-top: 10px;
+}
+
+.analysis-summary div {
+    font-size: 0.9em;
+    color: #28a745;
+    margin: 3px 0;
+}
