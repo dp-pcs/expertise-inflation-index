@@ -1,4 +1,4 @@
-/* Cache refresh comment v22 - Added n8n workflow screenshot to demo step 5 overlay */
+/* Cache refresh comment v23 - Force 4-column dashboard layout for presentations */
 
 /* EII Dashboard Styles */
 :root {
@@ -27,9 +27,9 @@ body {
 }
 
 .container {
-    max-width: 950px;
+    max-width: 1150px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 12px;
 }
 
 .header {
@@ -56,19 +56,22 @@ body {
 }
 
 .dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 30px;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 12px;
+    margin-bottom: 25px;
+    width: 100%;
 }
 
 .card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
-    padding: 18px;
+    padding: 14px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #333; /* Ensure dark text on white background */
+    min-width: 0; /* Allow cards to shrink below content size */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 .card:hover {
@@ -2154,11 +2157,17 @@ body {
     margin: 3px 0;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 900px) {
+/* Force 4 columns always for presentations - override any responsive rules */
+.dashboard-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    display: grid !important;
+}
+
+/* Responsive design for mobile only */
+@media (max-width: 600px) {
     .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
     }
     
     .rankings {
