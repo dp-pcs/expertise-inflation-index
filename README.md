@@ -5,7 +5,7 @@
 
 A **scientific tool** for analyzing AI-related articles for "expertise inflation" - the tendency to exhibit overconfidence, excessive jargon, synthetic authority, and inflated claims of expertise. What started as satire has evolved into a legitimate research methodology with peer-review ready validation.
 
-**🌐 [Live Demo](http://127.0.0.1:8080/demo)** | **📊 [Dashboard](http://127.0.0.1:8080/)** | **🔬 [Scientific Methodology](http://127.0.0.1:8080/methodology)** | **🔗 [Repository](https://github.com/dp-pcs/expertise-inflation-index)**
+**🌐 [Live Demo](http://127.0.0.1:8080/demo)** | **📊 [Dashboard](http://127.0.0.1:8080/)** | **🔬 [Scientific Methodology](methodology.md)** | **🔗 [Repository](https://github.com/dp-pcs/expertise-inflation-index)**
 
 ![EII Demo](https://img.shields.io/badge/Demo-Interactive-blue) ![Scientific](https://img.shields.io/badge/Method-Peer%20Review%20Ready-green) ![Cross-Model](https://img.shields.io/badge/Validation-OpenAI%20%7C%20Anthropic-purple) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
@@ -30,6 +30,8 @@ The EII analyzes articles using **7 evidence-based dimensions** with **cross-mod
 - **Consensus Scoring**: Averaged results for maximum accuracy
 
 **Overall EII Score**: Evidence-based weighted calculation with reliability indicators.
+
+> 📋 **For complete methodology details**, see **[methodology.md](methodology.md)** - comprehensive documentation of the 7-dimension framework, cross-model validation, and scientific enhancements.
 
 ## 🚀 Quick Start
 
