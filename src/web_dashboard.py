@@ -555,12 +555,12 @@ def demo_discover():
         ]
         article_count = len(articles)
     
-    # Simulate discovery process with accurate counts
+    # Simulate discovery process with accurate counts - external industry focus
     steps = [
-        {"step": 1, "message": "🔍 Scanning Trilogy AI Center of Excellence...", "tech": "RSS Feed Parser + Python"},
-        {"step": 2, "message": "📡 Fetching articles from Substack API...", "tech": "feedparser library"},
-        {"step": 3, "message": f"🎯 Found {article_count} articles by our team...", "tech": "Content filtering algorithms"},
-        {"step": 4, "message": "✅ Discovery complete! Ready for analysis.", "tech": "Data aggregation"}
+        {"step": 1, "message": "🔍 Scanning AI industry publications...", "tech": "Multi-source RSS + APIs"},
+        {"step": 2, "message": "📡 Discovering articles from Kaggle, Medium, Reddit...", "tech": "Cross-platform scraping"},
+        {"step": 3, "message": f"🎯 Found {len(articles)} high-quality AI articles...", "tech": "Content filtering algorithms"},
+        {"step": 4, "message": "✅ Discovery complete! Ready for industry analysis.", "tech": "Data aggregation"}
     ]
     
     return jsonify({

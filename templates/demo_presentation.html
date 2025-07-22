@@ -740,8 +740,13 @@ function startAnalysis() {
     
     // Update intro text with actual discovered article count
     const introText = document.getElementById('analysis-intro-text');
+    console.log('🔢 Discovered article count:', window.discoveredArticleCount);
     if (window.discoveredArticleCount) {
-        introText.textContent = `Now we're going to run real EII analysis on ${window.discoveredArticleCount} AI articles from Kaggle, Medium, Reddit, and Hacker News to benchmark against the industry...`;
+        const newText = `Now we're going to run real EII analysis on ${window.discoveredArticleCount} AI articles from Kaggle, Medium, Reddit, and Hacker News to benchmark against the industry...`;
+        console.log('📝 Updating intro text to:', newText);
+        introText.textContent = newText;
+    } else {
+        console.log('⚠️ No discovered article count found, keeping default text');
     }
     
     // Hide analysis button and show progress
@@ -749,17 +754,23 @@ function startAnalysis() {
     const progress = document.getElementById('analysis-progress');
     const results = document.getElementById('analysis-results');
     
+    console.log('🚀 Analysis button clicked!');
     button.style.display = 'none';
     progress.style.display = 'block';
     
     console.log(`🔍 Starting analysis for comparison type: ${comparisonType}`);
     
     // Always use external analysis endpoint
-            const apiEndpoint = '/api/real-industry-analysis';
+    const apiEndpoint = '/api/real-industry-analysis';
+    
+    console.log('📡 Making API call to:', apiEndpoint);
     
     // Add timeout and AbortController for better UX
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+    const timeoutId = setTimeout(() => {
+        console.log('⏱️ 15-second timeout reached, aborting API call');
+        controller.abort();
+    }, 15000); // 15 second timeout
     
     fetch(apiEndpoint, {
         method: 'POST',
