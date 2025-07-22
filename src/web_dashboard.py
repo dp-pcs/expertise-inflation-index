@@ -2045,7 +2045,7 @@ def real_industry_analysis():
     # Load David's real articles
     david_articles = []
     try:
-        david_file = dashboard.data_dir / "discovery" / "trilogy_fixed_titles.json"
+        david_file = dashboard.data_dir / "data" / "discovery" / "trilogy_fixed_titles.json"
         with open(david_file, 'r') as f:
             discovery_data = json.load(f)
             all_articles = discovery_data.get('articles', [])
@@ -2066,7 +2066,7 @@ def real_industry_analysis():
     
     # Load from discovered_articles.json (Kaggle, Medium, etc.)
     try:
-        external_file = dashboard.data_dir / "discovery" / "discovered_articles.json"
+        external_file = dashboard.data_dir / "data" / "discovery" / "discovered_articles.json"
         with open(external_file, 'r') as f:
             data = json.load(f)
             external_articles.extend(data.get('articles', []))
@@ -2075,7 +2075,7 @@ def real_industry_analysis():
     
     # Load from reddit_articles.json
     try:
-        reddit_file = dashboard.data_dir / "discovery" / "reddit_articles.json"
+        reddit_file = dashboard.data_dir / "data" / "discovery" / "reddit_articles.json"
         with open(reddit_file, 'r') as f:
             data = json.load(f)
             external_articles.extend(data.get('articles', []))
@@ -2084,7 +2084,7 @@ def real_industry_analysis():
     
     # Load from hackernews_articles.json
     try:
-        hn_file = dashboard.data_dir / "discovery" / "hackernews_articles.json"
+        hn_file = dashboard.data_dir / "data" / "discovery" / "hackernews_articles.json"
         with open(hn_file, 'r') as f:
             data = json.load(f)
             external_articles.extend(data.get('articles', []))
@@ -2301,7 +2301,7 @@ def real_industry_analysis():
     
     # Save to results file
     try:
-        results_file = dashboard.data_dir / "results" / "trilogy_eii_results.json"
+        results_file = dashboard.data_dir / "data" / "results" / "trilogy_eii_results.json"
         with open(results_file, 'w') as f:
             json.dump(team_dashboard_data, f, indent=2)
         print("✅ Saved real industry analysis to trilogy_eii_results.json")
