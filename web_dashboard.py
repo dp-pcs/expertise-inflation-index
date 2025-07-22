@@ -721,39 +721,7 @@ def demo_analyze_external():
         ]
     }
     
-    # Anonymization mapping for external authors
-    author_anonymization = {
-        "Andrej Karpathy": "Distinguished AI Researcher",
-        "Sebastian Ruder": "Senior NLP Scientist", 
-        "Cassie Kozyrkov": "Chief Decision Intelligence Officer",
-        "Andrew Ng": "AI Education Pioneer",
-        "Yann LeCun": "Deep Learning Architect",
-        "Geoffrey Hinton": "Neural Networks Founding Father",
-        "Fei-Fei Li": "Computer Vision Authority",
-        "Ian Goodfellow": "Generative AI Expert",
-        "Yoshua Bengio": "AI Research Director",
-        "Demis Hassabis": "AGI Research Leader",
-        "Gary Marcus": "AI Criticism Scholar",
-        "Timnit Gebru": "AI Ethics Researcher",
-        "Kate Crawford": "AI Policy Expert",
-        "Cynthia Rudin": "Interpretable ML Professor",
-        "Percy Liang": "Foundation Models Researcher",
-        "Chelsea Finn": "Meta-Learning Specialist",
-        "Daphne Koller": "AI Healthcare Pioneer",
-        "Peter Norvig": "AI Textbook Author",
-        "Chris Manning": "NLP Research Professor",
-        "Ruslan Salakhutdinov": "Multimodal AI Director",
-        "Dawn Song": "AI Security Expert",
-        "Pieter Abbeel": "Robotics AI Professor",
-        "Regina Barzilay": "Healthcare NLP Leader",
-        "Ryan Adams": "Probabilistic ML Expert",
-        "Emily Bender": "Computational Linguistics Professor",
-        "Melanie Mitchell": "AI Complexity Researcher",
-        "Stuart Russell": "AI Safety Authority",
-        "Zoubin Ghahramani": "Bayesian ML Pioneer",
-        "Michael Jordan": "Statistical Learning Expert",
-        "Judea Pearl": "Causal Inference Pioneer"
-    }
+    # Real external AI thought leaders - using actual names for scientific credibility
     
     # Author scoring profiles based on their style and background
     def get_author_scoring_profile(author):
@@ -896,8 +864,8 @@ def demo_analyze_external():
             eii_score = round(base_score, 1)
             article_scores.append(eii_score)
             
-            # Use anonymized name for display
-            display_name = author_anonymization.get(author, f"AI Expert #{len(author_analysis) + 1}")
+            # Use real name for scientific credibility
+            display_name = author
             
             analyzed_article = {
                 "title": article['title'],
@@ -910,18 +878,18 @@ def demo_analyze_external():
                     "originality": random.randint(5, 9),
                     "humor_rating": humor
                 },
-                "author": display_name,  # Use anonymized name
+                "author": display_name,  # Use real name
                 "is_anomaly": False
             }
             author_articles.append(analyzed_article)
             analyzed_articles.append(analyzed_article)
         
-        # Calculate external author aggregates using anonymized name
+        # Calculate external author aggregates using real name
         if article_scores:
             avg_score = statistics.mean(article_scores)
             std_dev = statistics.stdev(article_scores) if len(article_scores) > 1 else 0
             
-            display_name = author_anonymization.get(author, f"AI Expert #{len(author_analysis) + 1}")
+            display_name = author
             
             author_analysis[display_name] = {
                 "article_count": len(article_scores),
