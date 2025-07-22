@@ -588,19 +588,26 @@ def demo_analyze_external():
         {"step": 7, "message": "🏆 Generating comprehensive leaderboard...", "tech": "Cross-platform ranking"}
     ]
     
-    # Load David's real articles
+    # Load David's real articles - use the comprehensive dataset
     david_articles = []
     try:
-        with open('trilogy_fixed_titles.json', 'r') as f:
+        # Try the most complete dataset first
+        trilogy_file = dashboard.data_dir / "data" / "discovery" / "trilogy_all_articles.json"
+        with open(trilogy_file, 'r') as f:
             import json
             discovery_data = json.load(f)
             all_articles = discovery_data.get('articles', [])
             
-            # Filter for David's articles only
+            # Filter for David's articles only (should be 4 articles)
             david_articles = [
                 article for article in all_articles
-                if article.get('author') == 'David Proctor'
+                if article.get('author') == 'David Proctor' and 
+                article.get('title', '').lower() not in ['comments', 'untitled', '']
             ]
+            
+        print(f"📚 Loaded {len(david_articles)} David Proctor articles")
+        for article in david_articles:
+            print(f"  - {article.get('title', 'Untitled')}")
     except (FileNotFoundError, json.JSONDecodeError):
         # Fallback to mock David articles
         david_articles = [
@@ -2054,10 +2061,10 @@ def real_industry_analysis():
         {"step": 7, "message": "🏆 Generating industry comparison rankings...", "tech": "Competitive benchmarking"}
     ]
     
-    # Load David's real articles
+    # Load David's real articles from the most complete dataset
     david_articles = []
     try:
-        david_file = dashboard.data_dir / "data" / "discovery" / "trilogy_fixed_titles.json"
+        david_file = dashboard.data_dir / "data" / "discovery" / "trilogy_all_articles.json"
         with open(david_file, 'r') as f:
             discovery_data = json.load(f)
             all_articles = discovery_data.get('articles', [])
@@ -2066,9 +2073,13 @@ def real_industry_analysis():
             david_articles = [
                 article for article in all_articles
                 if (article.get('author') == 'David Proctor' and 
-                    article.get('title', '').lower() not in ['comments', 'reply', 'responses', 'share', 'like', 'subscribe'] and
+                    article.get('title', '').lower() not in ['comments', 'reply', 'responses', 'share', 'like', 'subscribe', 'untitled', ''] and
                     '/comments' not in article.get('url', '').lower())
             ]
+            
+        print(f"🔄 Analyzing {len(david_articles)} David articles + [loading external]...")
+        for article in david_articles:
+            print(f"  📝 David: {article.get('title', 'Untitled')}")
     except (FileNotFoundError, json.JSONDecodeError) as e:
         return jsonify({"success": False, "error": f"Could not load David's articles: {e}"})
     
