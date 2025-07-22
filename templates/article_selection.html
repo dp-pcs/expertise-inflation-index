@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}EII Article Selection{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>📊 Select Article for EII Analysis</h1>
+        <p>Choose from discovered articles or analyze any URL</p>
+    </div>
+    
+    <!-- Custom URL Input Section -->
+    <div class="glass-card" style="margin-bottom: 30px;">
+        <h3 style="margin-bottom: 20px; color: var(--primary-color);">🔗 Analyze Custom Article</h3>
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <input type="url" 
+                   id="custom-url" 
+                   placeholder="Enter article URL (e.g., https://example.com/article)" 
+                   style="flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px;">
+            <button onclick="analyzeCustomUrl()" 
+                    class="nav-button" 
+                    style="background: var(--primary-color); white-space: nowrap;">
+                🎯 Analyze URL
+            </button>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.85em; color: #666;">
+            Enter any article URL to get an EII analysis. Works with blog posts, news articles, research papers, etc.
+        </div>
+    </div>
+    
+    <!-- Discovered Articles Section -->
+    {% if articles %}
+    <div class="glass-card">
+        <h3 style="margin-bottom: 20px; color: var(--primary-color);">📚 Recently Discovered Articles</h3>
+        <div style="font-size: 0.9em; color: #666; margin-bottom: 20px;">
+            Select from {{ articles|length }} recently discovered AI-related articles:
+        </div>
+        
+        <div class="articles-grid">
+            {% for article in articles %}
+            <div class="article-item">
+                <div class="article-info">
+                    <div class="article-title">
+                        <a href="{{ article.url }}" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                            {{ article.title[:80] }}{% if article.title|length > 80 %}...{% endif %}
+                        </a>
+                    </div>
+                    <div class="article-meta">
+                        {% if article.author %}
+                            ✍️ {{ article.author }}
+                        {% endif %}
+                        {% if article.relevance_score %}
+                            • 🎯 {{ "%.0f"|format(article.relevance_score * 100) }}% relevance
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="article-actions">
+                    <button onclick="analyzeArticle('{{ article.url }}', '{{ article.title }}')" 
+                            class="analyze-btn">
+                        📊 Analyze
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="glass-card">
+        <h3 style="color: var(--primary-color);">📚 No Discovered Articles</h3>
+        <p style="color: #666; margin: 15px 0;">
+            No discovered articles available. Use the custom URL input above to analyze any article.
+        </p>
+        <a href="/discovery-report" class="nav-button">🔍 Discover Articles First</a>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+.articles-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.article-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.article-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.article-info {
+    flex: 1;
+    margin-right: 15px;
+}
+
+.article-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.article-title a:hover {
+    text-decoration: underline !important;
+}
+
+.article-meta {
+    font-size: 0.85em;
+    color: #888;
+}
+
+.article-actions {
+    flex-shrink: 0;
+}
+
+.analyze-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .article-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .article-info {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+</style>
+
+<script>
+function analyzeCustomUrl() {
+    const urlInput = document.getElementById('custom-url');
+    const url = urlInput.value.trim();
+    
+    if (!url) {
+        alert('Please enter a URL to analyze');
+        return;
+    }
+    
+    if (!isValidUrl(url)) {
+        alert('Please enter a valid URL (e.g., https://example.com/article)');
+        return;
+    }
+    
+    // Redirect to analysis page with URL parameter
+    window.location.href = `/article-analysis?url=${encodeURIComponent(url)}`;
+}
+
+function analyzeArticle(url, title) {
+    // Redirect to analysis page with URL parameter
+    window.location.href = `/article-analysis?url=${encodeURIComponent(url)}`;
+}
+
+function isValidUrl(string) {
+    try {
+        new URL(string);
+        return string.startsWith('http://') || string.startsWith('https://');
+    } catch (_) {
+        return false;
+    }
+}
+
+// Allow Enter key in URL input
+document.getElementById('custom-url').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        analyzeCustomUrl();
+    }
+});
+</script>
+{% endblock %} 

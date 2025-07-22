@@ -147,37 +147,13 @@
         </div>
     </div>
     
-    <div class="card" style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-        <h3>🎯 Want to Analyze Another Article?</h3>
-        <p>Use the EII webhook to analyze any article URL:</p>
-        <div style="margin: 20px 0;">
-            <input type="url" placeholder="Enter article URL..." style="padding: 10px; border-radius: 8px; border: none; width: 70%; max-width: 400px; margin-right: 10px;">
-            <button onclick="analyzeNewArticle()" style="padding: 10px 20px; background: var(--secondary-color); color: white; border: none; border-radius: 8px; cursor: pointer;">
-                🧠 Analyze
-            </button>
-        </div>
-        <p style="font-size: 0.9em; opacity: 0.8;">Or use: curl -X POST your-webhook-url -d '{"url":"article-url"}'</p>
-    </div>
-    
     <div class="navigation">
+        <a href="/article-analysis" class="nav-button" style="background: var(--primary-color);">
+            ← 📊 Analyze Another Article
+        </a>
         <a href="/" class="nav-button">🏠 Home</a>
         <a href="/team-championship" class="nav-button">🏆 Team Championship</a>
         <a href="/discovery-report" class="nav-button">🔍 Discovery Report</a>
     </div>
 </div>
-
-<script>
-function analyzeNewArticle() {
-    const input = document.querySelector('input[type="url"]');
-    const url = input.value.trim();
-    
-    if (!url) {
-        alert('Please enter a valid article URL');
-        return;
-    }
-    
-    // This would integrate with your EII webhook
-    alert(`Would analyze: ${url}\n\nTo implement:\n1. Configure your n8n webhook URL\n2. Add JavaScript to call the webhook\n3. Display results on this page`);
-}
-</script>
 {% endblock %} 

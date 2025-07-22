@@ -1024,28 +1024,56 @@ def discovery_report():
 
 @app.route('/article-analysis')
 def article_analysis():
-    """Individual article analysis page"""
-    # Sample article analysis data
-    article_data = {
-        "title": "Grok 4 vs. Kimi K2: Clash of the Titans",
-        "url": "https://trilogyai.substack.com/p/grok-4-vs-kimi-k2",
-        "author": "Leonardo Gonzalez",
-        "analyzed_at": datetime.now().isoformat(),
-        "scores": {
-            "confidence": 8,
-            "jargon_density": 7,
-            "self_reference": 6,
-            "originality": 9,
-            "humor_rating": 3
-        },
-        "eii_score": 7.5,
-        "analysis": {
-            "tone_summary": "Highly confident technical analysis comparing AI models with extensive use of industry jargon and superlative claims about model capabilities.",
-            "inflation_type": "Technical Guru",
-            "key_phrases": ["clash of the titans", "revolutionary breakthrough", "paradigm shift", "state-of-the-art", "unprecedented performance"]
+    """Article selection and analysis page"""
+    article_url = request.args.get('url')
+    
+    if article_url:
+        # If URL provided, show analysis results
+        # For demo purposes, generate sample analysis
+        article_data = {
+            "title": "User-Selected Article Analysis",
+            "url": article_url,
+            "author": "Unknown",
+            "analyzed_at": datetime.now().isoformat(),
+            "scores": {
+                "confidence": 6,
+                "jargon_density": 5,
+                "self_reference": 4,
+                "originality": 7,
+                "humor_rating": 4
+            },
+            "eii_score": 5.8,
+            "analysis": {
+                "tone_summary": "Balanced technical discussion with moderate confidence and accessible language.",
+                "inflation_type": "Thoughtful Analysis",
+                "key_phrases": ["comprehensive analysis", "practical implications", "evidence-based", "measured approach"]
+            }
         }
-    }
-    return render_template('article_analysis.html', data=article_data)
+        return render_template('article_analysis_results.html', data=article_data)
+    else:
+        # Show article selection interface
+        discovered_articles = []
+        
+        # Load discovered articles from various sources
+        discovery_data = dashboard.load_discovery_results()
+        if discovery_data and 'articles' in discovery_data:
+            discovered_articles.extend(discovery_data['articles'][:20])  # Limit to 20 for UI
+        
+        # Load Trilogy AI articles
+        trilogy_data = dashboard.load_discovery_results_by_source('trilogy')
+        if trilogy_data and 'articles' in trilogy_data:
+            discovered_articles.extend(trilogy_data['articles'][:10])  # Add some Trilogy articles
+        
+        # Remove duplicates based on URL
+        seen_urls = set()
+        unique_articles = []
+        for article in discovered_articles:
+            url = article.get('url', '')
+            if url and url not in seen_urls:
+                seen_urls.add(url)
+                unique_articles.append(article)
+        
+        return render_template('article_selection.html', articles=unique_articles[:25])
 
 @app.route('/api/team-data')
 def api_team_data():
