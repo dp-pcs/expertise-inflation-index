@@ -4,6 +4,14 @@
 
 {% block content %}
 <div class="container">
+    <!-- Navigation Section -->
+    <div class="navigation">
+        <a href="/" class="nav-button">🏠 Dashboard</a>
+        <a href="/team-championship" class="nav-button">🏆 Team Championship</a>
+        <a href="/discovery-report" class="nav-button">🔍 Discovery Report</a>
+        <a href="/demo" class="nav-button">🎭 Demo</a>
+    </div>
+    
     <div class="header">
         <h1>📊 Select Article for EII Analysis</h1>
         <p>Choose from discovered articles or analyze any URL</p>
@@ -73,6 +81,13 @@
         <a href="/discovery-report" class="nav-button" style="background: #1a73e8; color: white;">🔍 Discover Articles First</a>
     </div>
     {% endif %}
+    
+    <!-- Footer Navigation -->
+    <div class="navigation" style="margin-top: 40px;">
+        <a href="/" class="nav-button">🏠 Back to Dashboard</a>
+        <a href="/methodology" class="nav-button">🔬 Methodology</a>
+        <a href="https://github.com/dp-pcs/expertise-inflation-index" class="nav-button" target="_blank">📖 GitHub</a>
+    </div>
 </div>
 
 <style>
@@ -205,6 +220,20 @@ input[type="url"]:focus {
     box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
 }
 
+/* Navigation styling */
+.navigation {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navigation .nav-button {
+    margin: 5px 8px;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .article-item {
@@ -225,6 +254,12 @@ input[type="url"]:focus {
     
     .custom-url-card input {
         width: 100%;
+    }
+    
+    .navigation .nav-button {
+        display: block;
+        margin: 8px auto;
+        max-width: 250px;
     }
 }
 </style>
