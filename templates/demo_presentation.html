@@ -339,7 +339,7 @@ Results:
             <h2>🎭 Without Further Ado...</h2>
             <div class="dramatic-pause">
                 <p class="big-text">Let's see this system in action!</p>
-                <p>We're going to analyze our own team's articles from the Trilogy AI Center of Excellence.</p>
+                <p>We're going to analyze AI industry articles including content from leading researchers and practitioners.</p>
                 <div class="tech-stack-preview">
                     <h3>🛠️ Technology Stack:</h3>
                     <div class="tech-badges">
@@ -473,7 +473,7 @@ Results:
 
             <div class="demo-actions">
                 <a href="/discovery-report?source=trilogy" class="nav-button">🔍 Explore Real Data</a>
-                <a href="/team-championship" class="nav-button">🌍 See Industry Analysis</a>
+                <a href="/team-championship" class="nav-button">🌍 See AI Industry Championship</a>
                 <a href="/methodology" class="nav-button">🔬 Scientific Methodology</a>
                 <a href="/" class="nav-button">🏠 Main Dashboard</a>
             </div>
@@ -831,7 +831,7 @@ function displayDiscoveryResults(articles, technologies, comparisonType) {
     
     let discoveryDescription = comparisonType === 'external' ? 
         'Found articles from 30+ leading AI researchers across multiple platforms' :
-        'Discovered team articles from Trilogy AI Center of Excellence';
+                        'Discovered AI industry articles from multiple expert sources';
     
     // Show all articles from the discovery, grouping by author for diversity
     const groupedArticles = {};
@@ -881,7 +881,7 @@ function displayDiscoveryResults(articles, technologies, comparisonType) {
             </div>
         `;
     } else {
-        // Show detailed articles for team comparison
+                    // Show detailed articles for industry comparison
         let displayArticles = [];
         
         // Take up to 3 articles from each author for diversity, up to 10 total
@@ -915,11 +915,11 @@ function displayAnalysisResults(results, technologies, comparisonType) {
     
     let titleText = comparisonType === 'external' ? 
         '🌍 Industry EII Leaderboard' : 
-        '🏆 Team EII Championship';
+                        '🏆 AI Industry EII Championship';
     
     let summaryText = comparisonType === 'external' ? 
         `Analyzed ${summary.total_articles_analyzed} articles across ${summary.total_authors} AI thought leaders` :
-        `Analyzed ${summary.total_articles_analyzed} articles from ${summary.total_authors} team members`;
+        `Analyzed ${summary.total_articles_analyzed} articles from ${summary.total_authors} AI industry experts`;
     
     // Show David's rank in external comparison
     let davidRankText = '';
