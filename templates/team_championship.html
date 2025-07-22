@@ -13,7 +13,7 @@
         </div>
         {% if data.team_summary.david_industry_rank %}
         <div style="margin-top: 10px; padding: 10px; background: #e3f2fd; border-radius: 8px; color: #1976d2;">
-            <strong>🎯 David's Industry Rank: #{{ data.team_summary.david_industry_rank }} out of {{ data.team_summary.total_articles|length }} AI experts</strong>
+            <strong>🎯 David's Industry Rank: #{{ data.team_summary.david_industry_rank }} out of {{ data.author_stats|length }} AI experts</strong>
         </div>
         {% endif %}
     </div>
