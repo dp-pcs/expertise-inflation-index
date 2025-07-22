@@ -333,6 +333,7 @@ def demo_discover():
     """Demo endpoint for live discovery"""
     import time
     import random
+    import json
     
     # Return mock discovered articles for demo - try to load real data first
     articles = []
@@ -340,8 +341,8 @@ def demo_discover():
     
     try:
         # First try to load from discovered_articles.json (more complete dataset)
-        with open('discovered_articles.json', 'r') as f:
-            import json
+        discovered_file = dashboard.data_dir / "data" / "discovery" / "discovered_articles.json"
+        with open(discovered_file, 'r') as f:
             discovery_data = json.load(f)
             all_articles = discovery_data.get('articles', [])
             
@@ -386,8 +387,8 @@ def demo_discover():
     except (FileNotFoundError, json.JSONDecodeError):
         # Fallback to trilogy_fixed_titles.json
         try:
-            with open('trilogy_fixed_titles.json', 'r') as f:
-                import json
+            trilogy_file = dashboard.data_dir / "data" / "discovery" / "trilogy_fixed_titles.json"
+            with open(trilogy_file, 'r') as f:
                 discovery_data = json.load(f)
                 trilogy_articles = discovery_data.get('articles', [])
                 
@@ -2061,10 +2062,12 @@ def real_industry_analysis():
             discovery_data = json.load(f)
             all_articles = discovery_data.get('articles', [])
             
-            # Filter for David's articles only
+            # Filter for David's articles only, excluding junk entries
             david_articles = [
                 article for article in all_articles
-                if article.get('author') == 'David Proctor'
+                if (article.get('author') == 'David Proctor' and 
+                    article.get('title', '').lower() not in ['comments', 'reply', 'responses', 'share', 'like', 'subscribe'] and
+                    '/comments' not in article.get('url', '').lower())
             ]
     except (FileNotFoundError, json.JSONDecodeError) as e:
         return jsonify({"success": False, "error": f"Could not load David's articles: {e}"})
@@ -2114,6 +2117,14 @@ def real_industry_analysis():
         
         # Skip if duplicate URL or missing essential data
         if url in seen_urls or not url or not title or len(title) < 10:
+            continue
+            
+        # Filter out junk titles that aren't real articles
+        if title.lower() in ['comments', 'reply', 'responses', 'share', 'like', 'subscribe']:
+            continue
+            
+        # Filter out comment URLs
+        if '/comments' in url.lower() or '/reply' in url.lower():
             continue
         
         seen_urls.add(url)
