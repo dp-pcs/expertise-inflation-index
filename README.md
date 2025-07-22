@@ -104,7 +104,7 @@ What began as **satirical commentary** has evolved into a **legitimate research 
 - **Reliability Indicators**: Statistical measures of inter-model agreement
 
 ### 🎯 Real-World Applications
-Behind the scenes, the system uses **n8n** to orchestrate a webhook-triggered pipeline with **Firecrawl** scraping and **dual-LLM analysis**. This architecture enables serious use cases:
+The system now uses **direct Python subprocess execution** for enhanced analysis with **Firecrawl** scraping and **dual-LLM analysis**. This streamlined architecture enables serious use cases:
 
 - **Academic Research**: Systematic analysis of expertise inflation in AI discourse
 - **Content Quality Assurance**: Automated assessment of technical writing accessibility
@@ -121,11 +121,13 @@ The **7-dimension scoring system** with **weighted calculations** provides:
 
 ## 🏗️ Enhanced Architecture
 
+> **📍 Architecture Evolution**: The system has evolved from an n8n webhook-based workflow to a **direct Python subprocess implementation** for better performance, reliability, and simplicity. The n8n workflow remains available as a legacy option.
+
 ```mermaid
 graph TB
-    A[Article URL/Text] --> B[n8n Webhook Pipeline]
-    B --> C[Firecrawl Content Extraction] 
-    C --> D[Enhanced Analysis Engine]
+    A[Article URL/Text] --> B[Flask Web Dashboard]
+    B --> C[Content Extraction<br/>Direct HTTP/Firecrawl] 
+    C --> D[Enhanced Analysis Engine<br/>Python Subprocess]
     D --> E[OpenAI GPT-4<br/>7-Dimension Scoring]
     D --> F[Anthropic Claude<br/>Independent Analysis]
     D --> G[Flesch Readability<br/>Computation]
@@ -133,7 +135,7 @@ graph TB
     F --> H
     G --> H
     H --> I[Reliability Assessment]
-    I --> J[DynamoDB Storage]
+    I --> J[JSON Response<br/>Real-time Results]
     J --> K[Scientific Dashboard]
     K --> L[Interactive Demo]
     K --> M[Industry Analysis]
@@ -205,12 +207,12 @@ graph TB
 ## 💰 Cost Analysis
 
 **Infrastructure Costs (Monthly)**:
-- **DynamoDB**: ~$0.02 for 1,000 articles (recommended)
-- **Supabase**: $25+ minimum (legacy option)
-- **n8n Cloud**: $20+ (or self-host for free)
 - **API Costs**: ~$5-10 for 1,000 analyses (OpenAI + Anthropic)
+- **DynamoDB**: ~$0.02 for 1,000 articles (optional for persistence)
+- **Supabase**: $25+ minimum (legacy option)
+- **n8n Cloud**: $20+ (legacy workflow automation - no longer required)
 
-**Total**: Under $30/month for substantial usage
+**Total**: Under $15/month for substantial usage (down from $30+ with direct implementation)
 
 ## 📁 Project Structure
 
@@ -248,12 +250,13 @@ expertise-inflation-index/
 
 ## 🛠️ Setup Guides
 
-1. **[🚀 Quick Start Guide](docs/web_dashboard_guide.md)** - Get the web dashboard running
-2. **[💾 DynamoDB Setup](docs/dynamodb_setup_guide.md)** - Cost-effective database setup  
-3. **[🔄 n8n Workflow](docs/n8n_setup_guide.md)** - Automation pipeline
+1. **[🚀 Quick Start Guide](docs/web_dashboard_guide.md)** - Get the web dashboard running with direct analysis
+2. **[🤖 Enhanced Analysis Setup](#-enhanced-scientific-methodology)** - API keys and LLM configuration  
+3. **[💾 DynamoDB Setup](docs/dynamodb_setup_guide.md)** - Optional database persistence
 4. **[👥 Team Competition](docs/team_competition_guide.md)** - Multi-author analysis
 5. **[🔗 LinkedIn Integration](docs/linkedin_integration_guide.md)** - Social media content
-6. **[🧪 Testing Guide](docs/testing_guide.md)** - Validate your setup
+6. **[🔄 n8n Workflow](docs/n8n_setup_guide.md)** - Legacy automation pipeline (optional)
+7. **[🧪 Testing Guide](docs/testing_guide.md)** - Validate your setup
 
 ## 🎯 Use Cases & Extensions
 
@@ -325,9 +328,11 @@ We welcome contributions! Here are some ways to help:
 
 ### Phase 1: Core Platform ✅
 - [x] AI scoring pipeline with dual-LLM analysis
+- [x] Direct implementation architecture (evolved from n8n workflow)
 - [x] Web dashboard with interactive demo
 - [x] Content discovery from multiple sources
 - [x] Team competition and comparison features
+- [x] Real-time analysis with subprocess execution
 
 ### Phase 2: Enhanced Features 🚧
 - [ ] User accounts and saved analyses
@@ -348,11 +353,11 @@ MIT License - feel free to use, modify, and distribute!
 ## 🙏 Acknowledgments
 
 Built with:
-- **[Firecrawl](https://firecrawl.dev)** - Web scraping and content extraction
-- **[n8n](https://n8n.io)** - Workflow automation platform  
 - **[OpenAI](https://openai.com)** & **[Anthropic](https://anthropic.com)** - LLM analysis
-- **[AWS DynamoDB](https://aws.amazon.com/dynamodb/)** - Serverless database
-- **[Flask](https://flask.palletsprojects.com/)** - Web framework
+- **[Flask](https://flask.palletsprojects.com/)** - Web framework and direct analysis execution
+- **[Firecrawl](https://firecrawl.dev)** - Web scraping and content extraction  
+- **[AWS DynamoDB](https://aws.amazon.com/dynamodb/)** - Optional serverless database
+- **[n8n](https://n8n.io)** - Legacy workflow automation platform (optional)
 
 Special thanks to the Trilogy AI Center of Excellence team for being good sports about being our test subjects! 🎯
 

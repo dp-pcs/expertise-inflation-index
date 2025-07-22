@@ -120,12 +120,12 @@ This methodology enables legitimate academic research applications:
 ## 💻 Implementation
 
 The system is implemented using:
-- **Analysis Engine**: Python with OpenAI and Anthropic APIs
+- **Analysis Engine**: Python with OpenAI and Anthropic APIs via direct subprocess execution
 - **Cross-Validation**: Parallel analysis with consensus scoring
 - **Quantitative Metrics**: Automated Flesch readability computation
-- **Workflow Orchestration**: n8n for pipeline automation
-- **Data Storage**: AWS DynamoDB for scalable result storage
-- **Web Interface**: Flask dashboard for results visualization
+- **Content Extraction**: Direct HTTP requests and Firecrawl API integration
+- **Data Storage**: JSON responses with optional AWS DynamoDB persistence
+- **Web Interface**: Flask dashboard with real-time results visualization
 
 ## 🔗 Links
 
