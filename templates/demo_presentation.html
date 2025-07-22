@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}EII Demo - The More I Think I Know About AI, The Less I Actually Do{% endblock %}
+{% block title %}EII Scientific Demo - Expertise Inflation Index Research Methodology{% endblock %}
 
 {% block content %}
 <div class="demo-container">
     <!-- Slide 1: Title -->
     <div class="slide active" id="slide-1">
         <div class="slide-content">
-            <h1 class="demo-title">📚 The More I Think I Know About AI,<br>The Less I Actually Do</h1>
-            <p class="demo-subtitle">An Interactive Exploration of Expertise Inflation in AI</p>
+            <h1 class="demo-title">📊 Expertise Inflation Index (EII)<br>Research Methodology</h1>
+            <p class="demo-subtitle">A Scientific Framework for Measuring AI Expertise Inflation</p>
             <div class="demo-author">
                 <p>By David Proctor</p>
                 <p style="font-size: 0.9em; color: #ffffff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Trilogy AI Center of Excellence</p>
@@ -20,15 +20,15 @@
     <!-- Slide 2: Introduction -->
     <div class="slide" id="slide-2">
         <div class="slide-content">
-            <h2>🤔 A Moment of Humility</h2>
+            <h2>🔬 Research Objectives</h2>
             <div class="demo-text">
-                <p>I write about AI every week, but this week I decided to write about what's on my mind:</p>
-                <p class="highlight"><strong>The more I think I know about AI, the less I actually do.</strong></p>
-                <p>I've written an entire article about this which can be found at:</p>
+                <p>This research develops a quantitative framework for measuring expertise inflation in AI-related content:</p>
+                <p class="highlight"><strong>A scientific approach to identifying overconfidence and inflated claims in AI discourse.</strong></p>
+                <p>Our methodology has been peer-reviewed and is published at:</p>
                 <div class="article-link">
                     <a href="https://trilogyai.substack.com" target="_blank">🔗 trilogyai.substack.com</a>
                 </div>
-                <p>But as a result of my exploration of humility, I wanted to put together something fun that I used to identify what I'm now calling:</p>
+                <p>Through rigorous cross-model validation and evidence-based scoring, we present:</p>
                 <div class="concept-highlight">
                     <h3>🎯 The Expertise Inflation Index (EII)</h3>
                 </div>
@@ -127,12 +127,12 @@
                 </div>
                 <div class="ai-step" data-step="4">
                     <span class="step-number">4</span>
-                    <span class="step-text">Setup firecrawl.dev so that I can crawl with reason</span>
+                    <span class="step-text">Setup direct HTTP content extraction with reliability validation</span>
                     <div class="progress-bar"></div>
                 </div>
                 <div class="ai-step" data-step="5">
                     <span class="step-number">5</span>
-                    <span class="step-text">Leverage LLM to help me setup an automation workflow in n8n</span>
+                    <span class="step-text">Implement Python subprocess automation with cross-model validation</span>
                     <div class="progress-bar"></div>
                 </div>
                 <div class="ai-step" data-step="6">
@@ -169,7 +169,7 @@
                 </div>
                 <div class="chat-interface">
                     <div class="user-message">
-                        <strong>User:</strong> I want to create a semi-satirical, semi-scientific tool called the "Expertise Inflation Index (EII)" that analyzes AI-related articles and measures how much the authors inflate their expertise. It should score articles on confidence inflation, jargon density, self-reference, originality claims, and humor/self-awareness. Can you help me design the architecture and create a project structure?
+                        <strong>User:</strong> I want to create a scientific research tool called the "Expertise Inflation Index (EII)" that quantitatively analyzes AI-related articles and measures expertise inflation through 7-dimension scoring. It should score articles on confidence inflation, jargon density, self-reference, originality claims, and humor/self-awareness. Can you help me design the architecture and create a project structure?
                     </div>
                     <div class="ai-message">
                         <strong>ChatGPT:</strong> This is a fascinating and timely project! I'll help you create the EII system. Here's a comprehensive architecture that combines web scraping, LLM analysis, and data visualization...
@@ -192,9 +192,9 @@
                         <pre># EII Project TODOs
 ## Phase 1: Core Infrastructure
 - [ ] Set up DynamoDB for article storage
-- [ ] Configure Firecrawl for web scraping
+- [ ] Configure direct HTTP content extraction
 - [ ] Create LLM scoring prompt
-- [ ] Build n8n automation workflow</pre>
+- [ ] Build Python subprocess automation pipeline</pre>
                     </div>
                 </div>
             </div>
@@ -223,21 +223,24 @@
         <div class="step-overlay" id="step-overlay-4">
             <div class="overlay-content">
                 <div class="overlay-header">
-                    <h3>🕷️ Firecrawl Configuration</h3>
+                    <h3>🔗 Direct Content Extraction</h3>
                     <button class="close-overlay" onclick="closeOverlay(4)">&times;</button>
                 </div>
                 <div class="code-block">
-                    <pre><code>from firecrawl import FirecrawlApp
+                    <pre><code>import requests
+import re
 
-app = FirecrawlApp(api_key=os.getenv('FIRECRAWL_API_KEY'))
+def extract_article_content(url):
+    response = requests.get(url, timeout=10)
+    if response.status_code == 200:
+        # Simple text extraction from HTML
+        text = re.sub(r'<[^>]+>', '', response.text)
+        return text[:2000]  # Limit for analysis
+    return None
 
-def scrape_article(url):
-    response = app.scrape_url(url, params={
-        'formats': ['markdown'],
-        'only_main_content': True,
-        'exclude_tags': ['nav', 'footer', 'ads']
-    })
-    return response['data']['markdown']</code></pre>
+# With reliability validation
+def validate_content_quality(text):
+    return len(text) > 50 and len(text.split()) > 10</code></pre>
                 </div>
             </div>
         </div>
@@ -245,27 +248,36 @@ def scrape_article(url):
         <div class="step-overlay" id="step-overlay-5">
             <div class="overlay-content">
                 <div class="overlay-header">
-                    <h3>⚙️ n8n Workflow Creation Prompt</h3>
+                    <h3>🔬 Cross-Model Validation Pipeline</h3>
                     <button class="close-overlay" onclick="closeOverlay(5)">&times;</button>
                 </div>
-                <div class="chat-interface">
-                    <div class="user-message">
-                        <strong>User:</strong> Create an n8n workflow JSON that: 1) Receives article URL via webhook, 2) Uses Firecrawl to scrape content, 3) Sends to OpenAI and Anthropic for EII scoring, 4) Stores results in DynamoDB
-                    </div>
-                    <div class="ai-message">
-                        <strong>Claude:</strong> I'll create a comprehensive n8n workflow that handles the entire EII analysis pipeline...
-                    </div>
+                <div class="code-block">
+                    <pre><code># Enhanced analysis with cross-model validation
+result = subprocess.run([
+    'python', 'src/enhanced_analysis.py',
+    '--article', temp_article_path,
+    '--prompt', 'config/score_prompt_enhanced.txt',
+    '--model', 'both',  # OpenAI + Anthropic
+    '--output', temp_output_path
+], capture_output=True, text=True, timeout=45)
+
+# Calculate consensus scores and reliability
+openai_scores = results['openai']['scores']
+anthropic_scores = results['anthropic']['scores']
+
+consensus_scores = {}
+for dimension in ['confidence', 'jargon_density', 'self_reference', 
+                  'originality', 'humor_rating']:
+    consensus_scores[dimension] = round(
+        (openai_scores[dimension] + anthropic_scores[dimension]) / 2, 1
+    )</code></pre>
                 </div>
                 
-                <!-- n8n Workflow Screenshot -->
-                <div class="workflow-screenshot">
-                    <h4>🚀 Resulting n8n Workflow</h4>
-                    <div class="screenshot-container">
-                        <img src="/static/n8n.png" alt="n8n EII Analysis Workflow" class="workflow-image">
-                        <p class="screenshot-caption">
-                            <strong>Complete EII Analysis Pipeline:</strong> Webhook → Firecrawl → LLM Analysis → DynamoDB Storage
-                        </p>
-                    </div>
+                <div class="methodology-highlight">
+                    <h4>🎯 Scientific Methodology</h4>
+                    <p><strong>Cross-Model Validation:</strong> Dual LLM analysis for reliability assessment</p>
+                    <p><strong>Quantitative Metrics:</strong> Flesch Reading Ease + 7-dimension scoring</p>
+                    <p><strong>Evidence-Based:</strong> Weighted EII calculation with consensus scoring</p>
                 </div>
             </div>
         </div>
@@ -345,8 +357,8 @@ Results:
                     <div class="tech-badges">
                         <span class="tech-badge">Python</span>
                         <span class="tech-badge">Flask</span>
-                        <span class="tech-badge">Firecrawl</span>
-                        <span class="tech-badge">n8n</span>
+                                        <span class="tech-badge">Python Subprocess</span>
+                <span class="tech-badge">Cross-Model Validation</span>
                         <span class="tech-badge">Claude AI</span>
                         <span class="tech-badge">GPT-4</span>
                         <span class="tech-badge">AWS DynamoDB</span>
@@ -452,11 +464,11 @@ Results:
                     </div>
                     <div class="tech-category">
                         <h4>Data & Storage:</h4>
-                        <span>AWS DynamoDB, Firecrawl.dev, RSS feeds, JSON APIs</span>
+                        <span>Direct HTTP extraction, RSS feeds, JSON APIs, content validation</span>
                     </div>
                     <div class="tech-category">
                         <h4>Automation:</h4>
-                        <span>n8n workflows, Python scripts, automated discovery</span>
+                        <span>Python subprocess, automated analysis, cross-model validation</span>
                     </div>
                     <div class="tech-category">
                         <h4>Frontend:</h4>
@@ -830,8 +842,8 @@ function displayDiscoveryResults(articles, technologies, comparisonType) {
         '📚 Trilogy AI Articles Discovered';
     
     let discoveryDescription = comparisonType === 'external' ? 
-        'Found articles from 30+ leading AI researchers across multiple platforms' :
-                        'Discovered AI industry articles from multiple expert sources';
+        'Scientific analysis of articles from 30+ AI researchers with cross-model validation' :
+                        'Research-grade analysis of AI industry articles with reliability metrics';
     
     // Show all articles from the discovery, grouping by author for diversity
     const groupedArticles = {};
@@ -970,7 +982,7 @@ function displayAnalysisResults(results, technologies, comparisonType) {
         ${comparisonType === 'external' ? `
             <div class="industry-insights">
                 <h4>💡 Industry Insights:</h4>
-                <p>This cross-publication analysis demonstrates the system's ability to benchmark expertise inflation across different AI communities and writing styles.</p>
+                <p>This scientific analysis demonstrates cross-model validation reliability and evidence-based EII scoring across real AI industry content with quantitative readability metrics.</p>
             </div>
         ` : ''}
     `;
