@@ -36,7 +36,7 @@
       "source": "Trilogy AI CoE",
       "author": "David Proctor",
       "published_date": "Fri, 13 Jun 2025 21:58:16 GMT",
-      "excerpt": "Model Context Protocol",
+      "excerpt": "Model Context Protocol (MCP) represents a significant shift in how AI systems interact with external tools and data sources. Rather than creating new functionality, MCP standardizes existing capabilities through a universal protocol, eliminating the need for bespoke integrations between AI assistants and external systems. This comprehensive analysis covers MCP architecture, protocol flow, TCP similarities, implementation patterns, and provides hands-on GitHub repositories for local and remote MCP server deployment. The protocol's vendor-neutral approach and focus on interoperability position it well to become the standard protocol for AI-to-system integration.",
       "relevance_score": 0.9400000000000001
     },
     {
@@ -99,7 +99,7 @@
       "source": "Trilogy AI CoE",
       "author": "David Proctor",
       "published_date": "Thu, 19 Jun 2025 20:40:47 GMT",
-      "excerpt": "Why AI Agents Can't Talk to Each Other (And How A2A Aims to Fix It)",
+      "excerpt": "Why AI Agents Can't Talk to Each Other (And How A2A Aims to Fix It). This in-depth technical analysis examines the fundamental challenges preventing effective communication between AI agents and explores Google's Agent-to-Agent (A2A) protocol as a potential solution. The article covers protocol architecture, implementation challenges, security considerations, and practical applications for multi-agent systems, providing essential insights for developers building collaborative AI ecosystems.",
       "relevance_score": 0.92
     },
     {
@@ -117,7 +117,7 @@
       "source": "Trilogy AI CoE",
       "author": "David Proctor",
       "published_date": "Thu, 10 Jul 2025 23:13:04 GMT",
-      "excerpt": "A Hybrid Approach to Software Quality",
+      "excerpt": "A Hybrid Approach to Software Quality. This comprehensive analysis explores how AI vision capabilities are revolutionizing UI testing methodologies, examining the balance between automated testing efficiency and human oversight. The article covers implementation strategies, technical challenges, and practical frameworks for integrating AI-powered visual testing into software development workflows, providing actionable insights for development teams seeking to enhance their quality assurance processes through intelligent automation.",
       "relevance_score": 0.92
     },
     {

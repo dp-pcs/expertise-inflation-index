@@ -1086,7 +1086,7 @@ def article_analysis():
             
             # Execute enhanced analysis
             result = subprocess.run([
-                'python', 'src/enhanced_analysis.py',
+                '.venv/bin/python', 'src/enhanced_analysis.py',
                 '--article', temp_article_path,
                 '--prompt', 'config/score_prompt_enhanced.txt', 
                 '--model', 'both',
@@ -1948,7 +1948,7 @@ def enhanced_analysis():
         
         # Run enhanced analysis
         result = subprocess.run([
-            'python', 'src/enhanced_analysis.py',
+            '.venv/bin/python', 'src/enhanced_analysis.py',
             '--article', temp_article_path,
             '--prompt', 'config/score_prompt_enhanced.txt',
             '--model', 'both',
@@ -2198,7 +2198,7 @@ def real_industry_analysis():
             
             # Run enhanced analysis
             result = subprocess.run([
-                'python', 'src/enhanced_analysis.py',
+                '.venv/bin/python', 'src/enhanced_analysis.py',
                 '--article', temp_article_path,
                 '--prompt', 'config/score_prompt_enhanced.txt',
                 '--model', 'both',  # Use both OpenAI and Anthropic
@@ -2551,22 +2551,34 @@ def real_industry_analysis_core():
                 except:
                     content = f"Could not fetch content from {url}"
             else:
-                # For David's articles, use stored content or title as fallback
-                content = article.get('content', title)
+                # For David's articles, use stored content, excerpt, or title as fallback
+                content = article.get('content', '')
+                if not content:
+                    # Use excerpt if available, then title
+                    excerpt = article.get('excerpt', '')
+                    content = f"{title}. {excerpt}" if excerpt else title
             
-            if not content or len(content) < 50:
-                content = title  # Fallback to title if no content
+            if not content or len(content) < 20:
+                content = title  # Final fallback to title
             
-            # Validate content quality
-            # Check if content is mostly HTML or metadata
-            if content.count('<') > len(content) / 10:  # More than 10% HTML tags
+            # Validate content quality (very lenient for David's articles)
+            min_content_length = 30 if is_david else 100  # Much lower threshold for David's articles
+            
+            # Debug: Print content info for David's articles
+            if is_david:
+                print(f"🔍 DEBUG: David's article content: '{content[:100]}...' (length: {len(content.strip())})")
+            
+            # Check if content is mostly HTML or metadata (skip for David's articles)
+            if not is_david and content.count('<') > len(content) / 10:  # More than 10% HTML tags
                 print(f"⚠️  Skipping article with poor content quality: {title[:50]}...")
                 continue
             
             # Ensure content is substantial enough for analysis
-            if len(content.strip()) < 100:
-                print(f"⚠️  Skipping article with insufficient content: {title[:50]}...")
+            if len(content.strip()) < min_content_length:
+                print(f"⚠️  Skipping article with insufficient content: {title[:50]}... (length: {len(content.strip())}, min: {min_content_length})")
                 continue
+            
+            print(f"✅ Processing article: {title[:50]}... (length: {len(content.strip())})")
             
             # Run REAL enhanced analysis via subprocess
             with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as temp_file:
@@ -2579,7 +2591,7 @@ def real_industry_analysis_core():
             try:
                 # Call the REAL enhanced_analysis.py with actual LLM analysis
                 result = subprocess.run([
-                    'python', 'src/enhanced_analysis.py',
+                    '.venv/bin/python', 'src/enhanced_analysis.py',
                     '--article', temp_article_path,
                     '--prompt', 'config/score_prompt_enhanced.txt',
                     '--model', 'both',  # OpenAI + Anthropic for cross-validation
