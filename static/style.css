@@ -1,4 +1,4 @@
-/* Cache refresh comment v24 - FLEXBOX forced single-row layout for presentations */
+/* Cache refresh comment v26 - CSS GRID forced single-row layout - NUCLEAR OPTION TO OVERRIDE TAILWIND */
 
 /* EII Dashboard Styles */
 :root {
@@ -16,6 +16,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Override Tailwind CSS interference */
+.container * {
+    box-sizing: border-box !important;
 }
 
 body {
@@ -55,25 +60,47 @@ body {
     color: #666;
 }
 
-.dashboard-grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 12px;
-    margin-bottom: 25px;
-    width: 100%;
+/* NUCLEAR OPTION - Use CSS Grid to force exactly 4 columns - Override Tailwind completely */
+div.container div.dashboard-grid,
+.container .dashboard-grid,
+div.dashboard-grid,
+.dashboard-grid,
+[class*="dashboard-grid"] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+    grid-template-rows: 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 25px !important;
+    width: 100% !important;
+    flex-direction: unset !important;
+    flex-wrap: unset !important;
+    flex: unset !important;
+    align-items: stretch !important;
 }
 
+/* NUCLEAR OPTION - Force cards to fill grid cells exactly */
+div.container div.dashboard-grid .card,
+.container .dashboard-grid .card,
+div.dashboard-grid .card,
+.dashboard-grid .card,
+.dashboard-grid > .card,
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    padding: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #333; /* Ensure dark text on white background */
-    min-width: 0 !important; /* Allow cards to shrink below content size */
-    overflow: hidden; /* Prevent content overflow */
-    flex: 1 1 0 !important; /* Equal width, can shrink/grow */
-    max-width: 25% !important; /* Force 25% width */
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    color: #333 !important;
+    overflow: hidden !important;
+    display: block !important;
+    position: relative !important;
+    grid-column: auto !important; /* Let grid handle positioning */
+    grid-row: auto !important;
+    width: 100% !important; /* Fill the grid cell */
+    height: auto !important;
+    flex: none !important; /* Remove flexbox properties */
+    min-width: unset !important;
+    max-width: unset !important;
 }
 
 .card:hover {
@@ -380,7 +407,7 @@ body {
 @media (max-width: 768px) {
     .header h1 { font-size: 2em; }
     .container { padding: 15px; }
-    .dashboard-grid { grid-template-columns: 1fr; gap: 20px; }
+    /* REMOVED dashboard-grid rule - force flexbox always */
     .author-grid { grid-template-columns: 1fr; }
     .scores-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -2159,36 +2186,74 @@ body {
     margin: 3px 0;
 }
 
-/* Force 4 columns always for presentations - override any responsive rules */
-.dashboard-grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
+/* COMPLETE OVERRIDE: Force 4 columns CSS GRID always - NO EXCEPTIONS */
+/* Override ALL media queries and Tailwind interference */
+div.container div.dashboard-grid,
+.container .dashboard-grid,
+div.dashboard-grid,
+.dashboard-grid,
+[class*="dashboard-grid"] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+    grid-template-rows: 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
 }
 
-/* Responsive design for mobile only */
-@media (max-width: 600px) {
-    .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px;
+.dashboard-grid .card,
+.dashboard-grid > .card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* FORCE 4-COLUMN GRID FOR ALL SCREEN SIZES - OVERRIDE ALL RESPONSIVE RULES */
+@media screen and (min-width: 1px) {
+    div.container div.dashboard-grid,
+    .container .dashboard-grid,
+    div.dashboard-grid,
+    .dashboard-grid,
+    [class*="dashboard-grid"] {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr 1fr !important;
+        grid-template-rows: 1fr !important;
+        grid-template-areas: none !important;
+        width: 100% !important;
+        gap: 12px !important;
+        flex-direction: unset !important;
+        flex-wrap: unset !important;
+        flex: unset !important;
+        align-items: stretch !important;
     }
     
+    .dashboard-grid .card,
+    .dashboard-grid > .card {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        width: 100% !important;
+        display: block !important;
+        float: none !important;
+        position: relative !important;
+        flex: none !important;
+        min-width: unset !important;
+        max-width: unset !important;
+    }
+}
+
+/* Responsive design for mobile only - keep other elements responsive */
+@media (max-width: 600px) {
     .rankings {
         grid-template-columns: 1fr;
         gap: 15px;
     }
 }
 
-/* Presentation-optimized styles for larger screens */
+/* Presentation-optimized styles for larger screens - NOT dashboard-grid */
 @media (min-width: 901px) {
     .container {
         max-width: 1100px;
         padding: 12px;
-    }
-    
-    .dashboard-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-        margin-bottom: 25px;
     }
     
     .rankings {
@@ -2200,10 +2265,6 @@ body {
     .header {
         margin-bottom: 20px;
         padding: 18px;
-    }
-    
-    .card {
-        padding: 15px;
     }
     
     .ranking-section {

@@ -3,6 +3,119 @@
 
 {% block title %}AI Industry EII Championship{% endblock %}
 
+{% block extra_head %}
+<style>
+/* Tailwind Preflight Defense: One-Time Global CSS Fix (Option 3) */
+.dashboard-row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-bottom: 25px !important;
+}
+
+.dashboard-row > .card {
+    flex: 0 0 25% !important;
+    min-width: 0 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    color: #333 !important;
+    overflow: hidden !important;
+    display: block !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+}
+
+.dashboard-row > .card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Rankings row - Force 4 ranking sections in a single row */
+.rankings-row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-bottom: 25px !important;
+}
+
+.rankings-row > .ranking-section {
+    flex: 0 0 25% !important;
+    min-width: 0 !important; /* Allow shrinking below content size */
+    overflow: hidden !important; /* Prevent content overflow */
+    box-sizing: border-box !important; /* Include padding in width calculation */
+}
+
+/* Align header and author-details width with the 4-card rows */
+.header {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.author-details {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Prevent text overflow in ranking sections */
+.ranking-section h3 {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+}
+
+.ranking-section .author-name {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+}
+
+/* Backup media query for extra safety */
+@media screen and (min-width: 1px) {
+    .dashboard-row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 16px !important;
+        width: 100% !important;
+    }
+    
+    .dashboard-row > .card {
+        flex: 0 0 25% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    .rankings-row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 16px !important;
+        width: 100% !important;
+    }
+    
+    .rankings-row > .ranking-section {
+        flex: 0 0 25% !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+    
+    .header {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .author-details {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="header">
@@ -18,7 +131,7 @@
         {% endif %}
     </div>
     
-    <div class="dashboard-grid">
+    <div class="grid grid-cols-4 gap-4 w-full mb-6">
         <div class="card">
             <h3>📊 Industry Analysis</h3>
             <div class="stat-number">{{ data.team_summary.total_articles }}</div>
@@ -44,7 +157,7 @@
         </div>
     </div>
     
-    <div class="rankings">
+    <div class="grid grid-cols-4 gap-4 w-full">
         <div class="ranking-section">
             <h3>🔥 Highest Average EII (Most Inflated)</h3>
             <ul class="ranking-list">

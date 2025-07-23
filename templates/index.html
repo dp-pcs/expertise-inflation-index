@@ -110,12 +110,18 @@
             </div>
         </div>
 
-        <div class="card">
-            <h3>🔄 Admin: Refresh Analysis</h3>
-            <p>Re-run the full 64-article industry analysis and update stored results</p>
-            <div class="card-buttons">
-                <a href="#" onclick="refreshAnalysis()" class="btn-primary">Refresh Analysis</a>
-                <span class="btn-secondary" id="refresh-status">Ready</span>
+        <!-- Admin Section -->
+        <div class="text-center mt-16">
+            <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-4">🔄 Admin: Refresh Analysis</h2>
+                <p class="text-white/80 mb-6">Re-run the full 64-article industry analysis and update stored results</p>
+                <div class="flex items-center justify-center gap-4">
+                    <button onclick="refreshAnalysis()" 
+                           class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg">
+                        Refresh Analysis
+                    </button>
+                    <span id="refresh-status" class="text-white/80 font-medium">Ready</span>
+                </div>
             </div>
         </div>
     </div>
@@ -124,7 +130,8 @@
         function refreshAnalysis() {
             const statusSpan = document.getElementById('refresh-status');
             statusSpan.textContent = 'Running...';
-            statusSpan.style.color = '#ff9500';
+            statusSpan.style.color = '#f59e0b';
+            statusSpan.className = 'text-yellow-400 font-medium';
             
             fetch('/api/refresh-industry-analysis', {
                 method: 'POST',
@@ -133,16 +140,16 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    statusSpan.textContent = `✅ Complete (${data.message})`;
-                    statusSpan.style.color = '#28a745';
+                    statusSpan.textContent = `✅ Complete (${data.message || 'Analysis updated!'})`;
+                    statusSpan.className = 'text-green-400 font-medium';
                 } else {
                     statusSpan.textContent = `❌ Error: ${data.error}`;
-                    statusSpan.style.color = '#dc3545';
+                    statusSpan.className = 'text-red-400 font-medium';
                 }
             })
             .catch(error => {
                 statusSpan.textContent = `❌ Failed: ${error.message}`;
-                statusSpan.style.color = '#dc3545';
+                statusSpan.className = 'text-red-400 font-medium';
             });
         }
     </script>
